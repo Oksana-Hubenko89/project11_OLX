@@ -37,7 +37,7 @@
         </button>
         <ul class="site-nav">
           <div class="auth">
-            <button>Реєстрація / Увійти</button>
+            <button class="btn-log-and-reg">Реєстрація / Увійти</button>
             <button id="add-modal-open">Створити оголошення!</button>
           </div>
           <li class="site-nav-item"><a href="#" class="link">Нерухомість</a></li>
@@ -1469,6 +1469,26 @@
         </label>
         <button class="modal-buttom" type="submit">ДОДАТИ</button>
       </form>
+    </div>
+  </div>
+
+  <!-- Modal to login -->
+  <div class="backdrop ">
+    <div class="modal-log-and-reg">
+      <button type="button" class="close-button">
+        <svg width="14px" height="14px" aria-label="Закрытие мобильного окна">
+          <use class="icon-close" href="./symbol-defs.svg#icon-close"></use>
+        </svg>
+      </button>
+      <p class="offer-to-login-google">Ви можете авторизуватися за допомогою Google Account:</p>
+      <button class="btn-google-autorisation">Google</button>
+      <p class="offer-to-login">Або зайти за допомогою імейлу і пароля, попередньо зареєструвавшись:</p>
+      <!-- <form class="modal-form"> -->
+      <input class="email-input" type="email" name="email" placeholder="E-mail">
+      <input class="password-input" type="password" name="password" placeholder="Password">
+      <button class="btn primary-btn btn-login">Увійти</button>
+      <button class="btn secondary-btn btn-registration">Зареєструватись</button>
+      <!-- </form> -->
     </div>
   </div>
 </body>
