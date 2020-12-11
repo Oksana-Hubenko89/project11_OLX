@@ -1,0 +1,66 @@
+
+.modal-log-and-reg {
+  position: absolute;
+  display: flex;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+ 
+	flex-direction: column;
+  background: #F5F6FB;;
+
+  // @media screen and (min-width: $tablet) {
+	// 	padding: 62px 105px;
+	// 	width: 650px;  
+	// 	height: 583px;
+	// }
+
+	.close-button {
+		position: absolute;
+		padding: 0px;
+		top: 30px;
+		right: 30px;
+		font-size: 0px;
+		border-style: none;
+	}
+
+	
+  @media screen and (min-width: $mobile) {
+		margin: 13px 15px;
+		padding: 57px 19px;
+		max-width: 100%;
+		max-height: 542px;
+	}  
+	
+	.offer-to-login-google, .offer-to-login {
+		margin-bottom: 20px;
+	}
+
+	.btn-google-autorisation {
+		margin-bottom: 41px;
+		min-width: 142px;
+		min-height: 51px;
+	}
+
+	.email-input, .password-input {
+		padding: 20px 25px;
+		height: 56px;
+		width: 100%;
+	}
+
+	.email-input {
+		margin-bottom: 20px;
+	}
+
+	.password-input {
+		margin-bottom: 31px;
+	}
+
+	.btn-login, .btn-registration {
+		min-width: 119px;
+		min-height: 50px;
+		
+		font-family: $primary-font;
+	}
+
+}
