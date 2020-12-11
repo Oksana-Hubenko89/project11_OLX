@@ -7,7 +7,7 @@
   transform: translate(-50%, -50%);
  
 	flex-direction: column;
-  background: #F5F6FB;;
+  background: #F5F6FB;
 
   // @media screen and (min-width: $tablet) {
 	// 	padding: 62px 105px;
@@ -16,6 +16,10 @@
 	// }
 
 	.close-button {
+		// убирает стили кнопки
+		border-style: none;
+		background-color: transparent;
+		// Белик
 		position: absolute;
 		padding: 0px;
 		top: 30px;

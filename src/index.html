@@ -174,7 +174,7 @@
       <div class="card-container">
         <h2>Обране</h2>
 
-        <ul class="card-field">
+        <ul class="card-field js-open-advert">
           <li class="card-item">
             <div class="img-container">
               <img
@@ -325,61 +325,10 @@
         </form>
       </div>
     </div>
-    <!-- <div class="backdrop is-hidden">
-      <div class="advert-modal">
-        <form class="modal-form">
-          <h3 class="modal-title">Додати оголошення</h3>
-          <svg class="modal-close-icon" width="14px" height="14px">
-            <use href="/"></use>
-          </svg>
-          <label class="modal-input-product"
-            >Назва товару
-            <input class="modal-input" type="text" />
-          </label>
-          <label class="modal-upload"
-            >Фото
-            <div class="upload-form">
-              <div class="upload-icon">
-                <input type="file" accept="image/jpeg,image/png" />
-              </div>
-              <div class="upload-icon">
-                <input type="file" accept="image/jpeg,image/png" />
-              </div>
-              <div class="upload-icon">
-                <input type="file" accept="image/jpeg,image/png" />
-              </div>
-              <div class="upload-icon">
-                <input type="file" accept="image/jpeg,image/png" />
-              </div>
-              <div class="upload-icon">
-                <input type="file" accept="image/jpeg,image/png" />
-              </div>
-            </div>
-          </label>
-          <label class="modal-form-description"
-            >Опис товару-->
-    <!-- <textarea class="modal-input" type="text" /> -->
-    <!-- <textarea class="modal-input" name="" id="" cols="30" rows="10"></textarea>-->
-    <!-- </label>
-          <label for=""
-            >Категорія товару
-            <input class="modal-input" type="text" />
-          </label>
-          <label for=""
-            >Ціна
-            <input class="modal-input" type="number" placeholder="0.00 грн" />
-          </label>
-          <label for=""
-            >Телефон
-            <input class="modal-input" type="tel" placeholder="+38 (0--) --- -- --" />
-          </label>
-          <button class="modal-buttom" type="submit">ДОДАТИ</button>
-        </form>
-      </div>
-    </div>   -->
+
 
     <!-- Modal to login -->
-    <div class="backdrop is-hidden">
+    <div class="add-backdrop is-hidden">
       <div class="modal-log-and-reg">
         <button type="button" class="close-button">
           <svg width="14px" height="14px" aria-label="Закрытие мобильного окна">
@@ -398,6 +347,70 @@
         <button class="btn secondary-btn btn-registration">Зареєструватись</button>
         <!-- </form> -->
       </div>
+    </div>
+    <!-- Modal объявления чужого, просмотр -->
+    <!-- присвоить модалке класс is-hidden -->
+    <div class="add-backdrop is-hidden js-advert-open" >
+      <div class="advert-modal">
+        <article>
+          <button type="button" class="advert-close-button js-advert-close">
+            <svg width="14px" height="14px" aria-label="Закрытие мобильного окна">
+              <use class="icon-close" href="./symbol-defs.svg#icon-close"></use>
+            </svg>
+          </button>
+          <h3 class="modal-title">Футболка спортивна</h3>
+          <p class="product-code">Код товару | 105-С</p>
+
+          <div class="advert-main-img">
+            <img class="advert-img" src="https://medialeaks.ru/wp-content/uploads/2019/08/2-33.jpg" alt="" >
+          <div class="advert-preload">
+            <!-- рендерить при появлении данных с бека -->
+            
+            <div class="advert-img-preload">
+              <img src="/" alt="">
+            </div>
+            
+            <div class="advert-img-preload">
+              <img src="/" alt="">
+            </div>
+            <div class="advert-img-preload">
+              <img src="/" alt="">
+            </div>
+            <div class="advert-img-preload">
+              <img src="/" alt="">
+            </div>
+  
+          </div>
+          <div class=advert-svg>
+            <!-- рисовать для мобилки точки соответственно кол-ву фоток -->
+            <svg class="" width="5px" height="5px">
+              <use href="/"></use>
+            </svg>
+          </div>
+          </div>
+          <p class="advert-price">200.00 грн</p>
+          <button class="seller-information btn primary-btn" type="button">Информация о продавце</button>
+          <ul class="add-share">
+            <li class="share"><span >В обране </span>
+              <svg class="icon-share" width="16px" height="16px">
+              <use href="./symbol-defs.svg#icon-contured-heart"></use>
+            </svg></li>
+            <li class="share"><span >Поділитися</span>
+              <svg class="icon-share" width="14px" height="12px">
+                <use href="/"></use>
+              </svg>
+            </li>
+          </ul>
+          <p class="micro-title">Опис:</p>
+          <p class="advert-description">
+            Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона.
+  
+          </p>
+         
+        </article>
+
+      </div>
+  
     </div>
   </body>
 </html>
