@@ -1,6 +1,6 @@
 
 const BtnMyoffice = document.querySelector('.js-btn-my-off');
-const ConteinerMyoffice = document.querySelector('.my-office');
+const ContainerMyoffice = document.querySelector('.my-office');
 const BtnLogandReg = document.querySelector('.js-btn-log-and-reg');
 
 /**
@@ -11,10 +11,10 @@ const BtnLogandReg = document.querySelector('.js-btn-log-and-reg');
  function UpdateOfficeBtnByToken () {
     if(localStorage.getItem('accessToken') === null){
         BtnLogandReg.classList.remove('itsAuth');
-        ConteinerMyoffice.classList.add('itsAuth');
+        ContainerMyoffice.classList.add('itsAuth');
     } else {
         BtnLogandReg.classList.add('itsAuth');
-        ConteinerMyoffice.classList.remove('itsAuth');
+        ContainerMyoffice.classList.remove('itsAuth');
     }
 }
 UpdateOfficeBtnByToken();

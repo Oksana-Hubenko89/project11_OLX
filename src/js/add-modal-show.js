@@ -2,6 +2,7 @@ const refs = {
     openModalBtn: document.querySelector('#add-modal-open'),
     closeModalBtn: document.querySelector('[add-modal-close]'),
     addModal: document.querySelector('.add-backdrop'),
+    ModalAuth: document.querySelector('.js-add-auth'), 
     // modalBackdrop: document.querySelector('.donkey'),
 };
 
@@ -19,8 +20,13 @@ refs.addModal.addEventListener('click', onModalBackdropClick);
 // Функция открытия модалки
 function addModalOpen(evt) {
   evt.preventDefault();
-  refs.addModal.classList.remove('is-hidden');
-}
+  if(localStorage.getItem('accessToken') !== null ){
+      refs.addModal.classList.remove('is-hidden');
+  }else{
+      refs.ModalAuth.classList.remove('is-hidden');
+  }
+  
+};
 
 // Функции закрытия модалки
 function modalClose() {
