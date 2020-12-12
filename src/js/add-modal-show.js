@@ -21,16 +21,16 @@ refs.addModal.addEventListener('click', onModalBackdropClick);
 function addModalOpen(evt) {
   evt.preventDefault();
   if(localStorage.getItem('accessToken') !== null ){
-      refs.addModal.classList.remove('is-hidden');
+      refs.addModal.classList.remove('visually-hidden');
   }else{
-      refs.ModalAuth.classList.remove('is-hidden');
+      refs.ModalAuth.classList.remove('visually-hidden');
   }
   
 };
 
 // Функции закрытия модалки
 function modalClose() {
-  refs.addModal.classList.add('is-hidden');
+  refs.addModal.classList.add('visually-hidden');
 }
 function modalEscClose(evt) {
   if (evt.key === "Escape") {
