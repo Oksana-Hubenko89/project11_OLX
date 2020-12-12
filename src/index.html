@@ -6,10 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>OLX</title>
-
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 </head>
-
 <body>
   <!-- Header -->
   <header class="page-header">
@@ -21,7 +19,7 @@
           </svg>
         </button>
 
-        <a class="logo js-logo-open">LOGO</a>
+        <a href="/" class="logo js-logo-open">LOGO</a>
         <div class="icon-Close">
         <button type="button" class="menu-button is-open" width="20px" height="20px" aria-expended="false"
           aria-controls="menu-container" data-menu-button>
@@ -112,215 +110,343 @@
     </div>
   </footer>
 
-  <!-- МОДАЛКИ -->
-  <!-- Modal to order -->
-  <div class="is-hidden"></div>
-  <!-- Modal to new advert -->
-  <!-- Modal Мої оголошення -->
-  <section class="section is-hidden">
-    <div class="card-container">
-      <h2>Мої оголошення</h2>
+    <!-- МОДАЛКИ -->
+    <!-- Modal to order -->
+    <div class="is-hidden"></div>
+    <!-- Modal to new advert -->
+    <!-- Modal Мої оголошення -->
+    <section class="section is-hidden">
+      <div class="card-container">
+        <button type="button" class="swipe-left">
+          <svg width="6px" height="9px" class="swipe-left-icon">
+            <use href="./symbol-defs.svg#icon-arrow-left"></use>
+          </svg>
+        </button>
+        <button type="button" class="swipe-right">
+          <svg width="6px" height="9px" class="swipe-right-icon">
+            <use href="./symbol-defs.svg#icon-arrow-right"></use>
+          </svg>
+        </button>
+        <h2 class="section-name">Мої оголошення</h2>
 
-      <ul class="card-field">
-        <li class="card-item">
-          <div class="img-container">
-            <img src="https://s1.eda.ru/StaticContent/Photos/140812180013/140820212258/p_O.jpg" alt="tshirt" />
-            <button type="button" class="favorite">
-              <svg width="16px" height="16px" class="favorite-icon">
-                <use href="./symbol-defs.svg#icon-contured-heart"></use>
-              </svg>
-            </button>
-            <button type="button" class="edit-advert">
-              <svg width="14px" height="14px" class="edit-advert-icon">
-                <use href="./symbol-defs.svg#icon-edit"></use>
-              </svg>
-            </button>
-            <button type="button" class="full-screen">
-              <svg width="11px" height="11px" class="full-screen-icon">
-                <use href="./symbol-defs.svg#icon-full-screen"></use>
-              </svg>
-            </button>
-          </div>
-          <p class="product-title">Майка жіноча чорна</p>
-          <p class="price">300 грн</p>
-        </li>
-        <li class="card-item">
-          <div class="img-container">
-            <img src="https://s1.eda.ru/StaticContent/Photos/140812180013/140820212258/p_O.jpg" alt="tshirt" />
-            <button type="button" class="favorite">
-              <svg width="16px" height="16px" class="favorite-icon">
-                <use href="./symbol-defs.svg#icon-contured-heart"></use>
-              </svg>
-            </button>
-            <button type="button" class="edit-advert">
-              <svg width="14px" height="14px" class="edit-advert-icon">
-                <use href="./symbol-defs.svg#icon-edit"></use>
-              </svg>
-            </button>
-            <button type="button" class="full-screen">
-              <svg width="11px" height="11px" class="full-screen-icon">
-                <use href="./symbol-defs.svg#icon-full-screen"></use>
-              </svg>
-            </button>
-          </div>
-          <p class="product-title">Майка жіноча чорна</p>
-          <p class="price">300 грн</p>
-        </li>
-        <li class="card-item">
-          <div class="img-container">
-            <img src="https://s1.eda.ru/StaticContent/Photos/140812180013/140820212258/p_O.jpg" alt="tshirt" />
-            <button type="button" class="favorite">
-              <svg width="16px" height="16px" class="favorite-icon">
-                <use href="./symbol-defs.svg#icon-contured-heart"></use>
-              </svg>
-            </button>
-            <button type="button" class="edit-advert">
-              <svg width="14px" height="14px" class="edit-advert-icon">
-                <use href="./symbol-defs.svg#icon-edit"></use>
-              </svg>
-            </button>
-            <button type="button" class="full-screen">
-              <svg width="11px" height="11px" class="full-screen-icon">
-                <use href="./symbol-defs.svg#icon-full-screen"></use>
-              </svg>
-            </button>
-          </div>
-          <p class="product-title">Майка жіноча чорна</p>
-          <p class="price">300 грн</p>
-        </li>
-      </ul>
-    </div>
-  </section>
-  <!-- Modal Обране -->
-  <section class="section is-hidden">
-    <div class="card-container">
-      <h2>Обране</h2>
+        <ul class="card-field">
+          <li class="card-item">
+            <div class="img-container">
+              <img
+                src="https://s1.eda.ru/StaticContent/Photos/140812180013/140820212258/p_O.jpg"
+                alt="tshirt"
+              />
+              <button type="button" class="favorite">
+                <svg width="16px" height="16px" class="favorite-icon">
+                  <use href="./symbol-defs.svg#icon-contured-heart"></use>
+                </svg>
+              </button>
+              <button type="button" class="full-screen">
+                <svg width="11px" height="11px" class="full-screen-icon">
+                  <use href="./symbol-defs.svg#icon-full-screen"></use>
+                </svg>
+              </button>
+            </div>
+            <p class="product-title">Майка жіноча чорна</p>
+            <p><span class="old-price">300 грн</span><span class="hot-price">100 грн</span></p>
+          </li>
+          <li class="card-item">
+            <div class="img-container">
+              <img
+                src="https://s1.eda.ru/StaticContent/Photos/140812180013/140820212258/p_O.jpg"
+                alt="tshirt"
+              />
+              <button type="button" class="favorite">
+                <svg width="16px" height="16px" class="favorite-icon">
+                  <use href="./symbol-defs.svg#icon-heart"></use>
+                </svg>
+              </button>
+              <button type="button" class="full-screen">
+                <svg width="11px" height="11px" class="full-screen-icon">
+                  <use href="./symbol-defs.svg#icon-full-screen"></use>
+                </svg>
+              </button>
+            </div>
+            <p class="product-title">Майка жіноча чорна</p>
+            <p><span class="old-price">300 грн</span><span class="hot-price">100 грн</span></p>
+          </li>
+          <li class="card-item">
+            <div class="img-container">
+              <img
+                src="https://s1.eda.ru/StaticContent/Photos/140812180013/140820212258/p_O.jpg"
+                alt="tshirt"
+              />
+              <button type="button" class="favorite">
+                <svg width="16px" height="16px" class="favorite-icon">
+                  <use href="./symbol-defs.svg#icon-heart"></use>
+                </svg>
+              </button>
+              <button type="button" class="full-screen">
+                <svg width="11px" height="11px" class="full-screen-icon">
+                  <use href="./symbol-defs.svg#icon-full-screen"></use>
+                </svg>
+              </button>
+            </div>
+            <p class="product-title">Майка жіноча чорна</p>
+            <p><span class="old-price">300 грн</span><span class="hot-price">100 грн</span></p>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <!-- Modal Обране -->
+    <section class="section is-hidden">
+      <div class="card-container">
+        <div class="card-container">
+        <button type="button" class="swipe-left">
+          <svg width="6px" height="9px" class="swipe-left-icon">
+            <use href="./symbol-defs.svg#icon-arrow-left"></use>
+          </svg>
+        </button>
+        <button type="button" class="swipe-right">
+          <svg width="6px" height="9px" class="swipe-right-icon">
+            <use href="./symbol-defs.svg#icon-arrow-right"></use>
+          </svg>
+        </button>
+        <h2 class="section-name">Обране</h2>
+      
+        <ul class="card-field">
+           <li class="card-item">
+            <div class="img-container">
+              <img
+                src="https://s1.eda.ru/StaticContent/Photos/140812180013/140820212258/p_O.jpg"
+                alt="tshirt"
+              />
+              <button type="button" class="favorite">
+                <svg width="16px" height="16px" class="favorite-icon">
+                  <use href="./symbol-defs.svg#icon-contured-heart"></use>
+                </svg>
+              </button>
+              <button type="button" class="full-screen">
+                <svg width="11px" height="11px" class="full-screen-icon">
+                  <use href="./symbol-defs.svg#icon-full-screen"></use>
+                </svg>
+              </button>
+            </div>
+            <p class="product-title">Майка жіноча чорна</p>
+            <p><span class="old-price">300 грн</span><span class="hot-price">100 грн</span></p>
+          </li>
+          <li class="card-item">
+            <div class="img-container">
+              <img
+                src="https://s1.eda.ru/StaticContent/Photos/140812180013/140820212258/p_O.jpg"
+                alt="tshirt"
+              />
+              <button type="button" class="favorite">
+                <svg width="16px" height="16px" class="favorite-icon">
+                  <use href="./symbol-defs.svg#icon-heart"></use>
+                </svg>
+              </button>
+              <button type="button" class="full-screen">
+                <svg width="11px" height="11px" class="full-screen-icon">
+                  <use href="./symbol-defs.svg#icon-full-screen"></use>
+                </svg>
+              </button>
+            </div>
+            <p class="product-title">Майка жіноча чорна</p>
+            <p><span class="old-price">300 грн</span><span class="hot-price">100 грн</span></p>
+          </li>
+          <li class="card-item">
+            <div class="img-container">
+              <img
+                src="https://s1.eda.ru/StaticContent/Photos/140812180013/140820212258/p_O.jpg"
+                alt="tshirt"
+              />
+              <button type="button" class="favorite">
+                <svg width="16px" height="16px" class="favorite-icon">
+                  <use href="./symbol-defs.svg#icon-heart"></use>
+                </svg>
+              </button>
+              <button type="button" class="full-screen">
+                <svg width="11px" height="11px" class="full-screen-icon">
+                  <use href="./symbol-defs.svg#icon-full-screen"></use>
+                </svg>
+              </button>
+            </div>
+            <p class="product-title">Майка жіноча чорна</p>
+            <p><span class="old-price">300 грн</span><span class="hot-price">100 грн</span></p>
+          </li>
+        </ul>
+      </div>
+    </section>
 
-      <ul class="card-field">
-        <li class="card-item">
-          <div class="img-container">
-            <img src="https://s1.eda.ru/StaticContent/Photos/140812180013/140820212258/p_O.jpg" alt="tshirt" />
-            <button type="button" class="favorite">
-              <svg width="16px" height="16px" class="favorite-icon marked">
-                <use href="./symbol-defs.svg#icon-contured-heart"></use>
-              </svg>
-            </button>
-            <button type="button" class="full-screen">
-              <svg width="11px" height="11px" class="full-screen-icon">
-                <use href="./symbol-defs.svg#icon-full-screen"></use>
-              </svg>
-            </button>
+    <!-- присвоить модалке класс backdrop is-hidden -->
+    <div class="add-backdrop is-hidden">
+      <div class="add-modal">
+        <form action="" class="add-modal-form">
+          <a add-modal-close href="#" aria-label="Close" class="add-modal-close"
+            ><svg class="icon-close">
+              <use href="./symbol-defs.svg#icon-close"></use></svg
+          ></a>
+          <h2 class="add-modal-title">Додати оголошення</h2>
+          <!-- <svg class="modal-close-icon" width="14px" height="14px">
+            <use href="/"></use>
+          </svg> -->
+          <div class="add-modal-container">
+            <label for="name" class="add-modal-field">Назва товару</label>
+            <input class="add-modal-input" type="text" name="name" id="name" placeholder=" " />
           </div>
-          <p class="product-title">Майка жіноча чорна</p>
-          <p class="price">300 грн</p>
-        </li>
-        <li class="card-item">
-          <div class="img-container">
-            <img src="https://s1.eda.ru/StaticContent/Photos/140812180013/140820212258/p_O.jpg" alt="tshirt" />
-            <button type="button" class="favorite">
-              <svg width="16px" height="16px" class="favorite-icon marked">
-                <use href="./symbol-defs.svg#icon-contured-heart"></use>
-              </svg>
-            </button>
-            <button type="button" class="full-screen">
-              <svg width="11px" height="11px" class="full-screen-icon">
-                <use href="./symbol-defs.svg#icon-full-screen"></use>
-              </svg>
-            </button>
-          </div>
-          <p class="product-title">Майка жіноча чорна</p>
-          <p class="price">300 грн</p>
-        </li>
-        <li class="card-item">
-          <div class="img-container">
-            <img src="https://s1.eda.ru/StaticContent/Photos/140812180013/140820212258/p_O.jpg" alt="tshirt" />
-            <button type="button" class="favorite">
-              <svg width="16px" height="16px" class="favorite-icon marked">
-                <use href="./symbol-defs.svg#icon-contured-heart"></use>
-              </svg>
-            </button>
-            <button type="button" class="full-screen">
-              <svg width="11px" height="11px" class="full-screen-icon">
-                <use href="./symbol-defs.svg#icon-full-screen"></use>
-              </svg>
-            </button>
-          </div>
-          <p class="product-title">Майка жіноча чорна</p>
-          <p class="price">300 грн</p>
-        </li>
-      </ul>
-    </div>
-  </section>
+          <div class="add-modal-container">
+            <h3 class="add-modal-field">Фото</h3>
+            <div class="download-btns">
+              <label class="label-photo-btn" for="file">+</label>
+              <input class="add-photo-btn" type="file" name="file" id="file" />
 
-  <!-- присвоить модалке класс backdrop is-hidden -->
-  <div class="backdrop is-hidden">
-    <div class="advert-modal">
-      <form class="modal-form">
-        <h3 class="modal-title">Додати оголошення</h3>
-        <svg class="modal-close-icon" width="14px" height="14px">
-          <use href="/"></use>
-        </svg>
-        <label class="modal-input-product">Назва товару
-          <input class="modal-input" type="text" />
-        </label>
-        <label class="modal-upload">Фото
-          <div class="upload-form">
-            <div class="upload-icon">
-              <input type="file" accept="image/jpeg,image/png" />
-            </div>
-            <div class="upload-icon">
-              <input type="file" accept="image/jpeg,image/png" />
-            </div>
-            <div class="upload-icon">
-              <input type="file" accept="image/jpeg,image/png" />
-            </div>
-            <div class="upload-icon">
-              <input type="file" accept="image/jpeg,image/png" />
-            </div>
-            <div class="upload-icon">
-              <input type="file" accept="image/jpeg,image/png" />
+              <label class="label-photo-btn" for="file">+</label>
+              <input class="add-photo-btn" type="file" name="file" id="file" />
+
+              <label class="label-photo-btn" for="file">+</label>
+              <input class="add-photo-btn" type="file" name="file" id="file" />
+
+              <label class="label-photo-btn" for="file">+</label>
+              <input class="add-photo-btn" type="file" name="file" id="file" />
+
+              <label class="label-photo-btn" for="file">+</label>
+              <input class="add-photo-btn" type="file" name="file" id="file" />
             </div>
           </div>
-        </label>
-        <label class="modal-form-description">Опис товару
-          <!-- <textarea class="modal-input" type="text" /> -->
-          <textarea class="modal-input" name="" id="" cols="30" rows="10"></textarea>
-        </label>
-        <label for="">Категорія товару
-          <input class="modal-input" type="text" />
-        </label>
-        <label for="">Ціна
-          <input class="modal-input" type="number" placeholder="0.00 грн" />
-        </label>
-        <label for="">Телефон
-          <input class="modal-input" type="tel" placeholder="+38 (0--) --- -- --" />
-        </label>
-        <button class="modal-buttom" type="submit">ДОДАТИ</button>
-      </form>
+
+          <div class="add-modal-container">
+            <label for="description" class="add-modal-field">Опис товару</label>
+            <textarea
+              class="add-modal-input"
+              name="description"
+              rows="5"
+              cols="45"
+              id="description"
+              placeholder=" "
+            ></textarea>
+          </div>
+          <div class="add-modal-container">
+            <label for="category" class="add-modal-field">Категорія товару</label>
+            <div class="add-modal-dropdown">
+              <select
+                class="add-modal-input js-category-input"
+                required
+                name="category"
+                id="category"
+              >
+                <!-- <option value="" class="add-modal-category">
+                  Оберіть категорію
+                </option> -->
+              </select>
+            </div>
+          </div>
+          <div class="add-modal-container">
+            <label for="price" class="add-modal-field">Ціна</label>
+            <input
+              class="add-modal-input"
+              type="text"
+              name="price"
+              id="price"
+              placeholder="0.00 грн"
+            />
+          </div>
+          <div class="add-modal-container">
+            <label for="tel" class="add-modal-field">Телефон</label>
+            <input
+              class="add-modal-input"
+              type="tel"
+              name="tel"
+              id="tel"
+              placeholder="+38 (0--) --- -- --"
+            />
+          </div>
+          <button class="add-modal-btn btn" type="submit">ДОДАТИ</button>
+        </form>
+      </div>
     </div>
   </div>
 
-  <!-- Modal to login -->
-  <div class="backdrop is-hidden">
-    <div class="modal-log-and-reg">
-      <button type="button" class="close-button">
-        <svg width="14px" height="14px" aria-label="Закрытие мобильного окна">
-          <use class="icon-close" href="./symbol-defs.svg#icon-close"></use>
-        </svg>
-      </button>
-      <p class="offer-to-login-google">Ви можете авторизуватися за допомогою Google Account:</p>
-      <button class="btn-google-autorisation">Google</button>
-      <p class="offer-to-login">
-        Або зайти за допомогою імейлу і пароля, попередньо зареєструвавшись:
-      </p>
-      <!-- <form class="modal-form"> -->
-      <input class="email-input" type="email" name="email" placeholder="E-mail" />
-      <input class="password-input" type="password" name="password" placeholder="Password" />
-      <button class="btn primary-btn btn-login">Увійти</button>
-      <button class="btn secondary-btn btn-registration">Зареєструватись</button>
-      <!-- </form> -->
-    </div>
-  </div>
-</body>
 
+    <!-- Modal to login -->
+    <div class="add-backdrop is-hidden">
+      <div class="modal-log-and-reg">
+        <button type="button" class="close-button">
+          <svg width="14px" height="14px" aria-label="Закрытие мобильного окна">
+            <use class="icon-close" href="./symbol-defs.svg#icon-close"></use>
+          </svg>
+        </button>
+        <p class="offer-to-login-google">Ви можете авторизуватися за допомогою Google Account:</p>
+        <button class="btn-google-autorisation">Google</button>
+        <p class="offer-to-login">
+          Або зайти за допомогою імейлу і пароля, попередньо зареєструвавшись:
+        </p>
+        <!-- <form class="modal-form"> -->
+        <input class="email-input" type="email" name="email" placeholder="E-mail" />
+        <input class="password-input" type="password" name="password" placeholder="Password" />
+        <button class="btn primary-btn btn-login">Увійти</button>
+        <button class="btn secondary-btn btn-registration">Зареєструватись</button>
+        <!-- </form> -->
+      </div>
+    </div>
+    <!-- Modal объявления чужого, просмотр -->
+    <!-- присвоить модалке класс is-hidden -->
+    <div class="add-backdrop is-hidden js-advert-open" >
+      <div class="advert-modal">
+        <article>
+          <button type="button" class="advert-close-button js-advert-close">
+            <svg width="14px" height="14px" aria-label="Закрытие мобильного окна">
+              <use class="icon-close" href="./symbol-defs.svg#icon-close"></use>
+            </svg>
+          </button>
+          <h3 class="modal-title">Футболка спортивна</h3>
+          <p class="product-code">Код товару | 105-С</p>
+
+          <div class="advert-main-img">
+            <img class="advert-img" src="https://medialeaks.ru/wp-content/uploads/2019/08/2-33.jpg" alt="" >
+          <div class="advert-preload">
+            <!-- рендерить при появлении данных с бека -->
+            
+            <div class="advert-img-preload">
+              <img src="/" alt="">
+            </div>
+            
+            <div class="advert-img-preload">
+              <img src="/" alt="">
+            </div>
+            <div class="advert-img-preload">
+              <img src="/" alt="">
+            </div>
+            <div class="advert-img-preload">
+              <img src="/" alt="">
+            </div>
+  
+          </div>
+          <div class=advert-svg>
+            <!-- рисовать для мобилки точки соответственно кол-ву фоток -->
+            <svg class="" width="5px" height="5px">
+              <use href="/"></use>
+            </svg>
+          </div>
+          </div>
+          <p class="advert-price">200.00 грн</p>
+          <button class="seller-information btn primary-btn" type="button">Информация о продавце</button>
+          <ul class="add-share">
+            <li class="share"><span >В обране </span>
+              <svg class="icon-share" width="16px" height="16px">
+              <use href="./symbol-defs.svg#icon-contured-heart"></use>
+            </svg></li>
+            <li class="share"><span >Поділитися</span>
+              <svg class="icon-share" width="14px" height="12px">
+                <use href="/"></use>
+              </svg>
+            </li>
+          </ul>
+          <p class="micro-title">Опис:</p>
+          <p class="advert-description">
+            Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона.
+  
+          </p>
+         
+        </article>
+
+      </div>
+  
+    </div>
+  </body>
 </html>
