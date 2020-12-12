@@ -6,3 +6,4 @@ import './js/login-and-registration';
 import './js/add-modal-show';
 import './js/add-modal-categories';
 import './js/advert';
+import './js/my-office-or-auth';
