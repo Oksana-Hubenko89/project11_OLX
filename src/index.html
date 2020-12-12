@@ -1,86 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>OLX</title>
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>OLX</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="page-header">
+    <nav class="header-nav">
+      <div class="container header-buttons" id="header-block">
+        <button class="button-seach" id="search-modal">
+          <svg width="24px" height="24px" aria-label="Поиск">
+            <use class="icon-cross" href="./symbol-defs.svg#icon-search"></use>
+          </svg>
+        </button>
 
-  <body>
-    <!-- Header -->
-    <header class="page-header">
-      <nav class="header-nav">
-        <div class="container header-buttons" id="header-block">
-          <button class="button-seach" id="search-modal">
-            <svg width="24px" height="24px" aria-label="Поиск">
-              <use class="icon-cross" href="./symbol-defs.svg#icon-search"></use>
-            </svg>
-          </button>
-          <a href="/" class="logo js-logo-open"> <span class="logo">Logo</span></a>
+        <a href="/" class="logo js-logo-open">LOGO</a>
+        <div class="icon-Close">
+        <button type="button" class="menu-button is-open" width="20px" height="20px" aria-expended="false"
+          aria-controls="menu-container" data-menu-button>
 
-          <button
-            type="button"
-            class="menu-button is-open"
-            width="20px"
-            height="20px"
-            aria-expended="false"
-            aria-controls="menu-container"
-            data-menu-button
-          >
-            <svg width="20px" height="20px" aria-label="Переключатель мобильного меню">
-              <use class="icon-menu" href="./symbol-defs.svg#icon-menu"></use>
-            </svg>
-          </button>
+          <svg width="20px" height="20px" aria-label="Переключатель мобильного меню">
+            <use class="icon-menu" href="./symbol-defs.svg#icon-menu"></use>
+          </svg>
+        </button>
         </div>
-        <div class="menu-container" id="menu-container" data-menu>
-          <button type="button" class="close-button">
-            <svg width="20px" height="20px" aria-label="Закрытие мобильного меню">
-              <use class="icon-close" href="./symbol-defs.svg#icon-close"></use>
+        <button class="btn-create-adv" id="add-modal-open">
+          <span class="btn-create-tex">Створити оголошення!</span>
+          <div class="icon-addClose">
+            <svg width="20px" height="20px" aria-label="Use Profil">
+              <use class="icon-add" href="./symbol-defs.svg#icon-add"></use>
             </svg>
-          </button>
-          <ul class="site-nav">
-            <div class="auth">
-              <button class="btn-log-and-reg">Реєстрація / Увійти</button>
-              <button id="add-modal-open">Створити оголошення!</button>
+          </div>
+
+        </button>
+      </div>
+      <div class="menu-container" id="menu-container" data-menu>
+        
+        
+        <div class="site-nav">
+          <div class="icon-Close">
+            <button type="button" class="close-button">
+              <svg width="20px" height="20px" aria-label="Закрытие мобильного меню">
+                <use class="icon-close" href="./symbol-defs.svg#icon-close"></use>
+              </svg>
+            </button>
+          </div>
+          <div class="auth">
+            <svg width="20px" height="20px" aria-label="Use Profil">
+              <use class="icon-cross" href="./symbol-defs.svg#icon-user"></use>
+            </svg>
+            <button class="btn-log-and-reg">Реєстрація / Увійти</button>
+            <div class="my-office itsAuth">
+              <button class="btn-my-off ">Мій кабінет</button>
+              <ul class="nav-my-off">
+                <li class="my-off-item"><a href="/" class="my-off-link">Мої оголошення</a></li>
+                <li class="my-off-item"><a href="/" class="my-off-link">Обране</a></li>
+              </ul>
             </div>
-            <li class="site-nav-item"><a href="#" class="link">Нерухомість</a></li>
-            <li class="site-nav-item"><a href="#" class="link">Транспорт</a></li>
-            <li class="site-nav-item"><a href="#" class="link">Робота</a></li>
-            <li class="site-nav-item"><a href="#" class="link">Електроніка</a></li>
-            <li class="site-nav-item"><a href="#" class="link">Бізнес та послуги</a></li>
-            <li class="site-nav-item"><a href="#" class="link">Відпочинок та спорт</a></li>
-            <li class="site-nav-item"><a href="#" class="link">Віддам безкоштовно</a></li>
-            <li class="site-nav-item"><a href="#" class="link">Обмін</a></li>
+          </div>
+          
+          <ul class="header-menu">
+            <li class="site-nav-item" id=""><a href="/" class="link">Нерухомість</a></li>
+            <li class="site-nav-item" id=""><a href="/" class="link">Транспорт</a></li>
+            <li class="site-nav-item" id=""><a href="/" class="link">Робота</a></li>
+            <li class="site-nav-item" id=""><a href="/" class="link">Електроніка</a></li>
+            <li class="site-nav-item" id=""><a href="/" class="link">Бізнес та послуги</a></li>
+            <li class="site-nav-item" id=""><a href="/" class="link">Відпочинок та спорт</a></li>
+            <li class="site-nav-item" id=""><a href="/" class="link">Віддам безкоштовно</a></li>
+            <li class="site-nav-item" id=""><a href="/" class="link">Обмін</a></li>
           </ul>
         </div>
-        <!-- <button class="clean-filter">Очистити фільтр</button> -->
-      </nav>
-    </header>
-    <main class="js-render-main-page"></main>
-
-    <footer>
-      <div class="footer-container">
-        <div class="secondary-footer-container">
-          <p class="footer-year">
-            <svg width="15px" height="15px" class="copyright">
-              <use href="./symbol-defs.svg#icon-copyright"></use>
-            </svg>
-            <span>2020</span>
-          </p>
-          <p class="footer-rights">All Rights Reserved</p>
-        </div>
-        <p class="footer-dev">
-          Developed with
-          <svg width="16px" height="16px" class="heart">
-            <use href="./symbol-defs.svg#icon-heart"></use>
-          </svg>
-          by&nbsp;<span>GoIT Students</span>
-        </p>
+        
       </div>
-    </footer>
+      <div class="conteiner-refresh">
+        <svg width="20px" height="20px" aria-label="Use Profil" class="icon-refresh">
+          <use class="icon-refresh" href="./symbol-defs.svg#icon-refresh"></use>
+        </svg>
+        <button class="btclean-filter js-btclean-filter" >Очистити фільтр</button>
+      </div>
+    </nav>
+  </header>
+
+
+  <main class="js-render-main-page"></main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="secondary-footer-container">
+        <p class="footer-year">
+          <svg width="15px" height="15px" class="copyright">
+            <use href="./symbol-defs.svg#icon-copyright"></use>
+          </svg>
+          <span>2020</span>
+        </p>
+        <p class="footer-rights">All Rights Reserved</p>
+      </div>
+      <p class="footer-dev">
+        Developed with
+        <svg width="16px" height="16px" class="heart">
+          <use href="./symbol-defs.svg#icon-heart"></use>
+        </svg>
+        by&nbsp;<span>GoIT Students</span>
+      </p>
+    </div>
+  </footer>
 
     <!-- МОДАЛКИ -->
     <!-- Modal to order -->
@@ -332,6 +360,7 @@
         </form>
       </div>
     </div>
+  </div>
 
 
     <!-- Modal to login -->
