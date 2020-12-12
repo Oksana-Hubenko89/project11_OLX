@@ -1,25 +1,57 @@
 const axios = require('axios').default;
+const debounce = require('lodash.debounce');
+
 const BASE_URL = "https://callboard-backend.herokuapp.com";
 
 const refs = {
-	modalLogAndReg: document.querySelector(".modal-log-and-reg"),
+	modalLogAndReg: document.querySelector("[data-modal-log-and-reg]"),
 	btnModalLogAndReg: document.querySelector(".btn-log-and-reg"),
-	modalLogAndReg: document.querySelector(".modal-log-and-reg"),
+	bodyEl: document.querySelector("body"),
 };
+
+const notifications = {
+	emailEmpty: "Необходимо ввести логин",
+	passwordEmpty: "Необходимо ввести пароль",
+	wrongEmail: "Не правильный логин",
+	wrongLoginOrPassword: "Не правильный логин или пароль",
+	loginAlreadyExist: "Пользователь с таким логином уже зарегистрирован",
+	passwordShort: "Минимальная длина пароля - 8 символов",
+	passwordLong: "Максимальная длина пароля - 16 символов",
+	passwordWithoutDigits: "Пароль должен содержать цифры",
+	passwordMustContainSmallAndBigLetters: "Пароль должен содержать большие и малые буквы",
+	passwordWithSpaces: "Пароль не должен содержать пробелов"
+}
 
 const emailInputEl = refs.modalLogAndReg.querySelector('.email-input');
 const passwordInputEl = refs.modalLogAndReg.querySelector(".password-input");
 const btnLogin = refs.modalLogAndReg.querySelector(".btn-login");
 const btnRegistration = refs.modalLogAndReg.querySelector(".btn-registration");
 const btnCloseModal = refs.modalLogAndReg.querySelector(".close-button");
+const notificationErrorEmailEl = refs.modalLogAndReg.querySelector(".notification-error-email");
+const notificationErrorPasswordEl = refs.modalLogAndReg.querySelector(".notification-error-password");
 
+refs.modalLogAndReg.addEventListener('click', onBackdrop);
+refs.bodyEl.addEventListener('keydown', onPressEsc);
 refs.btnModalLogAndReg.addEventListener('click', onBtnLogAndRegModal);
 btnRegistration.addEventListener('click', onBtnRegistration);
 btnLogin.addEventListener('click', onBtnLogin);
 btnCloseModal.addEventListener('click', onBtnLogAndRegModal);
+emailInputEl.addEventListener('input', () => onInputValue());
+passwordInputEl.addEventListener('input', () => onInputValue());
+
+function onBackdrop(event) {
+	if (event.target === refs.modalLogAndReg) {
+		toggleModal(refs.modalLogAndReg);
+	}
+}
+
+function onPressEsc(event) {
+	if (event.keyCode === 27) {
+		toggleModal(refs.modalLogAndReg);
+	}
+}
 
 function onBtnLogAndRegModal() {
-	console.log("close");
 	toggleModal(refs.modalLogAndReg);
 }
 
@@ -27,12 +59,11 @@ function onBtnRegistration(event) {
 	event.preventDefault();
 
 	if (!validationEmail(emailInputEl.value)) {
-		console.log("Не правильный email");
+		errorEmail(notifications.wrongEmail);
 		return;
 	}
 
 	if (!validationPassword(passwordInputEl.value)) {
-		console.log("Не правильный пароль");
 		return;
 	}
 
@@ -43,12 +74,12 @@ function onBtnLogin(event) {
 	event.preventDefault();
 
 	if (emailInputEl.value.length == 0) {
-		console.log("Необходимо ввести логин");
+		errorEmail(notifications.emailEmpty);
 		return;
 	}
 
 	if (passwordInputEl.value.length == 0) {
-		console.log("Необходимо ввести пароль");
+		errorPassword(notifications.passwordEmpty);
 		return;
 	}
 
@@ -56,14 +87,9 @@ function onBtnLogin(event) {
 }
 
 function toggleModal(modal) {
-	modal.parentNode.classList.toggle('visually-hidden');
+	clearInputData();
+	modal.classList.toggle('visually-hidden');
 }
-
-// function closeModalWindow(event) {
-// 	event.preventDefault();
-
-// 	const modal = event.target;
-// }
 
 function login(email, password) {	
 	axios.post(`${BASE_URL}/auth/login`, {
@@ -71,14 +97,16 @@ function login(email, password) {
 		"password": `${password}`
 	})
 		.then(({ data }) => {
-			console.log(data);
+			// console.log(data);
 			localStorage.setItem('accessToken', `${data.accessToken}`);
 			localStorage.setItem('refreshToken', `${data.refreshToken}`);
 			localStorage.setItem('id', `${data.sid}`);
+			toggleModal(refs.modalLogAndReg);
 		})
 		.catch(error => {
 			if (error.response.status === 403) {
-				console.log("Не правильный логин или пароль");
+				errorEmail(notifications.wrongLoginOrPassword)
+				// console.log("Не правильный логин или пароль");
 			}
 			console.log(error);
 		})	
@@ -95,7 +123,8 @@ function registration(email, password) {
 		})
 		.catch(error => {
 			if (error.response.status === 409) {
-				console.log("Пользователь с таким логином уже зарегистрирован");
+				errorEmail(notifications.loginAlreadyExist);
+				// console.log("Пользователь с таким логином уже зарегистрирован");
 			}
 			else {
 				console.log(`error = ${error.response.status}`);
@@ -117,25 +146,54 @@ function validationPassword(password) {
 	const NO_SPACES = /\S/;
 
 	if (password.length < MIN_LENGTH) {
-		console.log("Минимальная длина пароля - 8 символов");
+		errorPassword(notifications.passwordShort);
+		// console.log("Минимальная длина пароля - 8 символов");
 		return false;
 	}
 	if (password.length > MAX_LENGTH) {
-		console.log("Максимальная длина пароля - 16 символов");
+		errorPassword(notifications.passwordLong);
+		// console.log("Максимальная длина пароля - 16 символов");
 		return false;
 	}
 	if (!PRESENT_DIGIT.test(password)) {
-		console.log("Пароль должен содержать цифры");
+		errorPassword(notifications.passwordWithoutDigits);
+		// console.log("Пароль должен содержать цифры");
 		return false;
 	}
 	if (!PRESENT_BIG_LETER.test(password) || !PRESENT_SMALL_LETER.test(password)) {
-		console.log("Пароль должен содержать большие и малые буквы");
+		errorPassword(notifications.passwordMustContainSmallAndBigLetters);
+		// console.log("Пароль должен содержать большие и малые буквы");
 		return false;
 	}
 	if (!NO_SPACES.test(password)) {
-		console.log("Пароль не должен содержать пробелов");
+		errorPassword(notifications.passwordWithSpaces);
+		// console.log("Пароль не должен содержать пробелов");
 		return false;
 	}
 	
 	return true;
 }
+
+function errorEmail(notification) {
+	notificationErrorEmailEl.textContent = notification;
+	notificationErrorEmailEl.classList.remove("visually-hidden");
+}
+
+function errorPassword(notification) {
+	notificationErrorPasswordEl.textContent = notification;
+	notificationErrorPasswordEl.classList.remove("visually-hidden");
+}
+
+const onInputValue = debounce(() => {
+	notificationErrorEmailEl.classList.add("visually-hidden");
+	notificationErrorPasswordEl.classList.add("visually-hidden");
+}, 1000);
+
+function clearInputData() {
+	emailInputEl.value = "";
+	passwordInputEl.value = "";
+}
+
+// Google //
+// import { google } from 'googleapis';
+
