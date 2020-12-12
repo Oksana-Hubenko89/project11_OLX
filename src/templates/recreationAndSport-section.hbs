@@ -17,7 +17,7 @@
             {{#each this}}
             <li class="card-item">
                 <div class="img-container">
-                    <img src="https://s1.eda.ru/StaticContent/Photos/140812180013/140820212258/p_O.jpg" alt="tshirt" />
+                    <img src={{imageUrls}} alt={{title}} />
                     <button type="button" class="favorite">
                         <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"
                             class="favorite-icon">
@@ -31,8 +31,8 @@
                         </svg>
                     </button>
                 </div>
-                <p class="product-title">Майка жіноча чорна</p>
-                <p><span class="old-price">300 грн</span><span class="hot-price">100 грн</span></p>
+                <p class="product-title">{{title}}</p>
+                <p><span class="old-price"> {{price}} грн</span><span class="hot-price"></span></p>
             </li>
             {{/each}}
 

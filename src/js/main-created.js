@@ -1,7 +1,12 @@
 import selesTpl from '../templates/sales-section.hbs';
+import propertyTpl from '../templates/propetry-section.hbs';
+import transportTpl from '../templates/transport-section.hbs';
+import workTpl from '../templates/work-section.hbs';
+import electronicsTpl from '../templates/electronics-section.hbs';
 import recreationAndSportTpl from '../templates/recreationAndSport-section.hbs';
 import freeTpl from '../templates/sales-section.hbs';
 import businessAndServicesTpl from '../templates/businessAndServices-section.hbs';
+import tradeTpl from '../templates/trade-section.hbs';
 
 const refs = {
   logoEL: document.querySelector('.js-logo-open'),
@@ -34,20 +39,33 @@ function getCard(e) {
 
   postData(API + page).then(data => {
     console.log(data);
+    const sales = data.sales || [];
+    createCategoryMarkup(sales, selesTpl);
+    const property = data.property || [];
+    createCategoryMarkup(property, propertyTpl);
+    const transport = data.transport || [];
+    createCategoryMarkup(transport, transportTpl);
+    const work = data.work || [];
+    createCategoryMarkup(work, workTpl);
+    const electronics = data.electronics || [];
+    createCategoryMarkup(electronics, electronicsTpl);
+    const recreationAndSport = data.recreationAndSport || [];
+    createCategoryMarkup(recreationAndSport, recreationAndSportTpl);
+    const businessAndServices = data.businessAndServices || [];
+    createCategoryMarkup(businessAndServices, businessAndServicesTpl);
+    const free = data.free || [];
+    createCategoryMarkup(free, freeTpl);
+    const trade = data.trade || [];
+    createCategoryMarkup(trade, tradeTpl);
   });
 }
 
-//  incrementPage() {
-//     page += 1;
-//   }
-
-//   resetPage() {
-//     page = 1;
-//   }
-
-// function appendArticlesMarkup(hits) {
-//   refs.articlesContainer.insertAdjacentHTML('beforeend', articlesTpl(hits));
-// }
+function createCategoryMarkup(arg, tpl) {
+  if (arg.length === 0) {
+    return;
+  }
+  refs.mainContainerEL.insertAdjacentHTML('beforeend', tpl(arg));
+}
 
 // function clearArticlesContainer() {
 //   refs.articlesContainer.innerHTML = '';
