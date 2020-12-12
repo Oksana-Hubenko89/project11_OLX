@@ -54,9 +54,9 @@
             <svg width="20px" height="20px" aria-label="Use Profil">
               <use class="icon-cross" href="./symbol-defs.svg#icon-user"></use>
             </svg>
-            <button class="btn-log-and-reg">Реєстрація / Увійти</button>
-            <div class="my-office itsAuth">
-              <button class="btn-my-off ">Мій кабінет</button>
+            <button class="btn-log-and-reg js-btn-log-and-reg ">Реєстрація / Увійти</button>
+            <div class="my-office ">
+              <button class="btn-my-off js-btn-my-off ">Мій кабінет</button>
               <ul class="nav-my-off">
                 <li class="my-off-item"><a href="/" class="my-off-link">Мої оголошення</a></li>
                 <li class="my-off-item"><a href="/" class="my-off-link">Обране</a></li>
@@ -364,7 +364,7 @@
 
 
     <!-- Modal to login -->
-    <div class="add-backdrop is-hidden">
+    <div class="add-backdrop visually-hidden" data-modal-log-and-reg>
       <div class="modal-log-and-reg">
         <button type="button" class="close-button">
           <svg width="14px" height="14px" aria-label="Закрытие мобильного окна">
@@ -372,16 +372,23 @@
           </svg>
         </button>
         <p class="offer-to-login-google">Ви можете авторизуватися за допомогою Google Account:</p>
-        <button class="btn-google-autorisation">Google</button>
-        <p class="offer-to-login">
-          Або зайти за допомогою імейлу і пароля, попередньо зареєструвавшись:
-        </p>
-        <!-- <form class="modal-form"> -->
-        <input class="email-input" type="email" name="email" placeholder="E-mail" />
-        <input class="password-input" type="password" name="password" placeholder="Password" />
-        <button class="btn primary-btn btn-login">Увійти</button>
-        <button class="btn secondary-btn btn-registration">Зареєструватись</button>
-        <!-- </form> -->
+        <button class="btn-google-autorisation">
+          <svg class="icon-google" width="18px" height="18px" aria-label="Логотип Google">
+            <use href="./symbol-defs.svg#icon-google""></use>
+            </svg>
+            <span class=" label-google-btn">Google</span>
+        </button>
+        <p class="offer-to-login">Або зайти за допомогою імейлу і пароля, попередньо зареєструвавшись:</p>
+        <form class="modal-form" action="input">
+          <input class="email-input" type="email" name="email" placeholder="E-mail">
+          <span class="notification-error-email visually-hidden"></span>
+          <input class="password-input" type="password" name="password" placeholder="Password">
+          <span class="notification-error-password visually-hidden"></span>
+          <div class="buttons-container">
+            <button class="btn primary-btn btn-login">Увійти</button>
+            <button class="btn secondary-btn btn-registration">Зареєструватись</button>
+          </div>
+        </form>
       </div>
     </div>
     <!-- Modal объявления чужого, просмотр -->
