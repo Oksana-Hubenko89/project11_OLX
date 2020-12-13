@@ -1,6 +1,6 @@
-<!-- Обмін -->
+<!-- Транспорт -->
 <section class="section">
-    <div class="card-container">
+    <div class="card-container" id={{this.id}}>
         <button type="button" class="swipe-left">
             <svg width="6px" height="9px" class="swipe-left-icon">
                 <use href="../symbol-defs.svg#icon-arrow-left"></use>
@@ -12,14 +12,15 @@
             </svg>
         </button>
         <h2 class="section-name">
-            Обмін<button type="button" class="show-all">Дивитися всі</button>
+            {{this.name}}<button type="button" class="show-all">Дивитися всі</button>
         </h2>
+
         <ul class="card-field">
-            {{#each this}}
-            <li class="card-item">
+            {{#each this.data}}
+            <li class="card-item" id={{_id}}>
                 <div class="img-container">
-                    <img src={{imageUrls}} alt={{title}} />
-                    <button type="button" class="favorite">
+                    <img class="img-card" src={{imageUrls}} alt={{title}} />
+                    <button type="button" class="favorite" data-favorite-button='data-favorite-button'>
                         <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"
                             class="favorite-icon">
                             <path
@@ -33,9 +34,17 @@
                     </button>
                 </div>
                 <p class="product-title">{{title}}</p>
-                <p><span class="old-price"> {{price}} грн</span><span class="hot-price"></span></p>
+                {{#ifEquals isOnSale false}}
+                <p><span class="price"> {{price}} грн</span>
+                </p>
+                {{/ifEquals}}
+                {{#ifEquals isOnSale true}}
+                <p class={{!isOnSale && "234" }}><span class="old-price"> {{oldPrice}} грн</span><span
+                        class="hot-price">{{price}}</span></p>
+                {{/ifEquals}}
             </li>
             {{/each}}
         </ul>
+
     </div>
 </section>
