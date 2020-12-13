@@ -7,4 +7,3 @@ import './js/add-modal-show';
 import './js/add-modal-categories';
 import './js/advert-Close-Open';
 import './js/advert-logic';
-
