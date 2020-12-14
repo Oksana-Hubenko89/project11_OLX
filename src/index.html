@@ -410,7 +410,7 @@
         </form>
       </div>
     </div>
-    <!-- Modal объявления чужого, просмотр -->
+    <!-- Modal просмотр чужого объявления ,  -->
     <!-- присвоить модалке класс is-hidden -->
     <div class="add-backdrop is-hidden js-advert-open" >
       <div class="advert-modal">
@@ -420,11 +420,11 @@
               <use class="icon-close" href="./symbol-defs.svg#icon-close"></use>
             </svg>
           </button>
-          <h3 class="modal-title">Футболка спортивна</h3>
+          <h3 class="modal-title js-advert-title">Футболка спортивна</h3>
           <p class="product-code">Код товару | 105-С</p>
 
           <div class="advert-main-img">
-            <img class="advert-img" src="https://medialeaks.ru/wp-content/uploads/2019/08/2-33.jpg" alt="" >
+            <img class="advert-img js-advert-img" src="https://medialeaks.ru/wp-content/uploads/2019/08/2-33.jpg" alt="" >
           <div class="advert-preload">
             <!-- рендерить при появлении данных с бека -->
             
@@ -459,8 +459,16 @@
             </svg>
           </div>
           </div>
-          <p class="advert-price">200.00 грн</p>
-          <button class="seller-information btn primary-btn js-info-seller" type="button">Информация о продавце</button>
+          <p class="advert-price js-advert-price">200.00 грн</p>
+          <button class="seller-information seller js-info-seller" type="button">
+            <span class="js-info">Информация о продавце</span>
+            <div class='seller-info-on visually-hidden js-seller-on'>
+              <span class="seller-name js-seller-name">asaca</span>
+              <span class="olx-time js-seller-time" >lhkrhgkshgksh</span>
+              <span class="seller-tel js-seller-tel">fjvsjfvsjh</span>
+            </div>
+            
+          </button>
           <ul class="add-share">
             <li class="share"><button class="js-advert-favorites">В обране </button>
               <svg class="icon-share" width="16px" height="16px">
