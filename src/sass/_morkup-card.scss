@@ -8,7 +8,6 @@
   padding-left: 15px;
   padding-right: 15px;
   max-width: 320px;
-  height: 830px;
   padding-bottom: 60px;
   overflow: hidden;
 
@@ -57,7 +56,7 @@
 @media screen and (min-width: $tablet) {
   .card-container {
     max-width: $tablet;
-    height: 464px;
+
     padding-left: 0;
     padding-right: 0;
   }
@@ -93,7 +92,7 @@
 @media screen and (min-width: $desktop) {
   .card-container {
     max-width: $desktop;
-    height: 450px;
+
     padding-left: 0;
     padding-right: 0;
   }

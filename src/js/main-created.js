@@ -14,36 +14,44 @@ const templateNames = {
   work: 'Робота',
 };
 
-// section-name скрыть хедер по этому класу после нажатия дивитись всы
-//  заменить класс card-field на card-field-wrap
 const refs = {
   logoEL: document.querySelector('.js-logo-open'),
   mainContainerEL: document.querySelector('.js-render-main-page'),
-  btnLeftEL: document.querySelector('.swipe-left'),
-  btnRightEL: document.querySelector('.swipe-right'),
 };
-// console.log(refs.logoEL);
-// console.log(refs.mainContainerEL);
+
+console.log(refs.logoEL);
+console.log(refs.mainContainerEL);
+
 
 refs.logoEL.addEventListener('click', getCard);
 
-let left = 0;
-let right = 0;
-
-function getLeft(id) {
+function getLeft(id, position, arg) {
   return function (e) {
+    e.preventDefault();
     const listCardEL = document.querySelector(`#${id} .card-field`);
     const CardEL = document.querySelector(`#${id} .card-item`);
-    console.log('left');
-    console.log(CardEL.offsetWidth);
-    left = left - CardEL.offsetWidth - 25;
-    if (left < -listCardEL.offsetWidth) {
+    position.left = position.left + arg * (CardEL.offsetWidth + 25);
+    if (position.left === -listCardEL.offsetWidth || position.left === listCardEL.offsetWidth) {
       e.preventDefault();
     }
-    listCardEL.style.left = left + 'px';
+    listCardEL.style.left = position.left + 'px';
   };
 }
-function getRight() {}
+
+function showAll(id) {
+  return function () {
+    const listCardEL = document.querySelector(`#${id} .card-field`);
+    const headerCategoridEL = document.querySelector(`#${id} .header-categori`);
+    const CategoridEL = document.querySelectorAll(`.section`);
+    listCardEL.classList.replace('card-field', 'card-field-wrap');
+    headerCategoridEL.classList.add('visually-hidden');
+    for (let i = 0; i < CategoridEL.length; i += 1) {
+      if (CategoridEL[i].id != id) {
+        CategoridEL[i].classList.add('visually-hidden');
+      }
+    }
+  };
+}
 
 const API = 'https://callboard-backend.herokuapp.com/call?page=';
 let page = 1;
@@ -71,16 +79,17 @@ function getCard(e) {
     Object.keys(data).forEach(key => {
       createCategoryMarkup(data[key], key);
       const btnLeftEL = document.querySelector(`#${key} .swipe-left`);
-      btnLeftEL.addEventListener('click', getLeft(key));
+      const btnRightEL = document.querySelector(`#${key} .swipe-right`);
+      const showAllEL = document.querySelector(`#${key} .show-all`);
+      const position = { left: 0 };
+      btnLeftEL.addEventListener('click', getLeft(key, position, +1));
+      btnRightEL.addEventListener('click', getLeft(key, position, -1));
+      showAllEL.addEventListener('click', showAll(key));
     });
-
-    console.log(CardEL.offsetWidth);
-    console.log(listCardEL.offsetWidth);
   });
 }
 
 function createCategoryMarkup(arg, key) {
-  console.log(templateNames[key]);
   if (arg.length === 0) {
     return;
   }

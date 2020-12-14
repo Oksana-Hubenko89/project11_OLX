@@ -87,7 +87,9 @@
   </header>
 
 
-  <main class="js-render-main-page"></main>
+  <main >
+    <div class="js-render-main-page"></div>
+  </main>
 
   <footer>
     <div class="footer-container">
@@ -111,6 +113,23 @@
   </footer>
 
     <!-- МОДАЛКИ -->
+    <!-- Модалка поиска -->
+<div class="search-modalS backdropS  ">      
+  <div class="fone-modalS"> 
+   <button type="submit" class="aBtn" data-action="close-searchModalS">
+     <svg class="icon-c" >
+     <use href="./symbol-defs.svg#icon-close"></use>
+     </svg></button>
+   <form class="search-formS" id="search-form">
+     <label>
+   <input type = "text" id="mySearch" class="input-searchS"  placeholder="Пошук">        
+   <button type="button" class="bBtn" >
+    <svg class="icon-s">
+   <use href="./symbol-defs.svg#icon-search"></use>
+   </svg> </button> 
+  </label>
+   </form></div> 
+ </div>   
     <!-- Modal to order -->
     <div class="is-hidden"></div>
     <!-- Modal to new advert -->
