@@ -8,27 +8,44 @@
   <title>OLX</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 </head>
+
 <body>
   <!-- Header -->
-  <header class="page-header">
-    <nav class="header-nav">
-      <div class="container header-buttons" id="header-block">
-        <button class="button-seach" id="search-modal">
-          <svg width="24px" height="24px" aria-label="Поиск">
-            <use class="icon-cross" href="./symbol-defs.svg#icon-search"></use>
-          </svg>
-        </button>
 
-        <a href="/" class="logo js-logo-open">LOGO</a>
-        <div class="icon-Close">
-        <button type="button" class="menu-button is-open" width="20px" height="20px" aria-expended="false"
-          aria-controls="menu-container" data-menu-button>
+  <header class="page-header ">
+    <div class=" header-buttons" >
+      <div class="header-button-seach">
+        <div class="header-content">
+          <button class="button-seach" id="search-modal">
+            <svg width="24px" height="24px" aria-label="Поиск">
+              <use class="icon-cross" href="./symbol-defs.svg#icon-search"></use>
+            </svg>
+          </button>
 
-          <svg width="20px" height="20px" aria-label="Переключатель мобильного меню">
-            <use class="icon-menu" href="./symbol-defs.svg#icon-menu"></use>
-          </svg>
-        </button>
+
+          <a href="/" class="logo js-logo-open">LOGO</a>
+
+          <div class="auth">
+            
+            <button class="btn-log-and-reg js-btn-log-and-reg ">
+              <svg width="20px" height="20px" aria-label="Use Profil">
+              <use class="icon-cross" href="./symbol-defs.svg#icon-user"></use>
+            </svg> <span class="text-log-and-reg">Реєстрація / Увійти</span></button>
+            <div class="my-office">
+              <button class="btn-my-off js-btn-my-off ">Мій кабінет</button>
+              <ul class="nav-my-off">
+                <li class="my-off-item"><a href="/" class="my-off-link">Мої оголошення</a></li>
+                <li class="my-off-item"><a href="/" class="my-off-link">Обране</a></li>
+              </ul>
+              <button class=" Btn-Go-out js-btn-Go-out"> Вийти
+                <svg width="20px" height="20px" aria-label="Use Profil">
+                  <use class="icon-cross" href="/"></use>
+                </svg>
+              </button>
+            </div>
+          </div>
         </div>
+
         <button class="btn-create-adv" id="add-modal-open">
           <span class="btn-create-tex">Створити оголошення!</span>
           <div class="icon-addClose">
@@ -39,57 +56,83 @@
 
         </button>
       </div>
-      <div class="menu-container" id="menu-container" data-menu>
-        
-        
-        <div class="site-nav">
-          <div class="icon-Close">
-            <button type="button" class="close-button">
-              <svg width="20px" height="20px" aria-label="Закрытие мобильного меню">
-                <use class="icon-close" href="./symbol-defs.svg#icon-close"></use>
-              </svg>
-            </button>
-          </div>
-          <div class="auth">
-            <svg width="20px" height="20px" aria-label="Use Profil">
-              <use class="icon-cross" href="./symbol-defs.svg#icon-user"></use>
-            </svg>
-            <button class="btn-log-and-reg js-btn-log-and-reg ">Реєстрація / Увійти</button>
-            <div class="my-office">
-              <button class="btn-my-off js-btn-my-off ">Мій кабінет</button>
-              <ul class="nav-my-off">
-                <li class="my-off-item"><a href="/" class="my-off-link">Мої оголошення</a></li>
-                <li class="my-off-item"><a href="/" class="my-off-link">Обране</a></li>
-              </ul>
-            </div>
-          </div>
-          
-          <ul class="header-menu">
-            <li class="site-nav-item" id=""><a href="/" class="link">Нерухомість</a></li>
-            <li class="site-nav-item" id=""><a href="/" class="link">Транспорт</a></li>
-            <li class="site-nav-item" id=""><a href="/" class="link">Робота</a></li>
-            <li class="site-nav-item" id=""><a href="/" class="link">Електроніка</a></li>
-            <li class="site-nav-item" id=""><a href="/" class="link">Бізнес та послуги</a></li>
-            <li class="site-nav-item" id=""><a href="/" class="link">Відпочинок та спорт</a></li>
-            <li class="site-nav-item" id=""><a href="/" class="link">Віддам безкоштовно</a></li>
-            <li class="site-nav-item" id=""><a href="/" class="link">Обмін</a></li>
-          </ul>
-        </div>
-        
-      </div>
-      <div class="conteiner-refresh">
-        <svg width="20px" height="20px" aria-label="Use Profil" class="icon-refresh">
-          <use class="icon-refresh" href="./symbol-defs.svg#icon-refresh"></use>
-        </svg>
-        <button class="btclean-filter js-btclean-filter" >Очистити фільтр</button>
-      </div>
-    </nav>
-  </header>
 
+      <nav class="header-nav">
+        
+        <div class="icon-Close">
+          <button type="button" class="menu-button is-open" width="20px" height="20px" aria-expended="false"
+            aria-controls="menu-container" data-menu-button>
+
+            <svg width="20px" height="20px" aria-label="Переключатель мобильного меню">
+              <use class="icon-menu" href="./symbol-defs.svg#icon-menu"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="menu-container"  id="header-block" data-menu>
+          <div class="site-nav">
+            <div class="icon-Close">
+              <button type="button" class="close-button">
+                <svg width="20px" height="20px" aria-label="Закрытие мобильного меню">
+                  <use class="icon-close" href="./symbol-defs.svg#icon-close"></use>
+                </svg>
+              </button>
+            </div>
+            <div class="auth icon-Close">
+              
+              <button class="btn-log-and-reg js-btn-log-and-reg ">
+                <svg width="20px" height="20px" aria-label="Use Profil">
+                  <use class="icon-cross" href="./symbol-defs.svg#icon-user"></use>
+                </svg>
+                Реєстрація / Увійти
+                </button>
+              <div class="my-office">
+                <button class="btn-my-off js-btn-my-off ">Мій кабінет</button>
+                <ul class="nav-my-off">
+                  <li class="my-off-item"><a href="/" class="my-off-link">Мої оголошення</a></li>
+                  <li class="my-off-item"><a href="/" class="my-off-link">Обране</a></li>
+                </ul>
+                <button class=" Btn-Go-out js-btn-Go-out"> Вийти
+                  <svg width="20px" height="20px" aria-label="Use Profil">
+                    <use class="icon-cross" href="/"></use>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <ul class="header-menu">
+              <li class="site-nav-item " id="js-property"><a href="/" class="link">Нерухомість</a></li>
+              <li class="site-nav-item " id="js-transport"><a href="/" class="link">Транспорт</a></li>
+              <li class="site-nav-item " id="js-work"><a href="/" class="link">Робота</a></li>
+              <li class="site-nav-item " id="js-electronics"><a href="/" class="link">Електроніка</a></li>
+              <li class="site-nav-item " id="js-business and services"><a href="/" class="link">Бізнес та послуги</a></li>
+              <li class="site-nav-item " id="js-recreation and sport"><a href="/" class="link">Відпочинок та спорт</a></li>
+              <li class="site-nav-item " id="js-free"><a href="/" class="link">Віддам безкоштовно</a></li>
+              <li class="site-nav-item" id="js-trade"><a href="/" class="link">Обмін</a></li>
+            </ul>
+          </div>
+
+
+          <div class="conteiner-refresh">
+            <svg width="20px" height="20px" aria-label="Use Profil" class="icon-refresh">
+              <use class="icon-refresh" href="./symbol-defs.svg#icon-refresh"></use>
+            </svg>
+            <button class="btclean-filter js-btclean-filter">Очистити фільтр</button>
+          </div>
+
+
+        </div>
+      </nav>
+
+
+
+    </div>
+
+
+  </header>
 
   <main >
     <div class="js-render-main-page"></div>
   </main>
+
 
   <footer>
     <div class="footer-container">
@@ -111,7 +154,6 @@
       </p>
     </div>
   </footer>
-
     <!-- МОДАЛКИ -->
     <!-- Модалка поиска -->
 <div class="search-modalS backdropS  ">      
@@ -214,8 +256,8 @@
     </section>
     <!-- Modal Обране -->
     <section class="section is-hidden">
+
       <div class="card-container">
-        <div class="card-container">
         <button type="button" class="swipe-left">
           <svg width="6px" height="9px" class="swipe-left-icon">
             <use href="./symbol-defs.svg#icon-arrow-left"></use>
@@ -230,11 +272,9 @@
       
         <ul class="card-field js-advert">
            <li class="card-item">
+
             <div class="img-container">
-              <img
-                src="https://s1.eda.ru/StaticContent/Photos/140812180013/140820212258/p_O.jpg"
-                alt="tshirt"
-              />
+              <img src="https://s1.eda.ru/StaticContent/Photos/140812180013/140820212258/p_O.jpg" alt="tshirt" />
               <button type="button" class="favorite">
                 <svg width="16px" height="16px" class="favorite-icon">
                   <use href="./symbol-defs.svg#icon-contured-heart"></use>
@@ -251,10 +291,7 @@
           </li>
           <li class="card-item">
             <div class="img-container">
-              <img
-                src="https://s1.eda.ru/StaticContent/Photos/140812180013/140820212258/p_O.jpg"
-                alt="tshirt"
-              />
+              <img src="https://s1.eda.ru/StaticContent/Photos/140812180013/140820212258/p_O.jpg" alt="tshirt" />
               <button type="button" class="favorite">
                 <svg width="16px" height="16px" class="favorite-icon">
                   <use href="./symbol-defs.svg#icon-heart"></use>
@@ -271,10 +308,7 @@
           </li>
           <li class="card-item">
             <div class="img-container">
-              <img
-                src="https://s1.eda.ru/StaticContent/Photos/140812180013/140820212258/p_O.jpg"
-                alt="tshirt"
-              />
+              <img src="https://s1.eda.ru/StaticContent/Photos/140812180013/140820212258/p_O.jpg" alt="tshirt" />
               <button type="button" class="favorite">
                 <svg width="16px" height="16px" class="favorite-icon">
                   <use href="./symbol-defs.svg#icon-heart"></use>
@@ -291,105 +325,112 @@
           </li>
         </ul>
       </div>
-    </section>
+  </section>
 
-    <!-- присвоить модалке класс backdrop is-hidden -->
-    <div class="add-backdrop is-hidden">
-      <div class="add-modal">
-        <form action="" class="add-modal-form">
-          <a add-modal-close href="#" aria-label="Close" class="add-modal-close"
-            ><svg class="icon-close">
-              <use href="./symbol-defs.svg#icon-close"></use></svg
-          ></a>
-          <h2 class="add-modal-title">Додати оголошення</h2>
-          <!-- <svg class="modal-close-icon" width="14px" height="14px">
+  <!-- присвоить модалке класс backdrop is-hidden -->
+  <div class="add-backdrop is-hidden">
+    <div class="add-modal">
+      <form action="" class="add-modal-form">
+        <a add-modal-close href="#" aria-label="Close" class="add-modal-close"><svg class="icon-close">
+            <use href="./symbol-defs.svg#icon-close"></use>
+          </svg></a>
+        <h2 class="add-modal-title">Додати оголошення</h2>
+        <!-- <svg class="modal-close-icon" width="14px" height="14px">
             <use href="/"></use>
           </svg> -->
-          <div class="add-modal-container">
-            <label for="name" class="add-modal-field">Назва товару</label>
-            <input class="add-modal-input" type="text" name="name" id="name" placeholder=" " />
+        <div class="add-modal-container">
+          <label for="name" class="add-modal-field">Назва товару</label>
+          <input class="add-modal-input" type="text" name="name" id="name" placeholder=" " />
+        </div>
+        <div class="add-modal-container">
+          <h3 class="add-modal-field">Фото</h3>
+          <div class="download-btns">
+            <label class="label-photo-btn" for="file">+</label>
+            <input class="add-photo-btn" type="file" name="file" id="file" />
+
+            <label class="label-photo-btn" for="file">+</label>
+            <input class="add-photo-btn" type="file" name="file" id="file" />
+
+            <label class="label-photo-btn" for="file">+</label>
+            <input class="add-photo-btn" type="file" name="file" id="file" />
+
+            <label class="label-photo-btn" for="file">+</label>
+            <input class="add-photo-btn" type="file" name="file" id="file" />
+
+            <label class="label-photo-btn" for="file">+</label>
+            <input class="add-photo-btn" type="file" name="file" id="file" />
           </div>
-          <div class="add-modal-container">
-            <h3 class="add-modal-field">Фото</h3>
-            <div class="download-btns">
-              <label class="label-photo-btn" for="file">+</label>
-              <input class="add-photo-btn" type="file" name="file" id="file" />
+        </div>
 
-              <label class="label-photo-btn" for="file">+</label>
-              <input class="add-photo-btn" type="file" name="file" id="file" />
-
-              <label class="label-photo-btn" for="file">+</label>
-              <input class="add-photo-btn" type="file" name="file" id="file" />
-
-              <label class="label-photo-btn" for="file">+</label>
-              <input class="add-photo-btn" type="file" name="file" id="file" />
-
-              <label class="label-photo-btn" for="file">+</label>
-              <input class="add-photo-btn" type="file" name="file" id="file" />
-            </div>
-          </div>
-
-          <div class="add-modal-container">
-            <label for="description" class="add-modal-field">Опис товару</label>
-            <textarea
-              class="add-modal-input"
-              name="description"
-              rows="5"
-              cols="45"
-              id="description"
-              placeholder=" "
-            ></textarea>
-          </div>
-          <div class="add-modal-container">
-            <label for="category" class="add-modal-field">Категорія товару</label>
-            <div class="add-modal-dropdown">
-              <select
-                class="add-modal-input js-category-input"
-                required
-                name="category"
-                id="category"
-              >
-                <!-- <option value="" class="add-modal-category">
+        <div class="add-modal-container">
+          <label for="description" class="add-modal-field">Опис товару</label>
+          <textarea class="add-modal-input" name="description" rows="5" cols="45" id="description"
+            placeholder=" "></textarea>
+        </div>
+        <div class="add-modal-container">
+          <label for="category" class="add-modal-field">Категорія товару</label>
+          <div class="add-modal-dropdown">
+            <select class="add-modal-input js-category-input" required name="category" id="category">
+              <!-- <option value="" class="add-modal-category">
                   Оберіть категорію
                 </option> -->
-              </select>
-            </div>
+            </select>
           </div>
-          <div class="add-modal-container">
-            <label for="price" class="add-modal-field">Ціна</label>
-            <input
-              class="add-modal-input"
-              type="text"
-              name="price"
-              id="price"
-              placeholder="0.00 грн"
-            />
-          </div>
-          <div class="add-modal-container">
-            <label for="tel" class="add-modal-field">Телефон</label>
-            <input
-              class="add-modal-input"
-              type="tel"
-              name="tel"
-              id="tel"
-              placeholder="+38 (0--) --- -- --"
-            />
-          </div>
-          <button class="add-modal-btn btn" type="submit">ДОДАТИ</button>
-        </form>
-      </div>
+        </div>
+        <div class="add-modal-container">
+          <label for="price" class="add-modal-field">Ціна</label>
+          <input class="add-modal-input" type="text" name="price" id="price" placeholder="0.00 грн" />
+        </div>
+        <div class="add-modal-container">
+          <label for="tel" class="add-modal-field">Телефон</label>
+          <input class="add-modal-input" type="tel" name="tel" id="tel" placeholder="+38 (0--) --- -- --" />
+        </div>
+        <button class="add-modal-btn btn" type="submit">ДОДАТИ</button>
+      </form>
     </div>
+  </div>
   </div>
 
 
-    <!-- Modal to login -->
-    <div class="add-backdrop visually-hidden js-add-auth" data-modal-log-and-reg>
-      <div class="modal-log-and-reg">
-        <button type="button" class="close-button">
+  <!-- Modal to login -->
+  <div class="add-backdrop visually-hidden js-add-auth" data-modal-log-and-reg>
+    <div class="modal-log-and-reg">
+      <button type="button" class="close-button">
+        <svg width="14px" height="14px" aria-label="Закрытие мобильного окна">
+          <use class="icon-close" href="./symbol-defs.svg#icon-close"></use>
+        </svg>
+      </button>
+      <p class="offer-to-login-google">Ви можете авторизуватися за допомогою Google Account:</p>
+      <button class="btn-google-autorisation">
+        <svg class="icon-google" width="18px" height="18px" aria-label="Логотип Google">
+          <use href="./symbol-defs.svg#icon-google""></use>
+            </svg>
+            <span class=" label-google-btn">Google</span>
+      </button>
+      <p class="offer-to-login">Або зайти за допомогою імейлу і пароля, попередньо зареєструвавшись:</p>
+      <form class="modal-form" action="input">
+        <input class="email-input" type="email" name="email" placeholder="E-mail">
+        <span class="notification-error-email visually-hidden"></span>
+        <input class="password-input" type="password" name="password" placeholder="Password">
+        <span class="notification-error-password visually-hidden"></span>
+        <div class="buttons-container">
+          <button class="btn primary-btn btn-login">Увійти</button>
+          <button class="btn secondary-btn btn-registration">Зареєструватись</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- Modal объявления чужого, просмотр -->
+  <!-- присвоить модалке класс is-hidden -->
+  <div class="add-backdrop is-hidden js-advert-open">
+    <div class="advert-modal">
+      <article>
+        <button type="button" class="advert-close-button js-advert-close">
           <svg width="14px" height="14px" aria-label="Закрытие мобильного окна">
             <use class="icon-close" href="./symbol-defs.svg#icon-close"></use>
           </svg>
         </button>
+
         <p class="offer-to-login-google">Ви можете авторизуватися за допомогою Google Account:</p>
         <button class="btn-google-autorisation">
           <svg class="icon-google" width="18px" height="18px" aria-label="Логотип Google">
@@ -425,13 +466,14 @@
 
           <div class="advert-main-img">
             <img class="advert-img js-advert-img" src="https://medialeaks.ru/wp-content/uploads/2019/08/2-33.jpg" alt="" >
+
           <div class="advert-preload">
             <!-- рендерить при появлении данных с бека -->
-            
+
             <div class="advert-img-preload">
               <img src="/" alt="">
             </div>
-            
+
             <div class="advert-img-preload">
               <img src="/" alt="">
             </div>
@@ -441,7 +483,7 @@
             <div class="advert-img-preload">
               <img src="/" alt="">
             </div>
-  
+
           </div>
           <div class=advert-svg>
             <!-- рисовать для мобилки точки соответственно кол-ву фоток -->
@@ -458,6 +500,7 @@
               <use href="/"></use>
             </svg>
           </div>
+
           </div>
           <p class="advert-price js-advert-price">200.00 грн</p>
           <button class="seller-information seller js-info-seller" type="button">
@@ -488,8 +531,9 @@
          
         </article>
 
-      </div>
-  
     </div>
-  </body>
+
+  </div>
+</body>
+
 </html>
