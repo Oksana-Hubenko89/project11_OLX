@@ -19,6 +19,10 @@ const refs = {
   mainContainerEL: document.querySelector('.js-render-main-page'),
 };
 
+console.log(refs.logoEL);
+console.log(refs.mainContainerEL);
+
+
 refs.logoEL.addEventListener('click', getCard);
 
 function getLeft(id, position, arg) {
