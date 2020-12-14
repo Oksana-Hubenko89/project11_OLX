@@ -15,10 +15,10 @@ class NewsApiService {
   this.page = 1;       
   }    
 incrementPage() {
-  this.page += 1;
+  this.page += 1;console.log('this.page+1:', this.page);
 }
 resetPage() {
-  this.page = 1;
+  this.page = 1;console.log('this.page home:', this.page);
 }
 get query() {
   return this.searchQuery;
@@ -35,6 +35,7 @@ const searchBtn=document.querySelector('.bBtn');
 const closeBtn = document.querySelector('.aBtn');
 const modalBtn = document.querySelector('#search-modal');
 console.log(modalBtn);
+const sentinelS=document.querySelector(".sentinel");
 
 modalBtn.addEventListener('click', onOpenModal); 
 const foneModalS = document.querySelector('.fone-modalS');
@@ -85,11 +86,12 @@ function onSearch(e) {
  console.log('Клик был, функция onSearch запущена!!!!');
 
  newsApiService.query=searchObject.value;
-
+ console.dir(newsApiService.query.length);
  if (newsApiService.query === '') {
     
   return alert('Enter search parameters!');   
   }
+  
  
   newsApiService.resetPage();      
     clearContainer();
@@ -99,10 +101,12 @@ function onSearch(e) {
  return postData(API + newsApiService.query).then(data => {
     appendMarkup(data); 
     newsApiService.incrementPage(); 
-    console.log(data); 
-    onCloseModal();
+    console.log(data.length); 
    
-  });  
+   
+  }).catch(error=>{
+    console.log();
+  }) 
 };
 
 function onEscKeyPress(evt) {
@@ -128,12 +132,12 @@ function onOverlay(evt) {
 function appendMarkup(arg) {
 
   if (arg.length === 0) {
-        return;
+    return alert('Enter search parameters!');
       }
       mainContainerEL.insertAdjacentHTML('afterbegin', cardTpl(arg));
+      onCloseModal(); 
 };
 
 function clearContainer() {
   mainContainerEL.innerHTML = '';
 };
-
