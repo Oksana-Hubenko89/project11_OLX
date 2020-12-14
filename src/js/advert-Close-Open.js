@@ -1,3 +1,9 @@
+const axios = require('axios').default;
+
+const BASE_URL = `https://callboard-backend.herokuapp.com`;
+
+let id = '';
+
 const refsAdvert={
   advertTitle: document.querySelector('.js-advert-title'),
   advertPrice: document.querySelector('.js-advert-price'),
@@ -7,13 +13,18 @@ const refsAdvert={
   sellerName: document.querySelector('.js-seller-name'),
   sellerTime: document.querySelector('.js-seller-time'),
   sellerTel: document.querySelector('.js-seller-tel'),
+  favorBtn: document.querySelector('.js-advert-favorites'),
+  
 }
-console.log(refsAdvert.advertTitle.textContent);
+
+// console.log(refsAdvert.advertTitle.textContent);
 // console.log(refsAdvert.openModal);
 // console.log(refsAdvert.advertCloseModal);
-
 // refsAdvert.cardAdvert.addEventListener('click', addModalAdvert);
+
 document.addEventListener('click', addModalAdvert)
+
+refsAdvert.favorBtn.addEventListener('click', PostInFavorit);
 
 // // закрытие модалки через кнопку
 refsAdvert.advertCloseModal.addEventListener('click', modalClose);
@@ -24,9 +35,36 @@ document.addEventListener('keydown', modalEscClose);
 // зактрытие по оверлэю
 refsAdvert.openModal.addEventListener('click', onModalBackdropClick);
 
+console.log(localStorage.getItem('accessToken'));
+
+function PostInFavorit() {
+  console.log("grtgrtg");
+  console.log(id);
+   if (localStorage.getItem('accessToken')){
+    console.log("grtgrtg");
+    axios.post(`${BASE_URL}/call/favourite/`, 
+    {
+      "_id": `${id}`,
+      // "accessToken":`${localStorage.getItem('accessToken')}`, 
+    }
+    )
+      .then(({ data }) => {
+        console.log(data);
+        
+      })
+      .catch(error => {
+        console.log(error);
+      })	
+   }
+
+}
+
+
+
 // Функция открытия модалки
 function addModalAdvert(event) {
-let target = event.target;
+  let target = event.target;
+
 // console.dir(target.parentElement.children[1].textContent);
   if (target.parentElement.classList[0] ==='card-item') {
     // обнуление картинки
@@ -68,13 +106,17 @@ function changeImgOnAdvert(target) {
   // Брать значение картинки и переподставлять в свою в модалке
   refsAdvert.advertIMG.src = target.parentElement.firstElementChild.firstElementChild.currentSrc;
 }
+
 function changeAdvertTitle(target) {
   let item = target.parentElement.children;
-  
-  // refsAdvert.advertTitle.textContent='';
+  console.dir(target.parentElement.id);
 
-  console.log(item[1].textContent);
-  console.log(refsAdvert.advertTitle.textContent);
+  
+  console.log(id);
+  refsAdvert.advertTitle.textContent='';
+
+  // console.log(item[1].textContent);
+  // console.log(refsAdvert.advertTitle.textContent);
   refsAdvert.advertPrice.textContent='';
   
   refsAdvert.advertTitle.textContent = item[1].textContent;

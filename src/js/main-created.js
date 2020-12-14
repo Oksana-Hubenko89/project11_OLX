@@ -22,8 +22,8 @@ const refs = {
   btnLeftEL: document.querySelector('.swipe-left'),
   btnRightEL: document.querySelector('.swipe-right'),
 };
-console.log(refs.logoEL);
-console.log(refs.mainContainerEL);
+// console.log(refs.logoEL);
+// console.log(refs.mainContainerEL);
 
 refs.logoEL.addEventListener('click', getCard);
 
