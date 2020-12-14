@@ -5,5 +5,6 @@ import './js/menu';
 import './js/login-and-registration';
 import './js/add-modal-show';
 import './js/add-modal-categories';
-import './js/advert';
-import './js/my-office-or-auth';
+import './js/advert-Close-Open';
+import './js/advert-logic';
+import './js/search-modal';

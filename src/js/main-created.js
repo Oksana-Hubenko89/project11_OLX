@@ -1,21 +1,57 @@
-import selesTpl from '../templates/sales-section.hbs';
-import propertyTpl from '../templates/propetry-section.hbs';
-import transportTpl from '../templates/transport-section.hbs';
-import workTpl from '../templates/work-section.hbs';
-import electronicsTpl from '../templates/electronics-section.hbs';
-import recreationAndSportTpl from '../templates/recreationAndSport-section.hbs';
-import freeTpl from '../templates/sales-section.hbs';
-import businessAndServicesTpl from '../templates/businessAndServices-section.hbs';
-import tradeTpl from '../templates/trade-section.hbs';
+const Handlebars = require('handlebars');
+
+import sectionTpl from '../templates/section.hbs';
+
+const templateNames = {
+  businessAndServices: 'Бізнес та послуги',
+  electronics: 'Електроніка',
+  free: 'Віддам безкоштовно',
+  sales: 'Розпродаж',
+  propetry: 'Нерухомість',
+  recreationAndSport: 'Відпочинок і спорт',
+  trade: 'Обмін',
+  transport: 'Транспорт',
+  work: 'Робота',
+};
 
 const refs = {
   logoEL: document.querySelector('.js-logo-open'),
   mainContainerEL: document.querySelector('.js-render-main-page'),
 };
+
 console.log(refs.logoEL);
 console.log(refs.mainContainerEL);
 
+
 refs.logoEL.addEventListener('click', getCard);
+
+function getLeft(id, position, arg) {
+  return function (e) {
+    e.preventDefault();
+    const listCardEL = document.querySelector(`#${id} .card-field`);
+    const CardEL = document.querySelector(`#${id} .card-item`);
+    position.left = position.left + arg * (CardEL.offsetWidth + 25);
+    if (position.left === -listCardEL.offsetWidth || position.left === listCardEL.offsetWidth) {
+      e.preventDefault();
+    }
+    listCardEL.style.left = position.left + 'px';
+  };
+}
+
+function showAll(id) {
+  return function () {
+    const listCardEL = document.querySelector(`#${id} .card-field`);
+    const headerCategoridEL = document.querySelector(`#${id} .header-categori`);
+    const CategoridEL = document.querySelectorAll(`.section`);
+    listCardEL.classList.replace('card-field', 'card-field-wrap');
+    headerCategoridEL.classList.add('visually-hidden');
+    for (let i = 0; i < CategoridEL.length; i += 1) {
+      if (CategoridEL[i].id != id) {
+        CategoridEL[i].classList.add('visually-hidden');
+      }
+    }
+  };
+}
 
 const API = 'https://callboard-backend.herokuapp.com/call?page=';
 let page = 1;
@@ -36,37 +72,33 @@ function getCard(e) {
   console.log('Клик был, функция запущена');
 
   e.preventDefault();
+  clearArticlesContainer();
 
   postData(API + page).then(data => {
     console.log(data);
-    const sales = data.sales || [];
-    createCategoryMarkup(sales, selesTpl);
-    const property = data.property || [];
-    createCategoryMarkup(property, propertyTpl);
-    const transport = data.transport || [];
-    createCategoryMarkup(transport, transportTpl);
-    const work = data.work || [];
-    createCategoryMarkup(work, workTpl);
-    const electronics = data.electronics || [];
-    createCategoryMarkup(electronics, electronicsTpl);
-    const recreationAndSport = data.recreationAndSport || [];
-    createCategoryMarkup(recreationAndSport, recreationAndSportTpl);
-    const businessAndServices = data.businessAndServices || [];
-    createCategoryMarkup(businessAndServices, businessAndServicesTpl);
-    const free = data.free || [];
-    createCategoryMarkup(free, freeTpl);
-    const trade = data.trade || [];
-    createCategoryMarkup(trade, tradeTpl);
+    Object.keys(data).forEach(key => {
+      createCategoryMarkup(data[key], key);
+      const btnLeftEL = document.querySelector(`#${key} .swipe-left`);
+      const btnRightEL = document.querySelector(`#${key} .swipe-right`);
+      const showAllEL = document.querySelector(`#${key} .show-all`);
+      const position = { left: 0 };
+      btnLeftEL.addEventListener('click', getLeft(key, position, +1));
+      btnRightEL.addEventListener('click', getLeft(key, position, -1));
+      showAllEL.addEventListener('click', showAll(key));
+    });
   });
 }
 
-function createCategoryMarkup(arg, tpl) {
+function createCategoryMarkup(arg, key) {
   if (arg.length === 0) {
     return;
   }
-  refs.mainContainerEL.insertAdjacentHTML('beforeend', tpl(arg));
+  refs.mainContainerEL.insertAdjacentHTML(
+    'beforeend',
+    sectionTpl({ data: arg, name: templateNames[key], id: key }),
+  );
 }
 
-// function clearArticlesContainer() {
-//   refs.articlesContainer.innerHTML = '';
-// }
+function clearArticlesContainer() {
+  refs.mainContainerEL.innerHTML = '';
+}
