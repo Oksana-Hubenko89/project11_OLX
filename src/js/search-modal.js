@@ -33,9 +33,10 @@ const searchObject = document.querySelector(".input-searchS");
 console.log("searchObject:",searchObject);
 const searchBtn=document.querySelector('.bBtn');
 const closeBtn = document.querySelector('.aBtn');
-const modalBtn = document.querySelector('button#search-modal.button-seach');
+const modalBtn = document.querySelector('#search-modal');
+console.log(modalBtn);
 
-modalBtn.parentElement.addEventListener('click', onOpenModal); 
+modalBtn.addEventListener('click', onOpenModal); 
 const foneModalS = document.querySelector('.fone-modalS');
 const backdropS=document.querySelector('.backdropS');
 
@@ -65,9 +66,9 @@ function onOpenModal(evt) {
   
   evt.preventDefault();  
 
-  const BSPbtn=modalBtn; 
+  const modalBtn=evt.target; 
 
-  console.log("evt.target.parentElement.nodeName:",evt.target.parentElement.nodeName);
+  console.log("modalBtn.parentElement.nodeName:",evt.target.parentElement.nodeName);
 
   if (evt.target.parentElement.nodeName !== 'BUTTON') {
     return;
