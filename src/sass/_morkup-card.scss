@@ -18,8 +18,7 @@
   float: left;
   width: 290px;
   background-color: #fff;
-  margin-bottom: 30px;
-  padding-bottom: 20px;
+  margin: 10px;
 
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -74,7 +73,7 @@
   .card-field-wrap {
     flex-wrap: wrap;
     display: flex;
-    margin: -20px;
+    margin: 20px;
   }
 
   .card-item {
@@ -83,6 +82,7 @@
   }
   .img-container {
     height: 275px;
+    width: 295px;
 
     overflow: hidden;
     margin-bottom: 20px;
@@ -99,10 +99,8 @@
 
   .card-item {
     width: 295px;
-    margin-right: 17.5px;
-    margin-left: 17.5px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+
+    margin: 10px;
   }
 }
 
@@ -410,53 +408,4 @@ footer {
     right: 0px;
     top: 10px;
   }
-}
-
-.pagination-conteiner {
-  position: relative;
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 15px;
-  padding-right: 15px;
-  max-width: 320px;
-  padding-bottom: 60px;
-  overflow: hidden;
-}
-@media screen and (min-width: $tablet) {
-  .pagination-conteiner {
-    max-width: $tablet;
-
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
-@media screen and (min-width: $desktop) {
-  .pagination-conteiner {
-    max-width: $desktop;
-  }
-}
-
-.pagination {
-  background-color: #fff;
-  border: none;
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
-
-  font-family: $primary-font;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1.14;
-  text-align: center;
-  letter-spacing: 0.02em;
-}
-
-.pagination:not(:last-child) {
-  margin-right: 1px;
-}
-
-.is-active {
-  background-color: #000;
-  color: #fff;
 }
