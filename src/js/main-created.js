@@ -16,14 +16,25 @@ const templateNames = {
 
 const refs = {
   logoEL: document.querySelector('.js-logo-open'),
+  btnClearEL: document.querySelector('.js-btclean-filter'),
   mainContainerEL: document.querySelector('.js-render-main-page'),
+  headerMenuEL: document.querySelector('.header-menu'),
+  itemMenuEL: document.querySelectorAll('.site-nav-item'),
 };
+console.log(refs.headerMenuEL);
 
-console.log(refs.logoEL);
-console.log(refs.mainContainerEL);
+refs.headerMenuEL.addEventListener('click', createCategoryMenu);
 
+function createCategoryMenu(e) {
+  e.preventDefault();
+  const keyCategory = e.target.dataset.id;
+  console.log(keyCategory);
+  getCard;
+  showAll(keyCategory);
+}
 
 refs.logoEL.addEventListener('click', getCard);
+refs.btnClearEL.addEventListener('click', getCard);
 
 function getLeft(id, position, arg) {
   return function (e) {
