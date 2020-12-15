@@ -16,14 +16,49 @@ const templateNames = {
 
 const refs = {
   logoEL: document.querySelector('.js-logo-open'),
+  btnClearEL: document.querySelector('.js-btclean-filter'),
   mainContainerEL: document.querySelector('.js-render-main-page'),
+  headerMenuEL: document.querySelector('.header-menu'),
+  paginatorPagesEL: document.querySelector('.pagination-conteiner'),
+  // itemMenuEL: document.querySelectorAll('.site-nav-item'),
 };
+console.log(refs.headerMenuEL);
 
-console.log(refs.logoEL);
-console.log(refs.mainContainerEL);
+refs.headerMenuEL.addEventListener('click', createCategoryMenu);
 
+function createCategoryMenu(e) {
+  e.preventDefault();
+  const keyCategory = e.target.dataset.id;
+  console.log(keyCategory);
+  getCard();
+  showAll(keyCategory);
+}
+
+const API = 'https://callboard-backend.herokuapp.com/call?page=';
+let page = 1;
 
 refs.logoEL.addEventListener('click', getCard);
+refs.btnClearEL.addEventListener('click', getCard);
+refs.paginatorPagesEL.addEventListener('click', chengPages);
+
+async function postData(url = '') {
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    redirect: 'follow',
+    referrerPolicy: 'no-referrer',
+  });
+  return await response.json();
+}
+
+function chengPages(e) {
+  e.preventDefault();
+  page = e.target.dataset.id;
+  console.log(page);
+  getCard();
+}
 
 function getLeft(id, position, arg) {
   return function (e) {
@@ -36,36 +71,6 @@ function getLeft(id, position, arg) {
     }
     listCardEL.style.left = position.left + 'px';
   };
-}
-
-function showAll(id) {
-  return function () {
-    const listCardEL = document.querySelector(`#${id} .card-field`);
-    const headerCategoridEL = document.querySelector(`#${id} .header-categori`);
-    const CategoridEL = document.querySelectorAll(`.section`);
-    listCardEL.classList.replace('card-field', 'card-field-wrap');
-    headerCategoridEL.classList.add('visually-hidden');
-    for (let i = 0; i < CategoridEL.length; i += 1) {
-      if (CategoridEL[i].id != id) {
-        CategoridEL[i].classList.add('visually-hidden');
-      }
-    }
-  };
-}
-
-const API = 'https://callboard-backend.herokuapp.com/call?page=';
-let page = 1;
-
-async function postData(url = '') {
-  const response = await fetch(url, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    redirect: 'follow',
-    referrerPolicy: 'no-referrer',
-  });
-  return await response.json();
 }
 
 function getCard(e) {
@@ -87,6 +92,21 @@ function getCard(e) {
       showAllEL.addEventListener('click', showAll(key));
     });
   });
+}
+
+function showAll(id) {
+  return function () {
+    const listCardEL = document.querySelector(`#${id} .card-field`);
+    const headerCategoridEL = document.querySelector(`#${id} .header-categori`);
+    const CategoridEL = document.querySelectorAll(`.section`);
+    listCardEL.classList.replace('card-field', 'card-field-wrap');
+    headerCategoridEL.classList.add('visually-hidden');
+    for (let i = 0; i < CategoridEL.length; i += 1) {
+      if (CategoridEL[i].id != id) {
+        CategoridEL[i].classList.add('visually-hidden');
+      }
+    }
+  };
 }
 
 function createCategoryMarkup(arg, key) {
