@@ -12,52 +12,129 @@
   <body>
     <!-- Header -->
     <header class="page-header">
-      <nav class="header-nav">
-        <div class="container header-buttons" id="header-block">
-          <button class="button-seach" id="search-modal">
-            <svg width="24px" height="24px" aria-label="Поиск">
-              <use class="icon-cross" href="./symbol-defs.svg#icon-search"></use>
-            </svg>
-          </button>
-          <a href="/" class="logo js-logo-open"> <span class="logo">Logo</span></a>
+      <div class="header-buttons">
+        <div class="header-button-seach">
+          <div class="header-content">
+            <button class="button-seach" id="search-modal">
+              <svg width="24px" height="24px" aria-label="Поиск">
+                <use class="icon-cross" href="./symbol-defs.svg#icon-search"></use>
+              </svg>
+            </button>
 
-          <button
-            type="button"
-            class="menu-button is-open"
-            width="20px"
-            height="20px"
-            aria-expended="false"
-            aria-controls="menu-container"
-            data-menu-button
-          >
-            <svg width="20px" height="20px" aria-label="Переключатель мобильного меню">
-              <use class="icon-menu" href="./symbol-defs.svg#icon-menu"></use>
-            </svg>
-          </button>
-        </div>
-        <div class="menu-container" id="menu-container" data-menu>
-          <button type="button" class="close-button">
-            <svg width="20px" height="20px" aria-label="Закрытие мобильного меню">
-              <use class="icon-close" href="./symbol-defs.svg#icon-close"></use>
-            </svg>
-          </button>
-          <ul class="site-nav">
+            <a href="/" class="logo js-logo-open">LOGO</a>
+
             <div class="auth">
-              <button class="btn-log-and-reg">Реєстрація / Увійти</button>
-              <button id="add-modal-open">Створити оголошення!</button>
+              <button class="btn-log-and-reg js-btn-log-and-reg">
+                <svg width="20px" height="20px" aria-label="Use Profil">
+                  <use class="icon-cross" href="./symbol-defs.svg#icon-user"></use>
+                </svg>
+                <span class="text-log-and-reg">Реєстрація / Увійти</span>
+              </button>
+              <div class="my-office">
+                <button class="btn-my-off js-btn-my-off">Мій кабінет</button>
+                <ul class="nav-my-off">
+                  <li class="my-off-item"><a href="/" class="my-off-link">Мої оголошення</a></li>
+                  <li class="my-off-item"><a href="/" class="my-off-link">Обране</a></li>
+                </ul>
+                <button class="Btn-Go-out js-btn-Go-out">
+                  Вийти
+                  <svg width="20px" height="20px" aria-label="Use Profil">
+                    <use class="icon-cross" href="/"></use>
+                  </svg>
+                </button>
+              </div>
             </div>
-            <li class="site-nav-item"><a href="#" class="link">Нерухомість</a></li>
-            <li class="site-nav-item"><a href="#" class="link">Транспорт</a></li>
-            <li class="site-nav-item"><a href="#" class="link">Робота</a></li>
-            <li class="site-nav-item"><a href="#" class="link">Електроніка</a></li>
-            <li class="site-nav-item"><a href="#" class="link">Бізнес та послуги</a></li>
-            <li class="site-nav-item"><a href="#" class="link">Відпочинок та спорт</a></li>
-            <li class="site-nav-item"><a href="#" class="link">Віддам безкоштовно</a></li>
-            <li class="site-nav-item"><a href="#" class="link">Обмін</a></li>
-          </ul>
+          </div>
+
+          <button class="btn-create-adv" id="add-modal-open">
+            <span class="btn-create-tex">Створити оголошення!</span>
+            <div class="icon-addClose">
+              <svg width="20px" height="20px" aria-label="Use Profil">
+                <use class="icon-add" href="./symbol-defs.svg#icon-add"></use>
+              </svg>
+            </div>
+          </button>
         </div>
-        <!-- <button class="clean-filter">Очистити фільтр</button> -->
-      </nav>
+
+        <nav class="header-nav">
+          <div class="icon-Close">
+            <button
+              type="button"
+              class="menu-button is-open"
+              width="20px"
+              height="20px"
+              aria-expended="false"
+              aria-controls="menu-container"
+              data-menu-button
+            >
+              <svg width="20px" height="20px" aria-label="Переключатель мобильного меню">
+                <use class="icon-menu" href="./symbol-defs.svg#icon-menu"></use>
+              </svg>
+            </button>
+          </div>
+          <div class="menu-container" id="header-block" data-menu>
+            <div class="site-nav">
+              <div class="icon-Close">
+                <button type="button" class="close-button">
+                  <svg width="20px" height="20px" aria-label="Закрытие мобильного меню">
+                    <use class="icon-close" href="./symbol-defs.svg#icon-close"></use>
+                  </svg>
+                </button>
+              </div>
+              <div class="auth icon-Close">
+                <button class="btn-log-and-reg js-btn-log-and-reg">
+                  <svg width="20px" height="20px" aria-label="Use Profil">
+                    <use class="icon-cross" href="./symbol-defs.svg#icon-user"></use>
+                  </svg>
+                  Реєстрація / Увійти
+                </button>
+                <div class="my-office">
+                  <button class="btn-my-off js-btn-my-off">Мій кабінет</button>
+                  <ul class="nav-my-off">
+                    <li class="my-off-item"><a href="/" class="my-off-link">Мої оголошення</a></li>
+                    <li class="my-off-item"><a href="/" class="my-off-link">Обране</a></li>
+                  </ul>
+                  <button class="Btn-Go-out js-btn-Go-out">
+                    Вийти
+                    <svg width="20px" height="20px" aria-label="Use Profil">
+                      <use class="icon-cross" href="/"></use>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <ul class="header-menu">
+                <li class="site-nav-item">
+                  <a href="#" class="link" data-id="property">Нерухомість</a>
+                </li>
+                <li class="site-nav-item">
+                  <a href="#" class="link" data-id="transport">Транспорт</a>
+                </li>
+                <li class="site-nav-item"><a href="#" class="link" data-id="work">Робота</a></li>
+                <li class="site-nav-item">
+                  <a href="#" class="link" data-id="electronics">Електроніка</a>
+                </li>
+                <li class="site-nav-item">
+                  <a href="#" class="link" data-id="businessAndServices">Бізнес та послуги</a>
+                </li>
+                <li class="site-nav-item">
+                  <a href="#" class="link" data-id="recreationAndSport">Відпочинок та спорт</a>
+                </li>
+                <li class="site-nav-item">
+                  <a href="#" class="link" data-id="free">Віддам безкоштовно</a>
+                </li>
+                <li class="site-nav-item"><a href="#" class="link" data-id="trade">Обмін</a></li>
+              </ul>
+            </div>
+
+            <div class="conteiner-refresh">
+              <svg width="20px" height="20px" aria-label="Use Profil" class="icon-refresh">
+                <use class="icon-refresh" href="./symbol-defs.svg#icon-refresh"></use>
+              </svg>
+              <button class="btclean-filter js-btclean-filter">Очистити фільтр</button>
+            </div>
+          </div>
+        </nav>
+      </div>
     </header>
     <main></main>
 
@@ -179,7 +256,6 @@
         </div>
       </div>
     </section>
-
     <!-- присвоить модалке класс backdrop is-hidden -->
     <div class="add-backdrop is-hidden">
       <div class="add-modal">
