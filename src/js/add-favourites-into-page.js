@@ -5,7 +5,7 @@ const favoriteSectionEl = document.querySelector('#favorite-section');
 const addBackdropEl = favoriteSectionEl.querySelector('#add-backdrop');
 const closeButtonEl = favoriteSectionEl.querySelector('#close-section-button');
 const fevoritesListEl = favoriteSectionEl.querySelector('#favourites-list');
-const showFavoriteButtonEl = document.querySelector('.js-advert-favorites');
+const showFavoriteButtonEl = document.querySelector('#show-favorites-button');
 // Переменные для ввода данных
 const URL = 'https://callboard-backend.herokuapp.com/';
 const keyPart = 'call/favourites';
@@ -16,7 +16,8 @@ const options = {
   },
 };
 // Вызов функции рендера страницы по кнопке
-showFavoriteButtonEl.addEventListener('click', () => {
+showFavoriteButtonEl.addEventListener('click', e => {
+  e.preventDefault();
   removeOldTegs(fevoritesListEl);
   toggleModal(addBackdropEl, false);
   getFavoritesList(URL, keyPart, options);
@@ -29,7 +30,6 @@ closeButtonEl.addEventListener('click', () => {
 
 // Функция вызова карточек товара для Обраного
 function getFavoritesList(URL, keyPart, options) {
-  e => e.preventDefault();
   return fetch(`${URL}${keyPart}`, options)
     .then(response => response.json())
     .then(response => putPicturesIntoHTML(fevoritesListEl, parsFavoritesList, response));
