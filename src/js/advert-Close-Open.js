@@ -1,8 +1,5 @@
-const axios = require('axios').default;
+// const axios = require('axios').default;
 
-const BASE_URL = `https://callboard-backend.herokuapp.com`;
-
-let id = '';
 
 const refsAdvert={
   advertTitle: document.querySelector('.js-advert-title'),
@@ -22,6 +19,25 @@ const refsAdvert={
 // console.log(refsAdvert.advertCloseModal);
 // refsAdvert.cardAdvert.addEventListener('click', addModalAdvert);
 
+
+const BASE_URL = `https://callboard-backend.herokuapp.com/call/find?search=`;
+
+const key = localStorage.getItem('accessToken');
+
+const options ={
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+    Authorization: `${key}`,
+    redirect: 'follow',
+    referrerPolicy: 'no-referrer'
+};
+
+
+
+let id = '';
+
 document.addEventListener('click', addModalAdvert)
 
 refsAdvert.favorBtn.addEventListener('click', PostInFavorit);
@@ -35,27 +51,20 @@ document.addEventListener('keydown', modalEscClose);
 // зактрытие по оверлэю
 refsAdvert.openModal.addEventListener('click', onModalBackdropClick);
 
-console.log(localStorage.getItem('accessToken'));
+// console.log(localStorage.getItem('accessToken'));
 
 function PostInFavorit() {
-  console.log("grtgrtg");
-  console.log(id);
-   if (localStorage.getItem('accessToken')){
-    console.log("grtgrtg");
-    axios.post(`${BASE_URL}/call/favourite/`, 
-    {
-      "_id": `${id}`,
-      // "accessToken":`${localStorage.getItem('accessToken')}`, 
-    }
-    )
-      .then(({ data }) => {
-        console.log(data);
-        
-      })
+  
+  //  if (localStorage.getItem('accessToken')){
+    console.log(id);
+  //   console.log(options);
+    return fetch(`${BASE_URL}${id}`, options)
+      .then((response) => response.json())
+      .then((data) => console.log(data))
       .catch(error => {
         console.log(error);
       })	
-   }
+  //  }
 
 }
 
@@ -109,10 +118,10 @@ function changeImgOnAdvert(target) {
 
 function changeAdvertTitle(target) {
   let item = target.parentElement.children;
-  console.dir(target.parentElement.id);
-
+  // console.dir(target.parentElement.id);
+ id= target.parentElement.id;
   
-  console.log(id);
+  // console.log(id);
   refsAdvert.advertTitle.textContent='';
 
   // console.log(item[1].textContent);
