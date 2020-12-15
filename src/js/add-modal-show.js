@@ -2,7 +2,7 @@ const refs = {
     openModalBtn: document.querySelector('#add-modal-open'),
     closeModalBtn: document.querySelector('[add-modal-close]'),
     addModal: document.querySelector('.add-backdrop'),
-    // modalBackdrop: document.querySelector('.donkey'),
+    ModalAuth: document.querySelector('.js-add-auth'), 
 };
 
 refs.openModalBtn.addEventListener('click', addModalOpen);
@@ -19,12 +19,17 @@ refs.addModal.addEventListener('click', onModalBackdropClick);
 // Функция открытия модалки
 function addModalOpen(evt) {
   evt.preventDefault();
-  refs.addModal.classList.remove('is-hidden');
-}
+  if(localStorage.getItem('accessToken') !== null ){
+      refs.addModal.classList.remove('visually-hidden');
+  }else{
+      refs.ModalAuth.classList.remove('visually-hidden');
+  }
+  
+};
 
 // Функции закрытия модалки
 function modalClose() {
-  refs.addModal.classList.add('is-hidden');
+  refs.addModal.classList.add('visually-hidden');
 }
 function modalEscClose(evt) {
   if (evt.key === "Escape") {
@@ -32,11 +37,12 @@ function modalEscClose(evt) {
   }
 }
 function onModalBackdropClick(evt) {
-  console.log(evt.target);
+  // console.log(evt.target);
   // console.log(evt.target.dataset.action);
   if (evt.target.attributes.class.nodeValue === "add-backdrop") {
     modalClose();
   }
+  if (evt.target.attributes.class === undefined) {return}
 }
 
 

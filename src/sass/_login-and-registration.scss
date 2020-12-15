@@ -1,19 +1,25 @@
-
 .modal-log-and-reg {
-  position: absolute;
-  display: flex;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+	margin: 13px auto;
+	padding: 57px 19px;  
+	width: calc(100% - 30px);
+	height: calc(100% - 26px);
  
-	flex-direction: column;
   background: #F5F6FB;;
 
-  // @media screen and (min-width: $tablet) {
-	// 	padding: 62px 105px;
-	// 	width: 650px;  
-	// 	height: 583px;
-	// }
+  @media screen and (min-width: $tablet) {
+		position: absolute;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		padding: 62px 105px;
+
+		width: 650px;  
+		height: 583px;
+	}
 
 	.close-button {
 		position: absolute;
@@ -22,45 +28,116 @@
 		right: 30px;
 		font-size: 0px;
 		border-style: none;
+		background-color: transparent;
 	}
-
-	
-  @media screen and (min-width: $mobile) {
-		margin: 13px 15px;
-		padding: 57px 19px;
-		max-width: 100%;
-		max-height: 542px;
-	}  
 	
 	.offer-to-login-google, .offer-to-login {
 		margin-bottom: 20px;
+		font-size: 14px;
+		font-weight: 700;
+	}
+
+	.offer-to-login-google {
+		@media screen and (min-width: $tablet) {
+			margin-bottom: 34px;
+			text-align: center;
+		}
+	}
+
+	.offer-to-login {
+		@media screen and (min-width: $tablet) {
+			margin-bottom: 37px;
+		}
 	}
 
 	.btn-google-autorisation {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
 		margin-bottom: 41px;
-		min-width: 142px;
-		min-height: 51px;
+
+		width: 142px;
+		min-height: 51px;		
+
+		background-color: #ffffff;
+		border-style: none;
+	}
+
+	.icon-google {
+		margin-right: 10px;
+	}
+
+	.modal-form {
+		position: relative;
 	}
 
 	.email-input, .password-input {
 		padding: 20px 25px;
 		height: 56px;
 		width: 100%;
+
+		font-family: $primary-font;
+		font-size: 14px;
+		font-weight: 500;
+
+		border: 1px solid #BBBBBB;
+	}
+
+	.email-input::placeholder, .password-input::placeholder {
+		color: #BBBBBB;
 	}
 
 	.email-input {
 		margin-bottom: 20px;
+
+		@media screen and (min-width: $tablet) {
+			margin-bottom: 24px;
+		}
 	}
 
 	.password-input {
 		margin-bottom: 31px;
+
+		@media screen and (min-width: $tablet) {
+			margin-bottom: 47px;
+		}
+	}
+
+	.notification-error-email, .notification-error-password {
+		position: absolute;
+		left: 10px;		
+
+		color: red;
+	}
+
+	.notification-error-email {
+		top: 56px;
+	}
+
+	.notification-error-password {
+		top: 130px;
+
+		@media screen and (min-width: $tablet) {
+			top: 134px;;
+		}
+	}
+
+	.buttons-container {
+		display: flex;
+		justify-content: space-between;
 	}
 
 	.btn-login, .btn-registration {
-		min-width: 119px;
+		width: calc((100% - 15px) / 2);
 		min-height: 50px;
 		
 		font-family: $primary-font;
+		text-transform: none;
+
+		@media screen and (min-width: $tablet) {
+			text-transform: uppercase;
+		}
 	}
 
 }

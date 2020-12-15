@@ -8,3 +8,8 @@ import './js/add-modal-categories';
 import './js/add-favourites-into-api';
 import './js/add-favourites-into-page';
 import './js/delete-favourites-from-api&page';
+import './js/add-modal-valid';
+import './js/add-modal-post';
+import './js/advert-Close-Open';
+import './js/advert-logic';
+import './js/search-modal';
