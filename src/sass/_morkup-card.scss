@@ -411,3 +411,52 @@ footer {
     top: 10px;
   }
 }
+
+.pagination-conteiner {
+  position: relative;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  max-width: 320px;
+  padding-bottom: 60px;
+  overflow: hidden;
+}
+@media screen and (min-width: $tablet) {
+  .pagination-conteiner {
+    max-width: $tablet;
+
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+@media screen and (min-width: $desktop) {
+  .pagination-conteiner {
+    max-width: $desktop;
+  }
+}
+
+.pagination {
+  background-color: #fff;
+  border: none;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+
+  font-family: $primary-font;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.pagination:not(:last-child) {
+  margin-right: 1px;
+}
+
+.is-active {
+  background-color: #000;
+  color: #fff;
+}
