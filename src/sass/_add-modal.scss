@@ -21,7 +21,7 @@
   transform: translate(-50%, -50%);
   background-color: white;
   border: 1px solid 187, 187, 187, 1;
-  // margin-bottom: 30px;
+  margin-bottom: 30px;
   height: 100%;
   overflow: auto;
 
@@ -29,12 +29,12 @@
     top: 50%;
     width: 724px;
     height: auto;
-    overflow: auto;
+    // overflow: auto;
   }
   @media screen and (min-width: $desktop) {
     width: 861px;
     height: auto;
-    overflow: auto;
+    // overflow: auto;
   }
 }
 
@@ -43,9 +43,7 @@
   position: absolute;
   top: 20px;
   right: 20px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
-  border-radius: 50%;
 
   display: flex;
   justify-content: center;
@@ -165,12 +163,6 @@
   }
 }
 
-// .add-modal-dropdown {
-// }
-
-// .flex {
-//   display: flex;
-// }
 .add-modal-btn {
   background-color: $accent-color;
   align-content: center;
@@ -196,4 +188,15 @@
     width: 210px;
   }
 }
-
+.add-valid-error {
+  // display: inline-block;
+  text-align: right;
+  color: red;
+  font-size: 12px;
+  margin-left: auto;
+  margin-top: 5px;
+}
+.add-modal-valid-photo {
+  display: flex;
+  flex-direction: column;
+}

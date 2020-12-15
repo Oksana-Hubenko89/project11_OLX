@@ -327,69 +327,126 @@
       </div>
   </section>
 
-  <!-- присвоить модалке класс backdrop is-hidden -->
-  <div class="add-backdrop is-hidden">
-    <div class="add-modal">
-      <form action="" class="add-modal-form">
-        <a add-modal-close href="#" aria-label="Close" class="add-modal-close"><svg class="icon-close">
-            <use href="./symbol-defs.svg#icon-close"></use>
-          </svg></a>
-        <h2 class="add-modal-title">Додати оголошення</h2>
-        <!-- <svg class="modal-close-icon" width="14px" height="14px">
-            <use href="/"></use>
-          </svg> -->
-        <div class="add-modal-container">
-          <label for="name" class="add-modal-field">Назва товару</label>
-          <input class="add-modal-input" type="text" name="name" id="name" placeholder=" " />
-        </div>
-        <div class="add-modal-container">
-          <h3 class="add-modal-field">Фото</h3>
-          <div class="download-btns">
-            <label class="label-photo-btn" for="file">+</label>
-            <input class="add-photo-btn" type="file" name="file" id="file" />
-
-            <label class="label-photo-btn" for="file">+</label>
-            <input class="add-photo-btn" type="file" name="file" id="file" />
-
-            <label class="label-photo-btn" for="file">+</label>
-            <input class="add-photo-btn" type="file" name="file" id="file" />
-
-            <label class="label-photo-btn" for="file">+</label>
-            <input class="add-photo-btn" type="file" name="file" id="file" />
-
-            <label class="label-photo-btn" for="file">+</label>
-            <input class="add-photo-btn" type="file" name="file" id="file" />
+  <!-- Модалка "Додати оголошення" -->
+    <div class="add-backdrop visually-hidden">
+      <div class="add-modal">
+        <form action="" class="add-modal-form">
+          <a add-modal-close href="#" aria-label="Close" class="add-modal-close"
+            ><svg class="icon-close">
+              <use href="./symbol-defs.svg#icon-close"></use></svg
+          ></a>
+          <h2 class="add-modal-title">Додати оголошення</h2>
+          <div class="add-modal-container">
+            <label for="name" class="add-modal-field">Назва товару</label>
+            <input
+              class="add-modal-input js-add-name js-add-input"
+              type="text"
+              name="name"
+              id="name"
+              placeholder=" "
+            />
           </div>
-        </div>
+          <div class="add-modal-container">
+            <h3 class="add-modal-field">Фото</h3>
+            <div class="add-modal-valid-photo">
+            <div class="download-btns">
+              <label class="label-photo-btn" for="file1">+</label>
+              <input
+                class="add-photo-btn js-add-input"
+                type="file"
+                accept="image/*"
+                name="file1"
+                id="file1"
+              />
 
-        <div class="add-modal-container">
-          <label for="description" class="add-modal-field">Опис товару</label>
-          <textarea class="add-modal-input" name="description" rows="5" cols="45" id="description"
-            placeholder=" "></textarea>
-        </div>
-        <div class="add-modal-container">
-          <label for="category" class="add-modal-field">Категорія товару</label>
-          <div class="add-modal-dropdown">
-            <select class="add-modal-input js-category-input" required name="category" id="category">
+              <label class="label-photo-btn" for="file2">+</label>
+              <input
+                class="add-photo-btn"
+                type="file"
+                accept="image/*"
+                name="file2"
+                id="file2"
+              />
+
+              <label class="label-photo-btn" for="file3">+</label>
+              <input
+                class="add-photo-btn"
+                type="file"
+                accept="image/*"
+                name="file3"
+                id="file3"
+              />
+
+              <label class="label-photo-btn" for="file4">+</label>
+              <input
+                class="add-photo-btn"
+                type="file"
+                accept="image/*"
+                name="file4"
+                id="file4"
+              />
+
+              <label class="label-photo-btn" for="file5">+</label>
+              <input
+                class="add-photo-btn"
+                type="file"
+                accept="image/*"
+                name="file5"
+                id="file5"
+              />
+            </div>
+            </div>
+          </div>
+
+          <div class="add-modal-container">
+            <label for="description" class="add-modal-field">Опис товару</label>
+            <textarea
+              class="add-modal-input js-add-description js-add-input"
+              name="description"
+              rows="5"
+              cols="45"
+              id="description"
+              placeholder=" "
+            ></textarea>
+          </div>
+          <div class="add-modal-container">
+            <label for="category" class="add-modal-field"
+              >Категорія товару</label
+            >
+            <select
+              class="add-modal-input js-category-input js-add-input"
+              name="category"
+              id="category"
+            >
               <!-- <option value="" class="add-modal-category">
                   Оберіть категорію
                 </option> -->
             </select>
           </div>
-        </div>
-        <div class="add-modal-container">
-          <label for="price" class="add-modal-field">Ціна</label>
-          <input class="add-modal-input" type="text" name="price" id="price" placeholder="0.00 грн" />
-        </div>
-        <div class="add-modal-container">
-          <label for="tel" class="add-modal-field">Телефон</label>
-          <input class="add-modal-input" type="tel" name="tel" id="tel" placeholder="+38 (0--) --- -- --" />
-        </div>
-        <button class="add-modal-btn btn" type="submit">ДОДАТИ</button>
-      </form>
+          <div class="add-modal-container">
+            <label for="price" class="add-modal-field">Ціна</label>
+            <input
+              class="add-modal-input js-add-price js-add-input"
+              type="number"
+              name="price"
+              id="price"
+              placeholder="0.00 грн"
+            />
+          </div>
+          <div class="add-modal-container">
+            <label for="tel" class="add-modal-field">Телефон</label>
+            <input
+              class="add-modal-input js-add-phone js-add-input"
+              type="tel"
+              name="tel"
+              id="tel"
+              placeholder="+38 (0--) --- -- --"
+            />
+          </div>
+          <button type="submit" class="add-modal-btn btn">ДОДАТИ</button>
+        </form>
+      </div>
     </div>
-  </div>
-  </div>
 
 
   <!-- Modal to login -->
