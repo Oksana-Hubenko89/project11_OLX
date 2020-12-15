@@ -5,3 +5,6 @@ import './js/menu';
 import './js/login-and-registration';
 import './js/add-modal-show';
 import './js/add-modal-categories';
+import './js/add-favourites-into-api';
+import './js/add-favourites-into-page';
+import './js/delete-favourites-from-api&page';
