@@ -1,7 +1,7 @@
 const refs = {
     openModalBtn: document.querySelector('#add-modal-open'),
     closeModalBtn: document.querySelector('[add-modal-close]'),
-    addModal: document.querySelector('.add-backdrop'),
+    addModal: document.querySelector('.js-add-modal'),
     ModalAuth: document.querySelector('.js-add-auth'), 
 };
 
