@@ -5,14 +5,22 @@
   .close-button {
     position: absolute;
     padding: 0px;
+    left: auto;
     top: 20px;
     right: 30px;
     font-size: 0px;
     border-style: none;
   }
 }
+.favorite-section {
+  .img-container {
+    width: 100%;
+  }
+}
 .favorite-container {
   top: 5%;
+  // height: 90%;
+  position: relative;
 }
 .favorite-section {
   .section-name {
@@ -22,6 +30,11 @@
 .favourites-list {
   max-height: calc(100vh - 210px);
   overflow-y: auto;
+  margin: 0;
+  flex-wrap: wrap;
+}
+.favorite-item {
+  margin-right: 10px;
 }
 
 .edit-advert {

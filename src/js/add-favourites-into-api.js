@@ -16,15 +16,29 @@ mainRenderPageEl.addEventListener('click', onClick);
 
 // Функция добавления карточки товара на API-сервер
 function addFavorite(URL, keyPart, id, options) {
-  return fetch(`${URL}${keyPart}${id}`, options)
-    .then(response => response.json())
-    .then(post => alert('This product is already in favorites'))
-    .catch(error => alert('This product is already in favorites'));
+  return fetch(`${URL}${keyPart}${id}`, options).then(r => alreadyAddedMessage(r));
+  // () => {
+  // console.log('hello');
+  // if (r.status === 200) {
+  //   console.log(r.status);
+  //   return;
+  // } else {
+  //   alert('This product is already in favorites');
+  // }
+  // });
 }
 // Функция добавления карточки товара в избранное по клику на сердечко
 function onClick(evt) {
   if (evt.target.hasAttribute('data-favorite-button')) {
     const id = evt.target.closest('[data-item]').getAttribute('id');
     addFavorite(URL, keyPart, id, options);
+  }
+}
+function alreadyAddedMessage(r) {
+  if (r.status === 200) {
+    return;
+  }
+  if (r.status === 403) {
+    alert('This product is already in favorites');
   }
 }
