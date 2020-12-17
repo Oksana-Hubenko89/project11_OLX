@@ -1,8 +1,11 @@
 const Handlebars = require('handlebars');
 
 import sectionTpl from '../templates/section.hbs';
+import categoryTpl from '../templates/main-page.hbs';
 
-const API = 'https://callboard-backend.herokuapp.com/call?page=';
+const API = 'https://callboard-backend.herokuapp.com/call';
+const KEYMEIN = '?page=';
+const KAYCATEGORY = '/specific/';
 let page = 1;
 
 const templateNames = {
@@ -30,15 +33,28 @@ refs.logoEL.addEventListener('click', onLogoCLick);
 refs.btnClearEL.addEventListener('click', onClearBtnClick);
 refs.paginatorPagesEL.addEventListener('click', changePage);
 
-async function createCategoryMenu(e) {
-  const keyCategory = e.target.dataset.id;
-  console.log(keyCategory);
-  await getCard(page, keyCategory);
-  showAll(keyCategory)();
+function onLogoCLick() {
+  getCard(page);
 }
 
-async function postData(page) {
-  const response = await fetch(API + page, {
+function onClearBtnClick() {
+  page = 1;
+  getCard(page);
+}
+
+async function createCategoryMenu(e) {
+  clearArticlesContainer();
+  const keyCategory = e.target.dataset.id;
+  // console.log(keyCategory);
+  await postData(KAYCATEGORY, keyCategory).then(data => {
+    console.log('---', data);
+
+    createCategoryMarkup(data, keyCategory, categoryTpl);
+  });
+}
+
+async function postData(apiKey, arg) {
+  const response = await fetch(API + apiKey + arg, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -49,31 +65,28 @@ async function postData(page) {
   return await response.json();
 }
 
-async function getCard(page, selectedCategory = '') {
-  console.log('Клик был, функция запущена');
+async function getCard(page) {
+  // console.log('Клик был, функция запущена');
   clearArticlesContainer();
 
-  await postData(page).then(data => {
+  await postData(KEYMEIN, page).then(data => {
     console.log(data);
-
-    const partialData = filterData(data, selectedCategory);
-
-    renderMainContent(partialData);
+    renderMainContent(data);
   });
 }
 
-function filterData(data, selectedCategory) {
-  if (selectedCategory) {
-    return {
-      [selectedCategory]: data[selectedCategory],
-    };
-  }
-  return data;
+function changePage(e) {
+  page = e.target.dataset.id;
+  // console.log(refs.paginatorPagesEL.children);
+  const oldEl = document.querySelector(`.is-active`);
+  oldEl.classList.remove('.is-active');
+  e.target.classList.add('is-active');
+  getCard(page);
 }
 
 function renderMainContent(data) {
   Object.keys(data).forEach(key => {
-    createCategoryMarkup(data[key], key);
+    createCategoryMarkup(data[key], key, sectionTpl);
     const btnLeftEL = document.querySelector(`#${key} .swipe-left`);
     const btnRightEL = document.querySelector(`#${key} .swipe-right`);
     const showAllEL = document.querySelector(`#${key} .show-all`);
@@ -99,18 +112,9 @@ function showAll(id) {
   };
 }
 
-function changePage(e) {
-  page = e.target.dataset.id;
-  console.log(refs.paginatorPagesEL.children);
-  const oldEl = document.querySelector(`.is-active`);
-  oldEl.classList.remove('.is-active');
-  e.target.classList.add('is-active');
-  getCard(page);
-}
-
 function getLeft(id, position, arg) {
   return function (e) {
-    e.preventDefault();
+    // e.preventDefault();
     const listCardEL = document.querySelector(`#${id} .card-field`);
     const CardEL = document.querySelector(`#${id} .card-item`);
     position.left = position.left + arg * (CardEL.offsetWidth + 25);
@@ -121,24 +125,16 @@ function getLeft(id, position, arg) {
   };
 }
 
-function createCategoryMarkup(arg, key) {
+function createCategoryMarkup(arg, key, templ) {
   if (arg.length === 0) {
     return;
   }
   refs.mainContainerEL.insertAdjacentHTML(
     'beforeend',
-    sectionTpl({ data: arg, name: templateNames[key], id: key }),
+    templ({ data: arg, name: templateNames[key], id: key }),
   );
 }
 
 function clearArticlesContainer() {
   refs.mainContainerEL.innerHTML = '';
-}
-
-function onLogoCLick(e) {
-  getCard(page);
-}
-
-function onClearBtnClick(e) {
-  getCard(page);
 }
