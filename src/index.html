@@ -388,7 +388,7 @@
       </div>
     </div>
   <!-- Modal to login -->
-  <div class="add-backdrop visually-hidden js-add-auth" data-modal-log-and-reg>
+  <div class="add-backdrop visually-hidden" data-modal-log-and-reg>
     <div class="modal-log-and-reg">
       <button type="button" class="close-button">
         <svg width="14px" height="14px" aria-label="Закрытие мобильного окна">
@@ -396,12 +396,12 @@
         </svg>
       </button>
       <p class="offer-to-login-google">Ви можете авторизуватися за допомогою Google Account:</p>
-      <button class="btn-google-autorisation">
+      <a class="btn-google-autorisation" href="https://callboard-backend.herokuapp.com/auth/google">
         <svg class="icon-google" width="18px" height="18px" aria-label="Логотип Google">
           <use href="./symbol-defs.svg#icon-google""></use>
             </svg>
             <span class=" label-google-btn">Google</span>
-      </button>
+      </a>
       <p class="offer-to-login">Або зайти за допомогою імейлу і пароля, попередньо зареєструвавшись:</p>
       <form class="modal-form" action="input">
         <input class="email-input" type="email" name="email" placeholder="E-mail">
