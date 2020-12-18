@@ -86,7 +86,26 @@
     display: none;
     background: #F5F6FB;
   }
-  @media screen and (min-width: $tablet) {
+  @media screen and (min-width: 767px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.my-office-on {
+  @media screen and (max-width: 767px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    left: 0px;
+    width: 305px;
+    height: 70px;
+    position: fixed;
+    top:0px;
+    background: #F5F6FB;
+  }
+  @media screen and (min-width: 767px) {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -97,8 +116,62 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  display: none;
+  
+  }
+
+  .my-office, 
+  .nav-my-off, 
+  .list-my-off{
+    display: none;
+    position: absolute;
+    
+  }
+
+  .my-office, 
+  .nav-my-off, 
+  .btn-my-off:hover > .list-my-off {
+    display:inherit;
 }
+
+
+.my-office, 
+.nav-my-off, 
+.list-my-off, 
+.btn-my-off {
+  
+  float:none;
+   position: relative;
+   @media screen and (min-width:$desktop) {
+    min-width:170px;
+  }
+}
+
+.nav-my-off{
+  margin-right: 40px;
+  text-align: center;
+}
+
+.list-my-off{
+    justify-content: space-between;
+    width: 100%;
+    height: 95px;
+     border: 2px solid #ececec;
+    background: #F5F6FB;   
+}
+
+.my-off-item{
+  padding-top: 20px;
+}
+
+.Btn-Go-out{
+  margin-right: 20px;
+  padding: 0px;
+  border: none;
+  background-color: transparent
+}
+
+
+
 
 .header-nav {
   display: flex;
@@ -180,8 +253,10 @@
 }
 
 .site-nav-item:not(:last-child) {
-    @media screen and (max-width:  1279px){
+  padding-bottom: 30px;
+      @media screen and (max-width:  1279px){
         list-style: none;
+        
         height: 70px;
         display: flex;
         align-items: center;
@@ -246,6 +321,7 @@
   }
   display: flex;
   justify-content: flex-end;
+  padding-bottom: 30px;
   width: 155px;
 }
 
@@ -261,8 +337,15 @@
   background-color: transparent;
 }
 
+
 .is-open {
   display: block;
+}
+
+.icon-userBlock{
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 }
 
 .icon-addClose {
@@ -270,6 +353,13 @@
     display: none;
   }
 }
+
+.icon-logout-Close{
+  @media screen and (max-width: $desktop) {
+    display: none;
+  }
+}
+
 .icon-Close {
   @media screen and (min-width: $desktop) {
     display: none;
