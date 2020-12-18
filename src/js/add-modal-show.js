@@ -1,7 +1,7 @@
 const refs = {
     openModalBtn: document.querySelector('#add-modal-open'),
     closeModalBtn: document.querySelector('[add-modal-close]'),
-    addModal: document.querySelector('.add-backdrop'),
+    addModal: document.querySelector('.js-add-modal'),
     ModalAuth: document.querySelector('.js-add-auth'), 
 };
 
@@ -39,8 +39,9 @@ function modalEscClose(evt) {
 function onModalBackdropClick(evt) {
   // console.log(evt.target);
   // console.log(evt.target.dataset.action);
+  // console.log(evt.target.attributes.class.nodeValue);
   if (evt.target.attributes.class.nodeValue === "add-backdrop") {
-    modalClose();
+      modalClose();
   }
   if (evt.target.attributes.class === undefined) {return}
 }
