@@ -89,24 +89,14 @@
 }
 .add-modal-container {
   margin-top: 20px;
-  align-items: center;
+  & + h3 {
+    margin-bottom: 10px;
+  }
   @media screen and (min-width: $tablet) {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-}
-.add-modal-container h3 {
-  // margin-bottom: 10px;
-  @media screen and (min-width: $tablet) {
-    margin-right: 120px;
-  }
-  @media screen and (min-width: $desktop) {
-    margin-right: 174px;
-  }
-}
-.add-modal-container.add-photo-container {
-  justify-content: flex-start;
 }
 .add-modal-field {
   font-size: 14px;
@@ -114,9 +104,6 @@
   line-height: 16px;
   padding-bottom: 10px;
   display: inline-block;
-}
-.add-textarea {
-  resize: vertical;
 }
 .add-photo-btn {
   outline: 0;
@@ -209,34 +196,7 @@
   margin-left: auto;
   margin-top: 5px;
 }
-.show-photo {
-  // opacity: 0;
-  display: none;
-}
-.preview-list {
+.add-modal-valid-photo {
   display: flex;
-  flex-wrap: wrap;
-}
-.add-preview {
-  max-width: 76px;
-  max-height: 50px;
-  overflow: hidden;
-  margin: 5px;
-  @media screen and (min-width: $tablet) {
-    max-width: 84px;
-  }
-  @media screen and (min-width: $desktop) {
-    max-width: 79px;
-  }
-}
-.add-preview img {
-  max-width: 76px;
-  max-height: auto;
-  display: inline-block;
-  @media screen and (min-width: $tablet) {
-    max-width: 84px;
-  }
-  @media screen and (min-width: $desktop) {
-    max-width: 79px;
-  }
+  flex-direction: column;
 }
