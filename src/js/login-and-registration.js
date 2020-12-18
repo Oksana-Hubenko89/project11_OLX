@@ -99,8 +99,8 @@ function onBtnRegistration(event) {
 	toggleModal(refs.modalLogAndReg);
 }
 
-function onRegistration(email, password) {
-	registration(email, password)
+async function onRegistration(email, password) {
+	await registration(email, password)
 		.then(({ id }) => {
 			saveKey('id', id);
 			return true;
@@ -119,6 +119,7 @@ function onRegistration(email, password) {
 
 function onBtnLogin(event) {
 	event.preventDefault();
+	console.log("login");
 
 	if (emailInputEl.value.length == 0) {
 		errorEmail(notifications.emailEmpty);
@@ -130,19 +131,23 @@ function onBtnLogin(event) {
 		return;
 	}
 
+	console.log("login1");
+
 	if (!onLogin(emailInputEl.value, passwordInputEl.value)) {
 		return;
 	}
+	console.log("login2");
 
 	toggleModal(refs.modalLogAndReg);
 }
 
-function onLogin(email, password) {
-	login(email, password)
+async function onLogin(email, password) {
+	await login(email, password)
 		.then(({accessToken, refreshToken, sid}) => {
 			saveKey('accessToken', accessToken);
 			saveKey('refreshToken', refreshToken);
 			saveKey('id', sid);
+			console.log("login3");
 			return true;
 		})
 		.catch(error => {
