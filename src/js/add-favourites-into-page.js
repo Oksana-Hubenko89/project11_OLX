@@ -40,7 +40,7 @@ function putPicturesIntoHTML(el, templateFunction, r) {
 }
 // Функция закрытия модалки
 function toggleModal(el, bool) {
-  el.classList.toggle('is-hidden', bool);
+  el.classList.toggle('visually-hidden', bool);
 }
 // Функция удаления зарендерых ранее элементов
 function removeOldTegs(parentElement) {
