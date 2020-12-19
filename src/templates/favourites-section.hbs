@@ -1,8 +1,14 @@
 {{#each this}}
-<li class="card-item favorite-item" id={{_id}} data-favorite-item='data-favorite-item'>
+<li class="card-item favorite-item" id={{_id}} 
+data-favorite-item='data-favorite-item'
+data-item='data-item'
+data-userId={{userId}}>
     <div class="img-container">
         <img src={{imageUrls.[0]}} alt={{description}} />
-        <button type="button" class="favorite" data-favorite-button-marked='data-favorite-button-marked'>
+        <button type="button" class="favorite" 
+        data-favorite-button-marked='data-favorite-button-marked'
+        data-marked='true'
+        data-favorite-button='data-favorite-button'>
             <svg width="16px" height="16px" class="favorite-icon-marked">
                 <use href="./symbol-defs.svg#icon-heart"></use>
             </svg>

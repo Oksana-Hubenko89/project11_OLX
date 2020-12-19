@@ -17,10 +17,12 @@
         </div>
         <ul class="card-field">
             {{#each this.data}}
-            <li class="card-item" id={{_id}} data-item='data-item'>
+            <li class="card-item" id={{_id}} data-item='data-item' data-userId={{userId}}>
                 <div class="img-container">
                     <img class="img-card" src={{imageUrls}} alt={{title}} />
-                    <button type="button" class="favorite" data-favorite-button='data-favorite-button'>
+                    <button type="button" class="favorite" 
+                    data-favorite-button='data-favorite-button'
+                    data-marked='false'>
                         <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"
                             class="favorite-icon">
                             <path
