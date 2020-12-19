@@ -38,7 +38,7 @@ function onClick(evt) {
         if(evt.target.dataset.marked === 'false') {
             iconHeartFull.classList.remove('visually-hidden');
             iconHeartContured.classList.add('visually-hidden');
-            console.dir(evt.target.closest('[data-item]'))
+        
             const id = evt.target.closest('[data-item]').getAttribute('id');
             
             evt.target.dataset.marked='true';
@@ -60,7 +60,8 @@ async function deleteFavoriteItem(URL, keyPart, id, optionsDel) {
   }
   // Функция удаления карточки из модального окна
 function deleteCardFromModal(evt) {
-    // console.log(iconHeartFull.classList);
+
+ 
     iconHeartFull.classList.add('visually-hidden');
     iconHeartContured.classList.remove('visually-hidden');
     // console.log(evt.target.dataset.marked);
