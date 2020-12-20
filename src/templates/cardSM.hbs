@@ -3,12 +3,12 @@
     <div class="card-container scroll-search">
     <ul class="card-field card-field-wrap js-advert ">
       {{#each this}}
-      <li class="card-item" id="{{_id}}" data-userId={{userId}} data-item='data-item'>
-        <div class="img-container">
-          <img
+<li class="card-item ">
+        <div class="img-container ">
+          <img class="card-cover"
             src="{{imageUrls}}"
             alt="{{description}}"
-            {{!-- id="{{_id}}" --}}
+            id="{{_id}}"
           />
           <button type="button" class="favorite" 
           data-marked='false'

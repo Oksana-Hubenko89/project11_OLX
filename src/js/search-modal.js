@@ -15,10 +15,12 @@ class NewsApiService {
   this.page = 1;       
   }    
 incrementPage() {
-  this.page += 1;console.log('this.page+1:', this.page);
+  this.page += 1;
+  // console.log('this.page+1:', this.page);
 }
 resetPage() {
-  this.page = 1;console.log('this.page home:', this.page);
+  this.page = 1;
+  // console.log('this.page home:', this.page);
 }
 get query() {
   return this.searchQuery;
@@ -30,11 +32,11 @@ set query(newQuery) {
 const newsApiService=new NewsApiService();
 
 const searchObject = document.querySelector(".input-searchS");
-console.log("searchObject:",searchObject);
+//console.log("searchObject:",searchObject);
 const searchBtn=document.querySelector('.bBtn');
 const closeBtn = document.querySelector('.aBtn');
 const modalBtn = document.querySelector('#search-modal');
-console.log(modalBtn);
+// console.log(modalBtn);
 const sentinelS=document.querySelector(".sentinel");
 
 modalBtn.addEventListener('click', onOpenModal); 
@@ -46,22 +48,10 @@ searchBtn.addEventListener('click', onSearch);
 
 const mainContainerEL= document.querySelector('.js-render-main-page');
 
-console.log("searchBtn:",searchBtn);
-console.log("mainContainerEL:",mainContainerEL);
+// console.log("searchBtn:",searchBtn);
+// console.log("mainContainerEL:",mainContainerEL);
 
 const API = 'https://callboard-backend.herokuapp.com/call/find?search=';
-
-async function postData(url = '') {
-  const response = await fetch(url, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    redirect: 'follow',
-    referrerPolicy: 'no-referrer'
-  });
-  return await response.json();
-};
 
 function onOpenModal(evt) { 
   
@@ -69,7 +59,7 @@ function onOpenModal(evt) {
 
   const modalBtn=evt.target; 
 
-  console.log("modalBtn.parentElement.nodeName:",evt.target.parentElement.nodeName);
+  //console.log("modalBtn.parentElement.nodeName:",evt.target.parentElement.nodeName);
 
   if (evt.target.parentElement.nodeName !== 'BUTTON') {
     return;
@@ -83,10 +73,10 @@ function onOpenModal(evt) {
 
 function onSearch(e) {
 
- console.log('Клик был, функция onSearch запущена!!!!');
+// console.log('Клик был, функция onSearch запущена!!!!');
 
  newsApiService.query=searchObject.value;
- console.dir(newsApiService.query.length);
+ //console.dir(newsApiService.query.length);
  if (newsApiService.query === '') {
     
   return alert('Enter search parameters!');   
@@ -96,17 +86,30 @@ function onSearch(e) {
   newsApiService.resetPage();      
     clearContainer();
     document.getElementById('mySearch').value = "";
-  console.dir(newsApiService.query);
+  //console.dir(newsApiService.query);
   
  return postData(API + newsApiService.query).then(data => {
     appendMarkup(data); 
     newsApiService.incrementPage(); 
-    console.log(data.length); 
+   // console.log(data.length); 
    
    
   }).catch(error=>{
     console.log();
   }) 
+};
+
+async function postData(url = '') {
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    redirect: 'follow',
+    referrerPolicy: 'no-referrer',
+    
+  });
+  return await response.json();
 };
 
 function onEscKeyPress(evt) {
