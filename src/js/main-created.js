@@ -28,10 +28,16 @@ const refs = {
   paginatorPagesEL: document.querySelector('.pagination-conteiner'),
 };
 
+document.addEventListener('DOMContentLoaded', homePageCreator);
 refs.headerMenuEL.addEventListener('click', createCategoryMenu);
 refs.logoEL.addEventListener('click', onLogoCLick);
 refs.btnClearEL.addEventListener('click', onClearBtnClick);
 refs.paginatorPagesEL.addEventListener('click', changePage);
+
+function homePageCreator() {
+  page = 1;
+  getCard(page);
+}
 
 function onLogoCLick(e) {
   e.preventDefault();
