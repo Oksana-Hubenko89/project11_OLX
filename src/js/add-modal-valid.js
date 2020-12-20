@@ -1,39 +1,33 @@
 const addForm = document.querySelector('.add-modal-form');
-const validateBtn = addForm.querySelector('.add-modal-btn');
+// const validateBtn = addForm.querySelector('.add-modal-btn');
 // const addName = addForm.querySelector('.js-add-name');
 // const addDescr = addForm.querySelector('.js-add-description');
 // const addCategory = document.querySelector('.js-category-input');
 // const addPrice = addForm.querySelector('.js-add-price');
 // const addPhone = addForm.querySelector('.js-add-phone');
-const addInputs = addForm.querySelectorAll('.js-add-input');
 
-const clearB = addForm.querySelector('.clear-btn'); 
 
-addForm.addEventListener('submit', addFormValidate)
-let addModalError = 0;
-function addFormValidate(evt) {
-    evt.preventDefault();
-    removeValidation();
+// const clearB = addForm.querySelector('.clear-btn'); 
+
+// addForm.addEventListener('submit', addFormValidate)
+
+export default function addFormValidate(addForm) {
+    const addInputs = addForm.querySelectorAll('.js-add-input');
+    // evt.preventDefault();
+    // removeValidation();
+    let addModalError = 0;
+
     for (let i = 0; i < addInputs.length; i++) {
         let errorMarkup = `<p class="add-valid-error">* поле має бути заповнено</p>`;
         if (!addInputs[i].value) {
             // console.log('input is blank', addInputs[i]);
             addInputs[i].parentElement
                 .insertAdjacentHTML('afterend', errorMarkup);
-            addModalError++;
+            addModalError += 1;
         }
-        // return addModalError;
     }
     return addModalError;
     // console.log(addModalError);
-}
-
-function removeValidation() {
-    let errorsValid = addForm.querySelectorAll('.add-valid-error');
-   // console.log(errorsValid);
-    for (let i = 0; i < errorsValid.length; i++) {
-        errorsValid[i].remove();
-    } 
 }
 
 // clearB.addEventListener('click', clearAdd);

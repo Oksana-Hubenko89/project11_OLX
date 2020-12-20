@@ -37,8 +37,8 @@ function modalEscClose(evt) {
 }
 function onModalBackdropClick(evt) {
   // console.log(evt.target);
-  // console.log(evt.target.dataset.action);
-  if (evt.target.attributes.class.nodeValue === 'add-backdrop') {
+  console.log(evt.target.attributes.class.nodeValue);
+  if (evt.target.attributes.class.nodeValue === 'add-backdrop js-add-modal') {
     modalClose();
   }
   if (evt.target.attributes.class === undefined) {
