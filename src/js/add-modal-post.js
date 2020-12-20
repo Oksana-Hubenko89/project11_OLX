@@ -20,7 +20,7 @@ function addFormSend(evt) {
     evt.preventDefault();
     removeValidation();
     let addModalError = addFormValidate(addForm);
-    // const accessToken = localStorage.getItem('accessToken');
+    const accessToken = localStorage.getItem('accessToken');
 
     if (addModalError === 0) {
       let formData = new FormData(addForm);
@@ -30,9 +30,9 @@ function addFormSend(evt) {
       headers: {
       'accept': 'application/json',
       'Content-Type': 'multipart/form-data',
-      'Authorizatioin': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1ZmMyMDg1YmQwOTM2NTI4MTA3Y2UyNzQiLCJzaWQiOiI1ZmMyZDJmY2UxZDIwNTA2NzAyYmRkMjIiLCJpYXQiOjE2MDY2MDM1MTYsImV4cCI6MTYwNjYwNzExNn0.rJ_QjU4KvA76H96RHsvOBChK0Vjbd0NmqjMxdQVJIXA'
-
-      },
+    //   'Authorizatioin': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1ZmMyMDg1YmQwOTM2NTI4MTA3Y2UyNzQiLCJzaWQiOiI1ZmMyZDJmY2UxZDIwNTA2NzAyYmRkMjIiLCJpYXQiOjE2MDY2MDM1MTYsImV4cCI6MTYwNjYwNzExNn0.rJ_QjU4KvA76H96RHsvOBChK0Vjbd0NmqjMxdQVJIXA'
+      'Authorization': `${accessToken}`,
+       },
       data: formData,
     };
         axios(config)
