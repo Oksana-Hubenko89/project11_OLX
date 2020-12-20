@@ -38,13 +38,10 @@
               <ul class="nav-my-off">
                 <li class="btn-my-off js-btn-my-off "><span class="icon-logout-Close">Мій кабінет</span>
                   <ul class="list-my-off">
-                    <li class="my-off-item"><a href="/" class="my-off-link">Мої оголошення</a></li>
-                    <li class="my-off-item"><a href="/" class="my-off-link" id="show-favorites-button">Обране</a></li>
+                    <li class="my-off-item"><a href="/" class="my-off-link" id='show-my-ads-button'>Мої оголошення!</a></li>
+                    <li class="my-off-item"><a href="/" class="my-off-link" id="show-favorites-button">Обране!</a></li>
                   </ul>
-
                 </li>
-
-
               </ul>
               <button class=" Btn-Go-out icon-logout-Close js-btn-Go-out">
                 <svg width="20px" height="20px" aria-label="Use Profil">
@@ -100,13 +97,10 @@
                 <ul class="nav-my-off">
                   <li class="btn-my-off js-btn-my-off ">Мій кабінет
                     <ul class="list-my-off">
-                      <li class="my-off-item"><a href="/" class="my-off-link">Мої оголошення</a></li>
+                      <li class="my-off-item"><a href="/" class="my-off-link" id='show-my-ads-button'>Мої оголошення</a></li>
                       <li class="my-off-item"><a href="/" class="my-off-link" id="show-favorites-button">Обране</a></li>
                     </ul>
-
                   </li>
-
-
                 </ul>
               </div>
             </div>
@@ -190,89 +184,19 @@
   <!-- Modal to order -->
   <div class="is-hidden"></div>
   <!-- Modal to new advert -->
-  <!-- Modal Мої оголошення -->
-  <section class="section is-hidden">
-    <div class="card-container">
-      <button type="button" class="swipe-left">
-        <svg width="6px" height="9px" class="swipe-left-icon">
-          <use href="./symbol-defs.svg#icon-arrow-left"></use>
-        </svg>
-      </button>
-      <button type="button" class="swipe-right">
-        <svg width="6px" height="9px" class="swipe-right-icon">
-          <use href="./symbol-defs.svg#icon-arrow-right"></use>
-        </svg>
-      </button>
-      <h2 class="section-name">Мої оголошення</h2>
-
-      <ul class="card-field js-advert">
-        <li class="card-item">
-          <div class="img-container">
-            <img src="https://s1.eda.ru/StaticContent/Photos/140812180013/140820212258/p_O.jpg" alt="tshirt" />
-            <button type="button" class="favorite">
-              <svg width="16px" height="16px" class="favorite-icon">
-                <use href="./symbol-defs.svg#icon-contured-heart"></use>
-              </svg>
-            </button>
-            <button type="button" class="full-screen">
-              <svg width="11px" height="11px" class="full-screen-icon">
-                <use href="./symbol-defs.svg#icon-full-screen"></use>
-              </svg>
-            </button>
-          </div>
-          <p class="product-title">Майка жіноча чорна</p>
-          <p><span class="old-price final-price">300 грн</span></p>
-        </li>
-        <li class="card-item">
-          <div class="img-container">
-            <img src="https://s1.eda.ru/StaticContent/Photos/140812180013/140820212258/p_O.jpg" alt="tshirt" />
-            <button type="button" class="favorite">
-              <svg width="16px" height="16px" class="favorite-icon">
-                <use href="./symbol-defs.svg#icon-heart"></use>
-              </svg>
-            </button>
-            <button type="button" class="full-screen">
-              <svg width="11px" height="11px" class="full-screen-icon">
-                <use href="./symbol-defs.svg#icon-full-screen"></use>
-              </svg>
-            </button>
-          </div>
-          <p class="product-title">Майка жіноча чорна</p>
-          <p><span class="old-price final-price">300 грн</span></p>
-        </li>
-        <li class="card-item">
-          <div class="img-container">
-            <img src="https://s1.eda.ru/StaticContent/Photos/140812180013/140820212258/p_O.jpg" alt="tshirt" />
-            <button type="button" class="favorite">
-              <svg width="16px" height="16px" class="favorite-icon">
-                <use href="./symbol-defs.svg#icon-heart"></use>
-              </svg>
-            </button>
-            <button type="button" class="full-screen">
-              <svg width="11px" height="11px" class="full-screen-icon">
-                <use href="./symbol-defs.svg#icon-full-screen"></use>
-              </svg>
-            </button>
-          </div>
-          <p class="product-title">Майка жіноча чорна</p>
-          <p><span class="old-price final-price">300 грн</span></p>
-        </li>
-      </ul>
-    </div>
-  </section>
-  <!-- Modal Обране -->
-  <section class="section favorite-section" id="favorite-section">
-    <div class="add-backdrop is-hidden" id="add-backdrop">
-      <div class="card-container favorite-container">
-        <button type="button" class="close-button" id="close-section-button">
-          <svg width="14px" height="14px" aria-label="Закрытие мобильного окна">
-            <use class="icon-close" href="./symbol-defs.svg#icon-close"></use>
-          </svg>
-        </button>
-        <h2 class="section-name">Обране</h2>
-        <ul class="card-field favourites-list" id="favourites-list"></ul>
+    <!-- Modal Мої оголошення -->
+    <section class="section my-ads-section" id="my-ads-section">
+      <div class="add-backdrop visually-hidden" id="add-backdrop">
+        <div class="card-container my-ads-container">
+          <button type="button" class="close-button" id="close-my-ads-button">
+            <svg width="14px" height="14px" aria-label="Закрытие мобильного окна">
+              <use class="icon-close" href="./symbol-defs.svg#icon-close"></use>
+            </svg>
+          </button>
+          <h2 class="section-name">Мої оголошення</h2>
+          <ul class="card-field my-ads-list" id="my-ads-list"></ul>
+        </div>
       </div>
-
     </section>
     <!-- Modal Обране -->
     <section class="section favorite-section" id="favorite-section">
@@ -288,7 +212,8 @@
         </div>
       </div>
     </section>
-  <div class="add-backdrop js-add-modal visually-hidden">
+  <!-- Модалка "Додати оголошення" -->
+  <div class="add-backdrop js-add-modal visually-hidden" id='add-backdrop-for-ad'>
       <div class="add-modal">
         <form action="" class="add-modal-form">
           <a add-modal-close href="#" aria-label="Close" class="add-modal-close"
@@ -518,5 +443,4 @@
 
   </div>
 </body>
-
 </html>
