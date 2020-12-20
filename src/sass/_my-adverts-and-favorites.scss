@@ -1,7 +1,9 @@
-.favorite-section {
+.favorite-section,
+.my-ads-section {
   position: relative;
 }
-.favorite-section {
+.favorite-section,
+.my-ads-section {
   .close-button {
     position: absolute;
     padding: 0px;
@@ -12,57 +14,93 @@
     border-style: none;
   }
 }
-.favorite-section {
+.favorite-section,
+.my-ads-section {
   .img-container {
     width: 100%;
   }
 }
-.favorite-container {
+.favorite-container,
+.my-ads-container {
   top: 5%;
   // height: 90%;
   position: relative;
 }
-.favorite-section {
+.favorite-section,
+.my-ads-section {
   .section-name {
     padding-top: 20px;
   }
 }
-.favourites-list {
+.favourites-list,
+.my-ads-list {
   max-height: calc(100vh - 210px);
   overflow-y: auto;
   margin: 0;
   flex-wrap: wrap;
 }
-.favorite-item {
+.favorite-item,
+.my-ads-item {
   margin-right: 10px;
 }
 
-.edit-advert {
-  position: absolute;
-  top: 43px;
-  right: 18px;
-  z-index: 1;
-  padding: 0;
-  border: none;
-  background-color: transparent;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  pointer-events: none;
+.my-ads-section {
+  .remove-ad,
+  .edit-ad {
+    position: absolute;
+    right: 18px;
+    z-index: 1;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    // width: 20px;
+    // height: 20px;
+    cursor: pointer;
+    pointer-events: none;
+  }
 }
-.edit-advert-icon {
-  fill: #fff;
-  opacity: 0;
-  transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1);
+.my-ads-section {
+  .edit-ad {
+    top: 43px;
+  }
 }
-.card-item:hover .edit-advert-icon,
-.card-item:focus .edit-advert-icon {
-  opacity: 1;
+.my-ads-section {
+  .remove-ad {
+    top: 19px;
+  }
 }
-.card-item:hover .edit-advert,
-.card-item:focus .edit-advert {
-  pointer-events: all;
+
+.my-ads-section {
+  .remove-ad-icon,
+  .edit-ad-icon {
+    fill: #fff;
+    opacity: 0;
+    transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
 }
+.my-ads-item:hover,
+.my-ads-item:focus {
+  .edit-ad-icon,
+  .remove-ad-icon {
+    opacity: 1;
+  }
+}
+.my-ads-item:hover,
+.my-ads-item:focus {
+  .edit-ad,
+  .remove-ad {
+    pointer-events: all;
+  }
+}
+
+// .my-ads-item:hover .edit-ad-icon,
+// .my-ads-item:focus .edit-ad-icon {
+//   opacity: 1;
+// }
+// .my-ads-item:hover .edit-ad,
+// .my-ads-item:focus .edit-ad {
+//   pointer-events: all;
+// }
 .final-price {
   color: black;
   text-decoration: none;

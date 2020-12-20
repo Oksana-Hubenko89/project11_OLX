@@ -13,3 +13,5 @@ import './js/add-modal-post';
 import './js/advert-Close-Open';
 import './js/advert-logic';
 import './js/search-modal';
+import './js/add-my-ads-into-page';
+import './js/delete-my-ads';

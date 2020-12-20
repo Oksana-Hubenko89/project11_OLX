@@ -18,15 +18,17 @@ const options = {
 // Вызов функции рендера страницы по кнопке
 showFavoriteButtonEl.addEventListener('click', e => {
   e.preventDefault();
-  removeOldTegs(fevoritesListEl);
-  toggleModal(addBackdropEl, false);
+  openModalWindow(addBackdropEl);
   getFavoritesList(URL, keyPart, options);
 });
 // Вызов функции закрытия модалки по кнопке
-
 closeButtonEl.addEventListener('click', () => {
-  toggleModal(addBackdropEl, true);
+  closeModalWindow();
 });
+// Вызов функции закрытия модалки по Esc
+document.addEventListener('keydown', closeModalByEsc);
+// Вызов функции закрытия модалки по клику на бэкдроп(оверлей)
+addBackdropEl.addEventListener('click', closeModalByOverlayClick);
 
 // Функция вызова карточек товара для Обраного
 function getFavoritesList(URL, keyPart, options) {
@@ -34,15 +36,34 @@ function getFavoritesList(URL, keyPart, options) {
     .then(response => response.json())
     .then(response => putPicturesIntoHTML(fevoritesListEl, parsFavoritesList, response));
 }
+// Функция открытия модалки
+function openModalWindow(el) {
+  el.classList.toggle('visually-hidden', false);
+}
 //  Функция добавления списка картинок в HTML
 function putPicturesIntoHTML(el, templateFunction, r) {
   el.insertAdjacentHTML('beforeend', templateFunction(r.favourites));
 }
-// Функция закрытия модалки
-function toggleModal(el, bool) {
-  el.classList.toggle('visually-hidden', bool);
-}
 // Функция удаления зарендерых ранее элементов
 function removeOldTegs(parentElement) {
   parentElement.innerHTML = '';
+}
+// Функция закрытия модалки
+function closeModalWindow() {
+  removeOldTegs(fevoritesListEl);
+  addBackdropEl.classList.toggle('visually-hidden', true);
+}
+// Функция закрытия модалки по кнопке Esc
+function closeModalByEsc(evt) {
+  if (evt.key === 'Escape') {
+    closeModalWindow();
+  }
+}
+// Функция закрытия модалки по оверлею
+function closeModalByOverlayClick(evt) {
+  if (evt.target.classList.contains('add-backdrop')) {
+    closeModalWindow();
+  } else {
+    return;
+  }
 }
