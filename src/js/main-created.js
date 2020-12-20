@@ -33,21 +33,25 @@ refs.logoEL.addEventListener('click', onLogoCLick);
 refs.btnClearEL.addEventListener('click', onClearBtnClick);
 refs.paginatorPagesEL.addEventListener('click', changePage);
 
-function onLogoCLick() {
+function onLogoCLick(e) {
+  e.preventDefault();
   page = 1;
   getCard(page);
 }
 
-function onClearBtnClick() {
+function onClearBtnClick(e) {
+  e.preventDefault();
   page = 1;
   getCard(page);
 }
 
 async function createCategoryMenu(e) {
+  e.preventDefault();
+
   refs.paginatorPagesEL.classList.add('visually-hidden');
   clearArticlesContainer();
   const keyCategory = e.target.dataset.id;
-  // console.log(keyCategory);
+  history.replaceState({ keyCategory }, ` ${keyCategory}`, `/${keyCategory}`);
   await postData(KAYCATEGORY, keyCategory).then(data => {
     console.log('---', data);
 
@@ -68,19 +72,19 @@ async function postData(apiKey, arg) {
 }
 
 async function getCard(page) {
+  history.replaceState({ page }, `page: ${page}`, `/page=${page}`);
   refs.paginatorPagesEL.classList.remove('visually-hidden');
-  // console.log('Клик был, функция запущена');
   clearArticlesContainer();
 
   await postData(KEYMEIN, page).then(data => {
-    console.log(data);
+    // console.log(data);
     renderMainContent(data);
   });
 }
 
 function changePage(e) {
   page = e.target.dataset.id;
-  // console.log(refs.paginatorPagesEL.children);
+  history.replaceState({ page }, `page: ${page}`, `/page=${page}`);
   const oldEl = document.querySelector(`.is-active`);
   oldEl.classList.remove('.is-active');
   e.target.classList.add('is-active');
@@ -102,9 +106,13 @@ function renderMainContent(data) {
 
 function showAll(id) {
   return function () {
+    history.replaceState({ id }, ` ${id}`, `/${id}`);
     const listCardEL = document.querySelector(`#${id} .card-field`);
     const headerCategoridEL = document.querySelector(`#${id} .header-categori`);
     const CategoridEL = document.querySelectorAll(`.section`);
+    const CartConteinerEL = document.querySelector(`#${id} .card-container`);
+    console.log(CartConteinerEL);
+    CartConteinerEL.classList.toggle('card-container-slider');
     listCardEL.classList.replace('card-field', 'card-field-wrap');
     headerCategoridEL.classList.add('visually-hidden');
     for (let i = 0; i < CategoridEL.length; i += 1) {
@@ -117,10 +125,9 @@ function showAll(id) {
 
 function getLeft(id, position, arg) {
   return function (e) {
-    // e.preventDefault();
     const listCardEL = document.querySelector(`#${id} .card-field`);
     const CardEL = document.querySelector(`#${id} .card-item`);
-    position.left = position.left + arg * (CardEL.offsetWidth + 25);
+    position.left = position.left + arg * (CardEL.offsetWidth + 20);
     if (position.left === -listCardEL.offsetWidth || position.left === listCardEL.offsetWidth) {
       e.preventDefault();
     }
