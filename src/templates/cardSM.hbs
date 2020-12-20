@@ -3,14 +3,16 @@
     <div class="card-container scroll-search">
     <ul class="card-field card-field-wrap js-advert ">
       {{#each this}}
-      <li class="card-item">
+      <li class="card-item" id="{{_id}}" data-userId={{userId}} data-item='data-item'>
         <div class="img-container">
           <img
             src="{{imageUrls}}"
             alt="{{description}}"
-            id="{{_id}}"
+            {{!-- id="{{_id}}" --}}
           />
-          <button type="button" class="favorite">
+          <button type="button" class="favorite" 
+          data-marked='false'
+          data-favorite-button='data-favorite-button'>
             <svg
               width="16"
               height="16"

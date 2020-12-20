@@ -34,6 +34,7 @@ refs.btnClearEL.addEventListener('click', onClearBtnClick);
 refs.paginatorPagesEL.addEventListener('click', changePage);
 
 function onLogoCLick() {
+  page = 1;
   getCard(page);
 }
 
@@ -43,6 +44,7 @@ function onClearBtnClick() {
 }
 
 async function createCategoryMenu(e) {
+  refs.paginatorPagesEL.classList.add('visually-hidden');
   clearArticlesContainer();
   const keyCategory = e.target.dataset.id;
   // console.log(keyCategory);
@@ -66,6 +68,7 @@ async function postData(apiKey, arg) {
 }
 
 async function getCard(page) {
+  refs.paginatorPagesEL.classList.remove('visually-hidden');
   // console.log('Клик был, функция запущена');
   clearArticlesContainer();
 

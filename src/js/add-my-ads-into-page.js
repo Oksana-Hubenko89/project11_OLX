@@ -6,8 +6,8 @@ const addBackdropEl = myAdsSectionEl.querySelector('#add-backdrop');
 const closeButtonEl = myAdsSectionEl.querySelector('#close-my-ads-button');
 const myAdsListEl = myAdsSectionEl.querySelector('#my-ads-list');
 const showMyAdsButtonEl = document.querySelector('#show-my-ads-button');
-// console.log(showMyAdsButtonEl);
-// console.log(myAdsListEl);
+console.log(showMyAdsButtonEl);
+console.log(myAdsListEl);
 // Переменные для ввода данных
 const URL = 'https://callboard-backend.herokuapp.com/';
 const keyPart = 'user';
