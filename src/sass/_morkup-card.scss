@@ -25,8 +25,11 @@
 }
 
 .img-card {
-  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  object-fit: cover;
   width: 100%;
+  height: 100%;
 }
 
 .img-container {
@@ -61,7 +64,12 @@
     padding-right: 0;
   }
 
+  .card-container-slider {
+    max-width: 728px;
+  }
+
   .card-field {
+    width: $tablet;
     display: block;
     position: relative;
     left: 0;
@@ -97,6 +105,10 @@
 
     padding-left: 0;
     padding-right: 0;
+  }
+
+  .card-container-slider {
+    max-width: 1240px;
   }
 
   .card-field-wrap {
@@ -424,4 +436,49 @@ footer {
     right: 0px;
     top: 10px;
   }
+}
+
+.pagination-conteiner {
+  background-color: #f5f6fb;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  max-width: 320px;
+  padding-bottom: 60px;
+  overflow: hidden;
+  display: flex;
+}
+
+@media screen and (min-width: $tablet) {
+  .pagination-conteiner {
+    max-width: $tablet;
+
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media screen and (min-width: $desktop) {
+  .pagination-conteiner {
+    max-width: $desktop;
+
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.pagination {
+  border: none;
+  background-color: #fff;
+  width: 60px;
+  height: 60px;
+}
+.pagination:not(:last-child) {
+  margin-right: 1px;
+}
+
+.pagination.is-active {
+  background-color: #000;
+  color: #fff;
 }
