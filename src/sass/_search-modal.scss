@@ -21,6 +21,13 @@
     
 }
 }
+.card-cover{
+  background-size: cover;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  width:100%;
+  height: 100%;
+}
 .scroll-search{
   overflow:auto;
 }
