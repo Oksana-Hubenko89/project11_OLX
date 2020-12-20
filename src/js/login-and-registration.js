@@ -1,7 +1,7 @@
-const axios = require('axios').default;
-const debounce = require('lodash.debounce');
+import { login, registration, getUser } from './API-login-and-registration';
+import { loadKey, saveKey, deleteKey } from './local-storage';
 
-const BASE_URL = "https://callboard-backend.herokuapp.com";
+const debounce = require('lodash.debounce');
 
 const refs = {
 	modalLogAndReg: document.querySelector("[data-modal-log-and-reg]"),
@@ -24,6 +24,7 @@ const notifications = {
 
 const emailInputEl = refs.modalLogAndReg.querySelector('.email-input');
 const passwordInputEl = refs.modalLogAndReg.querySelector(".password-input");
+const btnGoogleAutorisation = refs.modalLogAndReg.querySelector(".btn-google-autorisation");
 const btnLogin = refs.modalLogAndReg.querySelector(".btn-login");
 const btnRegistration = refs.modalLogAndReg.querySelector(".btn-registration");
 const btnCloseModal = refs.modalLogAndReg.querySelector(".close-button");
@@ -33,6 +34,7 @@ const notificationErrorPasswordEl = refs.modalLogAndReg.querySelector(".notifica
 refs.modalLogAndReg.addEventListener('click', onBackdrop);
 refs.bodyEl.addEventListener('keydown', onPressEsc);
 refs.btnModalLogAndReg.addEventListener('click', onBtnLogAndRegModal);
+btnGoogleAutorisation.addEventListener('click', onBtnGoogleAutorisation);
 btnRegistration.addEventListener('click', onBtnRegistration);
 btnLogin.addEventListener('click', onBtnLogin);
 btnCloseModal.addEventListener('click', onBtnLogAndRegModal);
@@ -46,13 +48,32 @@ function onBackdrop(event) {
 }
 
 function onPressEsc(event) {
-	if (event.keyCode === 27) {
+	if (event.keyCode === 27 && !refs.modalLogAndReg.classList.contains('visually-hidden')) {
 		toggleModal(refs.modalLogAndReg);
 	}
 }
 
 function onBtnLogAndRegModal() {
 	toggleModal(refs.modalLogAndReg);
+}
+
+//Проверка проходила-ли авторизация Google или это новое открытое окно
+if (loadKey('googleAutorusation') === true) {
+	const str = location.search.substr(1).split('&');
+	const accessToken = str[0].slice(str[0].indexOf('=') + 1);
+	const refreshToken = str[1].slice(str[1].indexOf('=') + 1);
+	const id = str[2].slice(str[2].indexOf('=') + 1);
+
+	saveKey('accessToken', accessToken);
+	saveKey('refreshToken', refreshToken);
+	saveKey('id', id);
+
+	getUser(accessToken);
+	deleteKey('googleAutorusation');
+}
+
+function onBtnGoogleAutorisation() {
+	saveKey('googleAutorusation', true);
 }
 
 function onBtnRegistration(event) {
@@ -67,11 +88,38 @@ function onBtnRegistration(event) {
 		return;
 	}
 
-	registration(emailInputEl.value, passwordInputEl.value);
+	if (!onRegistration(emailInputEl.value, passwordInputEl.value)) {
+		return;
+	}	
+
+	if (!onLogin(emailInputEl.value, passwordInputEl.value)) {
+		return;
+	}
+
+	toggleModal(refs.modalLogAndReg);
+}
+
+async function onRegistration(email, password) {
+	await registration(email, password)
+		.then(({ id }) => {
+			saveKey('id', id);
+			return true;
+		})
+		.catch(error => {
+			if (error.response.status === 409) {
+				errorEmail(notifications.loginAlreadyExist);
+				// console.log("Пользователь с таким логином уже зарегистрирован");
+			}
+			else {
+				console.log(`error = ${error.response.status}`);
+			}
+			return false;
+		});
 }
 
 function onBtnLogin(event) {
 	event.preventDefault();
+	console.log("login");
 
 	if (emailInputEl.value.length == 0) {
 		errorEmail(notifications.emailEmpty);
@@ -83,25 +131,24 @@ function onBtnLogin(event) {
 		return;
 	}
 
-	login(emailInputEl.value, passwordInputEl.value);
+	console.log("login1");
+
+	if (!onLogin(emailInputEl.value, passwordInputEl.value)) {
+		return;
+	}
+	console.log("login2");
+
+	toggleModal(refs.modalLogAndReg);
 }
 
-function toggleModal(modal) {
-	clearInputData();
-	modal.classList.toggle('visually-hidden');
-}
-
-function login(email, password) {	
-	axios.post(`${BASE_URL}/auth/login`, {
-		"email": `${email}`,
-		"password": `${password}`
-	})
-		.then(({ data }) => {
-			// console.log(data);
-			localStorage.setItem('accessToken', `${data.accessToken}`);
-			localStorage.setItem('refreshToken', `${data.refreshToken}`);
-			localStorage.setItem('id', `${data.sid}`);
-			toggleModal(refs.modalLogAndReg);
+async function onLogin(email, password) {
+	await login(email, password)
+		.then(({accessToken, refreshToken, sid}) => {
+			saveKey('accessToken', accessToken);
+			saveKey('refreshToken', refreshToken);
+			saveKey('id', sid);
+			console.log("login3");
+			return true;
 		})
 		.catch(error => {
 			if (error.response.status === 403) {
@@ -109,31 +156,22 @@ function login(email, password) {
 				// console.log("Не правильный логин или пароль");
 			}
 			console.log(error);
-		})	
+			return false;
+		})
 }
 
-function registration(email, password) {
-	axios.post(`${BASE_URL}/auth/register`, {
-		"email": `${email}`,
-		"password": `${password}`
-	})
-		.then(({data}) => {
-			localStorage.setItem('id', `${data.id}`);
-			login(email, password);
-		})
-		.catch(error => {
-			if (error.response.status === 409) {
-				errorEmail(notifications.loginAlreadyExist);
-				// console.log("Пользователь с таким логином уже зарегистрирован");
-			}
-			else {
-				console.log(`error = ${error.response.status}`);
-			}
-		});
+const onInputValue = debounce(() => {
+	notificationErrorEmailEl.classList.add("visually-hidden");
+	notificationErrorPasswordEl.classList.add("visually-hidden");
+}, 1000);
+
+function toggleModal(modal) {
+	clearInputData();
+	modal.classList.toggle('visually-hidden');
 }
 
 function validationEmail(email) {
-	PATTERN_VALIDATION_EMAIL = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	const PATTERN_VALIDATION_EMAIL = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	return PATTERN_VALIDATION_EMAIL.test(email);
 }
 
@@ -184,16 +222,9 @@ function errorPassword(notification) {
 	notificationErrorPasswordEl.classList.remove("visually-hidden");
 }
 
-const onInputValue = debounce(() => {
-	notificationErrorEmailEl.classList.add("visually-hidden");
-	notificationErrorPasswordEl.classList.add("visually-hidden");
-}, 1000);
-
 function clearInputData() {
 	emailInputEl.value = "";
 	passwordInputEl.value = "";
 }
 
-// Google //
-// import { google } from 'googleapis';
 

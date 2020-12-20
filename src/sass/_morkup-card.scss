@@ -18,7 +18,7 @@
   float: left;
   width: 290px;
   background-color: #fff;
-  margin-bottom: 30px;
+  margin: 10px;
   padding-bottom: 20px;
 
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
@@ -74,7 +74,8 @@
   .card-field-wrap {
     flex-wrap: wrap;
     display: flex;
-    margin: -20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 
   .card-item {
@@ -83,6 +84,7 @@
   }
   .img-container {
     height: 275px;
+    width: 352px;
 
     overflow: hidden;
     margin-bottom: 20px;
@@ -97,12 +99,24 @@
     padding-right: 0;
   }
 
+  .card-field-wrap {
+    flex-wrap: wrap;
+    display: flex;
+    // margin: 20px;
+  }
+
   .card-item {
     width: 295px;
-    margin-right: 17.5px;
-    margin-left: 17.5px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+
+    margin: 10px;
+  }
+
+  .img-container {
+    height: 275px;
+    width: 295px;
+
+    overflow: hidden;
+    margin-bottom: 20px;
   }
 }
 

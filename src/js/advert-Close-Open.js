@@ -1,8 +1,5 @@
-const axios = require('axios').default;
-
-const BASE_URL = `https://callboard-backend.herokuapp.com`;
-
-let id = '';
+// const axios = require('axios').default;
+import getUserInform from './advert-logic';
 
 const refsAdvert={
   advertTitle: document.querySelector('.js-advert-title'),
@@ -14,17 +11,49 @@ const refsAdvert={
   sellerTime: document.querySelector('.js-seller-time'),
   sellerTel: document.querySelector('.js-seller-tel'),
   favorBtn: document.querySelector('.js-advert-favorites'),
+  modal: document.querySelector('.advert-modal'),
+  addShare:document.querySelector('.add-share'),
+  iconHeartContured: document.querySelector('[data-heartIconContured]'),
+  iconHeartFull:document.querySelector('[data-heartIconFull]'),
   
 }
 
+
+const fn = arr => arr.map(el => {
+  const item = document.createElement('div');
+  item.textContent = el;
+
+  return item;
+ });
+
+console.log(fn(['html', 'css', 'js', 'react']));
 // console.log(refsAdvert.advertTitle.textContent);
-// console.log(refsAdvert.openModal);
+// console.log(refsAdvert.modal);
 // console.log(refsAdvert.advertCloseModal);
 // refsAdvert.cardAdvert.addEventListener('click', addModalAdvert);
 
+
+// const BASE_URL = `https://callboard-backend.herokuapp.com/call/find?search=`;
+
+// const key = localStorage.getItem('accessToken');
+
+// const options ={
+//   method: 'GET',
+//   headers: {
+//     'Content-Type': 'application/json',
+//   },
+//     Authorization: `${key}`,
+//     redirect: 'follow',
+//     referrerPolicy: 'no-referrer'
+// };
+
+
+
+// let id = '';
+
 document.addEventListener('click', addModalAdvert)
 
-refsAdvert.favorBtn.addEventListener('click', PostInFavorit);
+// refsAdvert.favorBtn.addEventListener('click', PostInFavorit);
 
 // // закрытие модалки через кнопку
 refsAdvert.advertCloseModal.addEventListener('click', modalClose);
@@ -35,35 +64,25 @@ document.addEventListener('keydown', modalEscClose);
 // зактрытие по оверлэю
 refsAdvert.openModal.addEventListener('click', onModalBackdropClick);
 
-console.log(localStorage.getItem('accessToken'));
+// console.log(localStorage.getItem('accessToken'));
 
-function PostInFavorit() {
-  console.log("grtgrtg");
-  console.log(id);
-   if (localStorage.getItem('accessToken')){
-    console.log("grtgrtg");
-    axios.post(`${BASE_URL}/call/favourite/`, 
-    {
-      "_id": `${id}`,
-      // "accessToken":`${localStorage.getItem('accessToken')}`, 
-    }
-    )
-      .then(({ data }) => {
-        console.log(data);
-        
-      })
-      .catch(error => {
-        console.log(error);
-      })	
-   }
-
-}
+// function PostInFavorit() {
+//   refsAdvert.favorBtn.dataset.favoriteBbuttonMarked='data-favorite-button-marked';
+//   // data-favorite-item='data-favorite-item'
+//   console.dir(refsAdvert.favorBtn.dataset);
+//   refsAdvert.addShare.dataset.favoriteItem = 'data-favorite-item';
+//   refsAdvert.addShare.dataset.item='';
+// }
 
 
 
 // Функция открытия модалки
 function addModalAdvert(event) {
   let target = event.target;
+  if (target.parentElement.dataset.marked === 'true'){
+      refsAdvert.iconHeartFull.classList.remove('visually-hidden');
+      refsAdvert.iconHeartContured.classList.add('visually-hidden');
+  }
 
 // console.dir(target.parentElement.children[1].textContent);
   if (target.parentElement.classList[0] ==='card-item') {
@@ -78,7 +97,7 @@ function addModalAdvert(event) {
     refsAdvert.openModal.classList.remove('is-hidden');
     
    
-   
+  
     // console.dir(target.parentElement);
     // рендерить и подставлять фотки под основной картинкой.
 
@@ -88,6 +107,7 @@ function addModalAdvert(event) {
 // Функции закрытия модалки
 function modalClose() {
   refsAdvert.openModal.classList.add('is-hidden');
+  refsAdvert.addShare.id = '';
 }
 function modalEscClose(evt) {
   if (evt.key === "Escape") {
@@ -109,14 +129,15 @@ function changeImgOnAdvert(target) {
 
 function changeAdvertTitle(target) {
   let item = target.parentElement.children;
-  console.dir(target.parentElement.id);
+  const userid = target.parentElement.dataset.userid;
+  getUserInform(userid);
 
   
-  console.log(id);
+  refsAdvert.addShare.id = target.parentElement.id;
+ 
   refsAdvert.advertTitle.textContent='';
 
-  // console.log(item[1].textContent);
-  // console.log(refsAdvert.advertTitle.textContent);
+
   refsAdvert.advertPrice.textContent='';
   
   refsAdvert.advertTitle.textContent = item[1].textContent;
