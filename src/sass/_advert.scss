@@ -183,19 +183,17 @@
     align-items: center;
     text-align: center;
     letter-spacing: 0.02em; 
-    // padding: 12px 27px;
-    & .seller-name .seller-tel {
+    padding: 12px 27px;
+    & .seller-name {
         font-weight: 500;
-        font-size: 14px;
+        font-size: 18px;
         line-height: 1.16;
-        margin-right: 5px;
     }
     & .olx-time {
         font-weight: 300;
         font-size: 12px;
         line-height: 1.16;
     }
-   
 
 
 }
