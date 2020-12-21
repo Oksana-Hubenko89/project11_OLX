@@ -1,11 +1,13 @@
-import { login, registration, getUser } from './API-login-and-registration';
+import { login, registration, getUser, logout } from './API-login-and-registration';
 import { loadKey, saveKey, deleteKey } from './local-storage';
 
 const debounce = require('lodash.debounce');
 
 const refs = {
 	modalLogAndReg: document.querySelector("[data-modal-log-and-reg]"),
-	btnModalLogAndReg: document.querySelector(".btn-log-and-reg"),
+	btnModalLogAndReg: document.querySelector(".js-btn-log-and-reg"),
+	btnMyOffice: document.querySelector(".js-btn-my-off"),
+	btnLogout: document.querySelector(".js-btn-Go-out"),
 	bodyEl: document.querySelector("body"),
 };
 
@@ -34,6 +36,7 @@ const notificationErrorPasswordEl = refs.modalLogAndReg.querySelector(".notifica
 refs.modalLogAndReg.addEventListener('click', onBackdrop);
 refs.bodyEl.addEventListener('keydown', onPressEsc);
 refs.btnModalLogAndReg.addEventListener('click', onBtnLogAndRegModal);
+refs.btnLogout.addEventListener('click', onBtnLogout);
 btnGoogleAutorisation.addEventListener('click', onBtnGoogleAutorisation);
 btnRegistration.addEventListener('click', onBtnRegistration);
 btnLogin.addEventListener('click', onBtnLogin);
@@ -70,6 +73,11 @@ if (loadKey('googleAutorusation') === true) {
 
 	getUser(accessToken);
 	deleteKey('googleAutorusation');
+	location.search = '';
+}
+
+if (loadKey('accessToken') != undefined) {
+	chengeVisibilityElementsByLoginAndLogout();
 }
 
 function onBtnGoogleAutorisation() {
@@ -96,6 +104,7 @@ function onBtnRegistration(event) {
 		return;
 	}
 
+	chengeVisibilityElementsByLoginAndLogout();
 	toggleModal(refs.modalLogAndReg);
 }
 
@@ -108,7 +117,6 @@ async function onRegistration(email, password) {
 		.catch(error => {
 			if (error.response.status === 409) {
 				errorEmail(notifications.loginAlreadyExist);
-				// console.log("Пользователь с таким логином уже зарегистрирован");
 			}
 			else {
 				console.log(`error = ${error.response.status}`);
@@ -119,7 +127,6 @@ async function onRegistration(email, password) {
 
 function onBtnLogin(event) {
 	event.preventDefault();
-	console.log("login");
 
 	if (emailInputEl.value.length == 0) {
 		errorEmail(notifications.emailEmpty);
@@ -131,13 +138,11 @@ function onBtnLogin(event) {
 		return;
 	}
 
-	console.log("login1");
-
 	if (!onLogin(emailInputEl.value, passwordInputEl.value)) {
 		return;
 	}
-	console.log("login2");
 
+	chengeVisibilityElementsByLoginAndLogout();
 	toggleModal(refs.modalLogAndReg);
 }
 
@@ -147,17 +152,41 @@ async function onLogin(email, password) {
 			saveKey('accessToken', accessToken);
 			saveKey('refreshToken', refreshToken);
 			saveKey('id', sid);
-			console.log("login3");
 			return true;
 		})
 		.catch(error => {
 			if (error.response.status === 403) {
 				errorEmail(notifications.wrongLoginOrPassword)
-				// console.log("Не правильный логин или пароль");
 			}
 			console.log(error);
 			return false;
 		})
+}
+
+function onBtnLogout(event) {
+	if (!onLogouth(loadKey('accessToken'))) {
+		return;
+	}
+
+	chengeVisibilityElementsByLoginAndLogout();
+}
+
+async function onLogouth(accessToken) {
+	await logout(accessToken)
+		.then((data) => {
+			localStorage.clear();			
+			return true;
+		})
+		.catch(error => {
+			console.log(error);
+			return false;
+		})
+}
+
+function chengeVisibilityElementsByLoginAndLogout() {
+	refs.btnLogout.classList.toggle("visually-hidden");
+	refs.btnMyOffice.classList.toggle("visually-hidden");
+	refs.btnModalLogAndReg.classList.toggle("visually-hidden");
 }
 
 const onInputValue = debounce(() => {
@@ -185,27 +214,22 @@ function validationPassword(password) {
 
 	if (password.length < MIN_LENGTH) {
 		errorPassword(notifications.passwordShort);
-		// console.log("Минимальная длина пароля - 8 символов");
 		return false;
 	}
 	if (password.length > MAX_LENGTH) {
 		errorPassword(notifications.passwordLong);
-		// console.log("Максимальная длина пароля - 16 символов");
 		return false;
 	}
 	if (!PRESENT_DIGIT.test(password)) {
 		errorPassword(notifications.passwordWithoutDigits);
-		// console.log("Пароль должен содержать цифры");
 		return false;
 	}
 	if (!PRESENT_BIG_LETER.test(password) || !PRESENT_SMALL_LETER.test(password)) {
 		errorPassword(notifications.passwordMustContainSmallAndBigLetters);
-		// console.log("Пароль должен содержать большие и малые буквы");
 		return false;
 	}
 	if (!NO_SPACES.test(password)) {
 		errorPassword(notifications.passwordWithSpaces);
-		// console.log("Пароль не должен содержать пробелов");
 		return false;
 	}
 	

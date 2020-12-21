@@ -3,9 +3,8 @@ const axios = require('axios').default;
 const BASE_URL = "https://callboard-backend.herokuapp.com";
 
 export function getUser(accessToken) {
-	// axios(`${BASE_URL}/user`, { 'accessToken': `${accessToken}`, 'refreshToken': `${refreshToken}`, 'sid': `${id}` })
 	return axios(`${BASE_URL}/user`, { headers: { Authorization: `${accessToken}` } })
-		.then(res => res)
+		.then(res => console.log(res))
 		.catch(error => {
 			console.log(error);
 		})	
@@ -28,8 +27,15 @@ export function registration(email, password) {
 }
 
 export function logout(accessToken) {
-	return axios.post(`${BASE_URL}/auth/logout`, { headers: { Authorization: `${accessToken}` } })
-		.then(data => data)
+	const options = {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json; charset=UTF-8',
+			'authorization': `${accessToken}`,
+		},
+	};
+	return axios(`${BASE_URL}/auth/logout`, options)
+		.then(data => console.log(data))
 }
 
 export default {login, registration, getUser, logout};
