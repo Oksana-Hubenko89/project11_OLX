@@ -1,7 +1,6 @@
-// import talkToApiServer from './talk-to-api-finction';
 import uploadFile from './add-modal-preview';
 import addFormValidate from './add-modal-valid';
-// const axios = require('axios').default;
+import { loadKey } from './local-storage';
 import axios from "axios";
 const BASE_URL = `https://callboard-backend.herokuapp.com`; 
 const addForm = document.querySelector('.add-modal-form');
@@ -15,34 +14,32 @@ addButton.addEventListener('click', addFormSend);
 formImage.addEventListener('change', () => {
     uploadFile(formImage.files[0]);
 })
-
 function addFormSend(evt) {
     evt.preventDefault();
     removeValidation();
     let addModalError = addFormValidate(addForm);
-    const accessToken = localStorage.getItem('accessToken');
-
     if (addModalError === 0) {
       let formData = new FormData(addForm);
       let config = {
         method: 'POST',
-        url: 'https://callboard-backend.herokuapp.com/call',
+        url: `${BASE_URL}/call`,
         headers: {
-          'accept': 'application/json', 
+          'accept': 'application/json',
           'Content-Type': 'multipart/form-data',
-          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1ZmQzMzYxZjgwZGFiZDAwMTc5ZDdmZjYiLCJzaWQiOiI1ZmRlNDU5YzY0NTAxYjAwMTczMDhlMjMiLCJpYXQiOjE2MDg0MDIzMzIsImV4cCI6MTYxMTAzMDMzMn0.T641pOQOQK8bjVy0o5YwUJP0BnkGxx0tIG3_4EplJ0s'
+          'Authorization': `Bearer ${loadKey('refreshToken')}`
+          // 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1ZmQyNmU5MDAwMzE5MzAwMTdlOTE2OGIiLCJzaWQiOiI1ZmUwNWY3ZDAzMGZmMDAwMTcxMmNlZTIiLCJpYXQiOjE2MDg1NDAwMjksImV4cCI6MTYxMTE2ODAyOX0.uaKSqxHI02Be0hIy5igHUWegXDEYnNC_vM8YvYhQRLk'
+          // 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1ZmQzMzYxZjgwZGFiZDAwMTc5ZDdmZjYiLCJzaWQiOiI1ZmRlNDU5YzY0NTAxYjAwMTczMDhlMjMiLCJpYXQiOjE2MDg0MDIzMzIsImV4cCI6MTYxMTAzMDMzMn0.T641pOQOQK8bjVy0o5YwUJP0BnkGxx0tIG3_4EplJ0s'
         },
         data: formData,
       };
         axios(config)
         .then(function (response) {
           console.log(response.data);
-          
+          Close();
       })
       .catch(function (error) {
         console.log(error);
       });
-      Close();
     } 
 }
 function Close() {
@@ -69,64 +66,3 @@ function removeValidation() {
         errorsValid[i].remove();
     } 
 }
-
-/*add.addEventListener('click', ()=>{
-    let data = new FormData(form);
-    let config = {
-        method: 'post',
-        url: 'https://callboard-backend.herokuapp.com/call',
-        headers: { 
-          'accept': 'application/json', 
-          'Content-Type': 'multipart/form-data', 
-          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1ZmQ3Y2VhZWMyOThhMjAwMTc5YzhjYzAiLCJzaWQiOiI1ZmQ5MmMyMmNjZWZlZTAwMTc1M2ZiNzIiLCJpYXQiOjE2MDgwNjgxMzAsImV4cCI6MTYwODA3MTczMH0.I20tV29tq6tHg_XIPcDt1JW21Xmy3Un_kn64p6rMk_w'
-        },
-        data : data
-      };
-      
-      axios(config)
-      .then(function (response) {
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-})*/
-
-/*<form id="form">
-        <input type="text" value="title" name="title">
-        <input type="text" value="description" name="description">
-        <input type="text" value="work" name="category">
-        <input type="text" value="+380501110022" name="phone">
-        <input type="text" value="0" name="price">
-        <input type="file" name="file">
-        <button class="add" type="button">add</button>
-    </form>*/
-
-    /*let add = document.querySelector('.add');
-let form = document.querySelector('#form');
-
- */
-
-/*let newItem = {
-    "title": addName.value,
-    "description": addDescr.value,
-    "category": addCategory.value,
-    "price": Number(addPrice.value),
-    "phone": addPhone.value,
-    // "imageUrls": [
-    //     "string"
-    // ],
-};*/
-// function addModalPost(item) {
-//     const options = {
-//     method: 'POST',
-//     headers: {
-//         "Content-Type": 'application/json; charset=UTF-8',
-//     },
-//     body: JSON.stringify(item),
-//     };
-//     fetch(`${BASE_URL}/call`, options)
-//     .then(res => res.json())
-//     .then(console.log);
-// }
-
