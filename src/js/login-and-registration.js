@@ -129,7 +129,7 @@ function onBtnLogin(event) {
 		errorPassword(notifications.passwordEmpty);
 		return;
 	}
-	console.log("on btn login");
+	// console.log("on btn login");
 	onLogin(emailInputEl.value, passwordInputEl.value);
 }
 
@@ -172,8 +172,10 @@ async function onLogouth(accessToken) {
 function chengeVisibilityElementsByLoginAndLogout() {
 	// console.log(refs.containerMyOffice);
 	// refs.btnLogout.classList.toggle("visually-hidden");
-	refs.containerMyOffice.classList.toggle("visually-hidden");
-	refs.btnModalLogAndReg.classList.toggle("visually-hidden");
+	refs.containerMyOffice[0].classList.toggle("visually-hidden");
+	refs.containerMyOffice[1].classList.toggle("visually-hidden");
+	refs.btnModalLogAndReg[0].classList.toggle("visually-hidden");
+	refs.btnModalLogAndReg[1].classList.toggle("visually-hidden");
 }
 
 const onInputValue = debounce(() => {
