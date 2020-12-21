@@ -18,6 +18,4 @@ import './js/add-favourites-into-page';
 import './js/advert-Close-Open';
 import './js/advert-logic';
 import './js/search-modal';
-import './js/add-my-ads-into-page';
-import './js/delete-my-ads';
 import './js/my-office-or-auth';
