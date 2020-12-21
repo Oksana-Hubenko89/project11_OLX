@@ -3,9 +3,6 @@ const mainRenderPageEl = document.querySelector('body');
 const iconHeartContured = document.querySelector('[data-heartIconContured]');
 const iconHeartFull = document.querySelector('[data-heartIconFull]');
 // Переменные для ввода данных
-
-// console.log(iconHeartFull);
-// console.log(iconHeartContured);
 const URL = 'https://callboard-backend.herokuapp.com/';
 const keyPart = 'call/favourite/';
 const key = localStorage.getItem('accessToken');
@@ -39,12 +36,7 @@ async function addFavorite(URL, keyPart, id, optionsPost) {
 function onClick(evt) {
     if (evt.target.hasAttribute('data-favorite-button')) {
         if(evt.target.dataset.marked === 'false') {
-          // const iconHeartContured = document.querySelector('[data-heartIconContured]');
-          // const iconHeartFull = document.querySelector('[data-heartIconFull]');
-          // console.log(iconHeartFull.classList);
-          console.log(iconHeartContured.classList);
             iconHeartFull.classList.remove('visually-hidden');
-            // console.log(iconHeartFull.classList);
             iconHeartContured.classList.add('visually-hidden');
         
             const id = evt.target.closest('[data-item]').getAttribute('id');
