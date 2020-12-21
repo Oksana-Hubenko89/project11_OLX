@@ -12,7 +12,7 @@
 <body>
   <!-- Header -->
 
-  <header class="page-header ">
+  <header class="page-header">
     <div class=" header-buttons">
       <div class="header-button-seach">
         <div class="header-content">
@@ -23,7 +23,7 @@
           </button>
 
 
-          <a href="#" class="logo js-logo-open">LOGO</a>
+          <a href="main" class="logo js-logo-open">LOGO</a>
 
           <div class="auth">
 
@@ -36,17 +36,14 @@
                 <use class="icon-cross" href="./symbol-defs.svg#icon-user"></use>
               </svg>
               <ul class="nav-my-off">
-                <li class="btn-my-off js-btn-my-off "><span class="icon-logout-Close">Мій кабінет</span>
+                <li class="btn-my-off js-btn-my-off visually-hidden"><span class="icon-logout-Close">Мій кабінет</span>
                   <ul class="list-my-off">
-                    <li class="my-off-item"><a href="/" class="my-off-link">Мої оголошення</a></li>
-                    <li class="my-off-item"><a href="/" class="my-off-link" id="show-favorites-button">Обране</a></li>
+                    <li class="my-off-item"><a href="/" class="my-off-link" id='show-my-ads-button1'>Мої оголошення!</a></li>
+                    <li class="my-off-item"><a href="/" class="my-off-link" id="show-favorites-button1">Обране!</a></li>
                   </ul>
-
                 </li>
-
-
               </ul>
-              <button class=" Btn-Go-out icon-logout-Close js-btn-Go-out">
+              <button class=" Btn-Go-out icon-logout-Close js-btn-Go-out visually-hidden">
                 <svg width="20px" height="20px" aria-label="Use Profil">
                   <use class="icon-Go-out" href="./symbol-defs.svg#icon-logout"></use>
                 </svg>
@@ -100,27 +97,24 @@
                 <ul class="nav-my-off">
                   <li class="btn-my-off js-btn-my-off ">Мій кабінет
                     <ul class="list-my-off">
-                      <li class="my-off-item"><a href="/" class="my-off-link">Мої оголошення</a></li>
-                      <li class="my-off-item"><a href="/" class="my-off-link" id="show-favorites-button">Обране</a></li>
+                      <li class="my-off-item"><a href="/" class="my-off-link" id='show-my-ads-button2'>Мої оголошення</a></li>
+                      <li class="my-off-item"><a href="/" class="my-off-link" id="show-favorites-button2">Обране</a></li>
                     </ul>
-
                   </li>
-
-
                 </ul>
               </div>
             </div>
             <ul class="header-menu">
-              <li class="site-nav-item "><a href="#" class="link" data-id="property">Нерухомість</a></li>
-              <li class="site-nav-item "><a href="#" class="link" data-id="transport">Транспорт</a></li>
-              <li class="site-nav-item "><a href="#" class="link" data-id="work">Робота</a></li>
-              <li class="site-nav-item "><a href="#" class="link" data-id="electronics">Електроніка</a></li>
-              <li class="site-nav-item "><a href="#" class="link" data-id="businessAndServices">Бізнес та послуги</a>
+              <li class="site-nav-item "><a href="property" class="link" data-id="property">Нерухомість</a></li>
+              <li class="site-nav-item "><a href="transport" class="link" data-id="transport">Транспорт</a></li>
+              <li class="site-nav-item "><a href="work" class="link" data-id="work">Робота</a></li>
+              <li class="site-nav-item "><a href="electronics" class="link" data-id="electronics">Електроніка</a></li>
+              <li class="site-nav-item "><a href="businessAndServices" class="link" data-id="businessAndServices">Бізнес та послуги</a>
               </li>
-              <li class="site-nav-item "><a href="#" class="link" data-id="recreationAndSport">Відпочинок та спорт</a>
+              <li class="site-nav-item "><a href="recreationAndSport" class="link" data-id="recreationAndSport">Відпочинок та спорт</a>
               </li>
-              <li class="site-nav-item "><a href="#" class="link" data-id="free">Віддам безкоштовно</a></li>
-              <li class="site-nav-item"><a href="#" class="link" data-id="trade">Обмін</a></li>
+              <li class="site-nav-item "><a href="free" class="link" data-id="free">Віддам безкоштовно</a></li>
+              <li class="site-nav-item"><a href="trade" class="link" data-id="trade">Обмін</a></li>
             </ul>
           </div>
 
@@ -190,89 +184,19 @@
   <!-- Modal to order -->
   <div class="is-hidden"></div>
   <!-- Modal to new advert -->
-  <!-- Modal Мої оголошення -->
-  <section class="section is-hidden">
-    <div class="card-container">
-      <button type="button" class="swipe-left">
-        <svg width="6px" height="9px" class="swipe-left-icon">
-          <use href="./symbol-defs.svg#icon-arrow-left"></use>
-        </svg>
-      </button>
-      <button type="button" class="swipe-right">
-        <svg width="6px" height="9px" class="swipe-right-icon">
-          <use href="./symbol-defs.svg#icon-arrow-right"></use>
-        </svg>
-      </button>
-      <h2 class="section-name">Мої оголошення</h2>
-
-      <ul class="card-field js-advert">
-        <li class="card-item">
-          <div class="img-container">
-            <img src="https://s1.eda.ru/StaticContent/Photos/140812180013/140820212258/p_O.jpg" alt="tshirt" />
-            <button type="button" class="favorite">
-              <svg width="16px" height="16px" class="favorite-icon">
-                <use href="./symbol-defs.svg#icon-contured-heart"></use>
-              </svg>
-            </button>
-            <button type="button" class="full-screen">
-              <svg width="11px" height="11px" class="full-screen-icon">
-                <use href="./symbol-defs.svg#icon-full-screen"></use>
-              </svg>
-            </button>
-          </div>
-          <p class="product-title">Майка жіноча чорна</p>
-          <p><span class="old-price final-price">300 грн</span></p>
-        </li>
-        <li class="card-item">
-          <div class="img-container">
-            <img src="https://s1.eda.ru/StaticContent/Photos/140812180013/140820212258/p_O.jpg" alt="tshirt" />
-            <button type="button" class="favorite">
-              <svg width="16px" height="16px" class="favorite-icon">
-                <use href="./symbol-defs.svg#icon-heart"></use>
-              </svg>
-            </button>
-            <button type="button" class="full-screen">
-              <svg width="11px" height="11px" class="full-screen-icon">
-                <use href="./symbol-defs.svg#icon-full-screen"></use>
-              </svg>
-            </button>
-          </div>
-          <p class="product-title">Майка жіноча чорна</p>
-          <p><span class="old-price final-price">300 грн</span></p>
-        </li>
-        <li class="card-item">
-          <div class="img-container">
-            <img src="https://s1.eda.ru/StaticContent/Photos/140812180013/140820212258/p_O.jpg" alt="tshirt" />
-            <button type="button" class="favorite">
-              <svg width="16px" height="16px" class="favorite-icon">
-                <use href="./symbol-defs.svg#icon-heart"></use>
-              </svg>
-            </button>
-            <button type="button" class="full-screen">
-              <svg width="11px" height="11px" class="full-screen-icon">
-                <use href="./symbol-defs.svg#icon-full-screen"></use>
-              </svg>
-            </button>
-          </div>
-          <p class="product-title">Майка жіноча чорна</p>
-          <p><span class="old-price final-price">300 грн</span></p>
-        </li>
-      </ul>
-    </div>
-  </section>
-  <!-- Modal Обране -->
-  <section class="section favorite-section" id="favorite-section">
-    <div class="add-backdrop is-hidden" id="add-backdrop">
-      <div class="card-container favorite-container">
-        <button type="button" class="close-button" id="close-section-button">
-          <svg width="14px" height="14px" aria-label="Закрытие мобильного окна">
-            <use class="icon-close" href="./symbol-defs.svg#icon-close"></use>
-          </svg>
-        </button>
-        <h2 class="section-name">Обране</h2>
-        <ul class="card-field favourites-list" id="favourites-list"></ul>
+    <!-- Modal Мої оголошення -->
+    <section class="section my-ads-section" id="my-ads-section">
+      <div class="add-backdrop visually-hidden" id="add-backdrop">
+        <div class="card-container my-ads-container">
+          <button type="button" class="close-button" id="close-my-ads-button">
+            <svg width="14px" height="14px" aria-label="Закрытие мобильного окна">
+              <use class="icon-close" href="./symbol-defs.svg#icon-close"></use>
+            </svg>
+          </button>
+          <h2 class="section-name">Мої оголошення</h2>
+          <ul class="card-field my-ads-list" id="my-ads-list"></ul>
+        </div>
       </div>
-
     </section>
     <!-- Modal Обране -->
     <section class="section favorite-section" id="favorite-section">
@@ -288,9 +212,10 @@
         </div>
       </div>
     </section>
-  <div class="add-backdrop js-add-modal visually-hidden">
+  <!--Модалка Додати оголошення-->
+  <div class="add-backdrop js-add-modal visually-hidden" id="add-backdrop-for-ad">
       <div class="add-modal">
-        <form action="" class="add-modal-form">
+        <form class="add-modal-form" id="add-form">
           <a add-modal-close href="#" aria-label="Close" class="add-modal-close"
             ><svg class="icon-close">
               <use href="./symbol-defs.svg#icon-close"></use>
@@ -301,7 +226,7 @@
             <input
               class="add-modal-input js-add-name js-add-input"
               type="text"
-              name="name"
+              name="title"
               id="name"
               placeholder=" "
             />
@@ -311,18 +236,14 @@
             <div class="download-btns add-modal-valid-photo">
               <ul class="preview-list">
                 <li class="add-preview">
-                  <label class="label-photo-btn" for="file1">+</label>
+                  <label class="label-photo-btn" for="file">+</label>
                   <input
-                  class="add-photo-btn js-add-input js-photo"
+                  class="add-photo-btn js-add-input js-add-photo"
                   type="file"
-                  accept="image/*"
-                  name="file1"
-                  id="file1"
+                  name="file"
+                  id="file"
               /></li>
               </ul>
-              
-              <!-- <div class="add-preview show-photo"></div> -->
-
               <!-- <label class="label-photo-btn" for="file2">+</label>
               <input
                 class="add-photo-btn"
@@ -331,11 +252,8 @@
                 name="file2"
                 id="file2"
               /> -->
-
             </div>
           </div>
-        </div>
-
 
           <div class="add-modal-container">
             <label for="description" class="add-modal-field">Опис товару</label>
@@ -350,8 +268,7 @@
           </div>
           <div class="add-modal-container">
             <label for="category" class="add-modal-field"
-              >Категорія товару</label
-            >
+              >Категорія товару</label>
             <select
               class="add-modal-input js-category-input js-add-input"
               name="category"
@@ -380,20 +297,17 @@
             <input
               class="add-modal-input js-add-phone js-add-input"
               type="tel"
-              name="tel"
+              name="phone"
               id="tel"
               placeholder="+38 (0--) --- -- --"
             />
           </div>
-          <button type="submit" class="add-modal-btn btn">ДОДАТИ</button>
-        <!-- <button class="clear-btn">clear</button> -->
+          <button type="button" class="add-modal-btn btn">ДОДАТИ</button>
         </form>
       </div>
-
     </div>
-  </div>
   <!-- Modal to login -->
-  <div class="add-backdrop visually-hidden" data-modal-log-and-reg>
+  <div class="backdrop-log-and-reg visually-hidden" data-modal-log-and-reg>
     <div class="modal-log-and-reg">
       <button type="button" class="close-button">
         <svg width="14px" height="14px" aria-label="Закрытие мобильного окна">
@@ -486,5 +400,4 @@
 
   </div>
 </body>
-
 </html>

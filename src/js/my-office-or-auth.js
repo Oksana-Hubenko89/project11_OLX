@@ -1,5 +1,5 @@
 
-const Myoffice = document.querySelector('.js-my-office');
+const Myoffice = document.querySelector('.btn-my-office');
 const ContainerMyoffice = document.querySelector('.my-office');
 const BtnLogandReg = document.querySelectorAll('.js-btn-log-and-reg');
 
