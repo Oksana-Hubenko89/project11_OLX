@@ -39,21 +39,17 @@ function homePageCreator() {
   getCard(page);
 }
 
-function onLogoCLick(e) {
-  e.preventDefault();
+function onLogoCLick() {
   page = 1;
   getCard(page);
 }
 
-function onClearBtnClick(e) {
-  e.preventDefault();
+function onClearBtnClick() {
   page = 1;
   getCard(page);
 }
 
 async function createCategoryMenu(e) {
-  e.preventDefault();
-
   refs.paginatorPagesEL.classList.add('visually-hidden');
   clearArticlesContainer();
   const keyCategory = e.target.dataset.id;
