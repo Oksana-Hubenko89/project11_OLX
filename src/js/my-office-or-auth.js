@@ -14,13 +14,13 @@ const BtnLogandReg = document.querySelectorAll('.js-btn-log-and-reg');
         BtnLogandReg[0].classList.remove('itsAuth');
         BtnLogandReg[1].classList.remove('itsAuth');
         ContainerMyoffice.classList.add('itsAuth');
-        Myoffice.classList.add('itsAuth');
+        // Myoffice.classList.add('itsAuth');
     } else {
         
         BtnLogandReg[0].classList.add('itsAuth');
         BtnLogandReg[1].classList.add('itsAuth');
         ContainerMyoffice.classList.remove('itsAuth');
-        Myoffice.classList.remove('itsAuth');
+        // Myoffice.classList.remove('itsAuth');
     }
 }
 UpdateOfficeBtnByToken();
