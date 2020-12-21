@@ -30,7 +30,7 @@ function addFormSend(evt) {
         headers: {
           'accept': 'application/json', 
           'Content-Type': 'multipart/form-data',
-          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1ZmQzMzYxZjgwZGFiZDAwMTc5ZDdmZjYiLCJzaWQiOiI1ZmRlNTllMjY0NTAxYjAwMTczMDhmMmIiLCJpYXQiOjE2MDg0MDc1MjIsImV4cCI6MTYwODQxMTEyMn0.3byp5ioPGXyUIjbv867SFgWSoQoevmOeshTuJzZ6JLg'
+          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1ZmQzMzYxZjgwZGFiZDAwMTc5ZDdmZjYiLCJzaWQiOiI1ZmRlNDU5YzY0NTAxYjAwMTczMDhlMjMiLCJpYXQiOjE2MDg0MDIzMzIsImV4cCI6MTYxMTAzMDMzMn0.T641pOQOQK8bjVy0o5YwUJP0BnkGxx0tIG3_4EplJ0s'
         },
         data: formData,
       };
