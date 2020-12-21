@@ -1,4 +1,5 @@
 import parsFavoritesList from '../templates/favourites-section.hbs';
+import { loadKey } from './local-storage';
 
 // Элементы DOM-дерева
 const favoriteSectionEl = document.querySelector('#favorite-section');
@@ -16,7 +17,7 @@ const keyPart = 'call/favourites';
 const key = localStorage.getItem('accessToken');
 const options = {
   headers: {
-    Authorization: `${key}`,
+    Authorization: `Bearer ${loadKey('refreshToken')}`,
   },
 };
 // Вызов функции рендера страницы по кнопке
