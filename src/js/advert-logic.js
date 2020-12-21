@@ -41,8 +41,8 @@ export default async function getUserInform (userId) {
 function sellerInfoRender (data) {
     refs.infoSellerTime.textContent =`На OLX с ${data.registrationDate}`;
     refs.infoSellerTel.textContent = `email: ${data.email}`;
-    console.log(data.email);
-    console.log(data.registrationDate);
+    // console.log(data.email);
+    // console.log(data.registrationDate);
 }
 function getCardInfoFromServer(params) {
     

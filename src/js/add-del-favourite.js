@@ -2,6 +2,7 @@
 const mainRenderPageEl = document.querySelector('body');
 const iconHeartContured = document.querySelector('[data-heartIconContured]');
 const iconHeartFull = document.querySelector('[data-heartIconFull]');
+import { loadKey } from './local-storage';
 // Переменные для ввода данных
 const URL = 'https://callboard-backend.herokuapp.com/';
 const keyPart = 'call/favourite/';
@@ -10,14 +11,14 @@ const optionsPost = {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
-    Authorization: `${key}`,
+    Authorization: `Bearer ${loadKey('refreshToken')}`,
   },
 };
 const optionsDel = {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `${key}`,
+      Authorization: `Bearer ${loadKey('refreshToken')}`,
     },
   };
 // Вызов функции добавления товара в Избранное
