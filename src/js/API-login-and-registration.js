@@ -35,7 +35,7 @@ export function logout(accessToken) {
 		},
 	};
 	return axios(`${BASE_URL}/auth/logout`, options)
-		.then(data => console.log(data))
+		.then(data => data);
 }
 
 export default {login, registration, getUser, logout};

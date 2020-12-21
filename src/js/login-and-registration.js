@@ -5,7 +5,8 @@ const debounce = require('lodash.debounce');
 
 const refs = {
 	modalLogAndReg: document.querySelector("[data-modal-log-and-reg]"),
-	btnModalLogAndReg: document.querySelector(".js-btn-log-and-reg"),
+	btnModalLogAndReg: document.querySelectorAll(".js-btn-log-and-reg"),
+	containerMyOffice: document.querySelectorAll(".my-office"),
 	btnMyOffice: document.querySelector(".js-btn-my-off"),
 	btnLogout: document.querySelector(".js-btn-Go-out"),
 	bodyEl: document.querySelector("body"),
@@ -35,7 +36,8 @@ const notificationErrorPasswordEl = refs.modalLogAndReg.querySelector(".notifica
 
 refs.modalLogAndReg.addEventListener('click', onBackdrop);
 refs.bodyEl.addEventListener('keydown', onPressEsc);
-refs.btnModalLogAndReg.addEventListener('click', onBtnLogAndRegModal);
+refs.btnModalLogAndReg[0].addEventListener('click', onBtnLogAndRegModal);
+refs.btnModalLogAndReg[1].addEventListener('click', onBtnLogAndRegModal);
 refs.btnLogout.addEventListener('click', onBtnLogout);
 btnGoogleAutorisation.addEventListener('click', onBtnGoogleAutorisation);
 btnRegistration.addEventListener('click', onBtnRegistration);
@@ -96,23 +98,14 @@ function onBtnRegistration(event) {
 		return;
 	}
 
-	if (!onRegistration(emailInputEl.value, passwordInputEl.value)) {
-		return;
-	}	
-
-	if (!onLogin(emailInputEl.value, passwordInputEl.value)) {
-		return;
-	}
-
-	chengeVisibilityElementsByLoginAndLogout();
-	toggleModal(refs.modalLogAndReg);
+	onRegistration(emailInputEl.value, passwordInputEl.value);
+	onLogin(emailInputEl.value, passwordInputEl.value);
 }
 
 async function onRegistration(email, password) {
 	await registration(email, password)
 		.then(({ id }) => {
 			saveKey('id', id);
-			return true;
 		})
 		.catch(error => {
 			if (error.response.status === 409) {
@@ -121,13 +114,12 @@ async function onRegistration(email, password) {
 			else {
 				console.log(`error = ${error.response.status}`);
 			}
-			return false;
 		});
 }
 
 function onBtnLogin(event) {
 	event.preventDefault();
-
+	
 	if (emailInputEl.value.length == 0) {
 		errorEmail(notifications.emailEmpty);
 		return;
@@ -137,41 +129,35 @@ function onBtnLogin(event) {
 		errorPassword(notifications.passwordEmpty);
 		return;
 	}
-
-	if (!onLogin(emailInputEl.value, passwordInputEl.value)) {
-		return;
-	}
-
-	chengeVisibilityElementsByLoginAndLogout();
-	toggleModal(refs.modalLogAndReg);
+	console.log("on btn login");
+	onLogin(emailInputEl.value, passwordInputEl.value);
 }
 
 async function onLogin(email, password) {
 	await login(email, password)
-		.then(({accessToken, refreshToken, sid}) => {
+		.then(({ accessToken, refreshToken, sid }) => {
 			saveKey('accessToken', accessToken);
 			saveKey('refreshToken', refreshToken);
 			saveKey('id', sid);
-			return true;
+			chengeVisibilityElementsByLoginAndLogout();
+			toggleModal(refs.modalLogAndReg);
 		})
 		.catch(error => {
 			if (error.response.status === 403) {
-				errorEmail(notifications.wrongLoginOrPassword)
+				errorEmail(notifications.wrongLoginOrPassword);
 			}
 			console.log(error);
-			return false;
-		})
+		});
 }
 
 function onBtnLogout(event) {
-	if (!onLogouth(loadKey('accessToken'))) {
-		return;
-	}
+	!onLogouth(loadKey('accessToken')); 
 
 	chengeVisibilityElementsByLoginAndLogout();
 }
 
 async function onLogouth(accessToken) {
+	localStorage.clear();	
 	await logout(accessToken)
 		.then((data) => {
 			localStorage.clear();			
@@ -184,8 +170,9 @@ async function onLogouth(accessToken) {
 }
 
 function chengeVisibilityElementsByLoginAndLogout() {
-	refs.btnLogout.classList.toggle("visually-hidden");
-	refs.btnMyOffice.classList.toggle("visually-hidden");
+	// console.log(refs.containerMyOffice);
+	// refs.btnLogout.classList.toggle("visually-hidden");
+	refs.containerMyOffice.classList.toggle("visually-hidden");
 	refs.btnModalLogAndReg.classList.toggle("visually-hidden");
 }
 
