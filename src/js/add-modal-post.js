@@ -14,18 +14,15 @@ addButton.addEventListener('click', addFormSend);
 formImage.addEventListener('change', () => {
     uploadFile(formImage.files[0]);
 })
-
 function addFormSend(evt) {
     evt.preventDefault();
     removeValidation();
     let addModalError = addFormValidate(addForm);
-    // const refreshToken = localStorage.getItem('refreshToken');
-
     if (addModalError === 0) {
       let formData = new FormData(addForm);
       let config = {
         method: 'POST',
-        url: 'https://callboard-backend.herokuapp.com/call',
+        url: `${BASE_URL}/call`,
         headers: {
           'accept': 'application/json',
           'Content-Type': 'multipart/form-data',
