@@ -5,9 +5,11 @@ const myAdsSectionEl = document.querySelector('#my-ads-section');
 const addBackdropEl = myAdsSectionEl.querySelector('#add-backdrop');
 const closeButtonEl = myAdsSectionEl.querySelector('#close-my-ads-button');
 const myAdsListEl = myAdsSectionEl.querySelector('#my-ads-list');
-const showMyAdsButtonEl = document.querySelector('#show-my-ads-button');
-console.log(showMyAdsButtonEl);
-console.log(myAdsListEl);
+const showMyAdsButtonEl1 = document.querySelector('#show-my-ads-button1');
+const showMyAdsButtonEl2 = document.querySelector('#show-my-ads-button2');
+
+// console.log(showMyAdsButtonEl1);
+// console.log(showMyAdsButtonEl2);
 // Переменные для ввода данных
 const URL = 'https://callboard-backend.herokuapp.com/';
 const keyPart = 'user';
@@ -20,11 +22,19 @@ const options = {
 
 // ВЫЗОВЫ ФУКЦИЙ:
 // рендер страницы по кнопке
-showMyAdsButtonEl.addEventListener('click', e => {
+// -- для десктопа
+showMyAdsButtonEl1.addEventListener('click', e => {
   e.preventDefault();
   openModalWindow(addBackdropEl);
   getMyAdsList(URL, keyPart, options);
 });
+// -- для таблетки и мобилки
+showMyAdsButtonEl2.addEventListener('click', e => {
+  e.preventDefault();
+  openModalWindow(addBackdropEl);
+  getMyAdsList(URL, keyPart, options);
+});
+
 // закрытие модалки по кнопке
 closeButtonEl.addEventListener('click', () => {
   closeModalWindow();

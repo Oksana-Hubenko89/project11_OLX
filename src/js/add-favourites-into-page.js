@@ -5,7 +5,11 @@ const favoriteSectionEl = document.querySelector('#favorite-section');
 const addBackdropEl = favoriteSectionEl.querySelector('#add-backdrop');
 const closeButtonEl = favoriteSectionEl.querySelector('#close-section-button');
 const fevoritesListEl = favoriteSectionEl.querySelector('#favourites-list');
-const showFavoriteButtonEl = document.querySelector('#show-favorites-button');
+const showFavoriteButtonEl1 = document.querySelector('#show-favorites-button1');
+const showFavoriteButtonEl2 = document.querySelector('#show-favorites-button2');
+// console.log(showFavoriteButtonEl1);
+// console.log(showFavoriteButtonEl2);
+
 // Переменные для ввода данных
 const URL = 'https://callboard-backend.herokuapp.com/';
 const keyPart = 'call/favourites';
@@ -16,11 +20,19 @@ const options = {
   },
 };
 // Вызов функции рендера страницы по кнопке
-showFavoriteButtonEl.addEventListener('click', e => {
+// для десктопа
+showFavoriteButtonEl1.addEventListener('click', e => {
   e.preventDefault();
   openModalWindow(addBackdropEl);
   getFavoritesList(URL, keyPart, options);
 });
+// для таблетки и мобилки
+showFavoriteButtonEl2.addEventListener('click', e => {
+  e.preventDefault();
+  openModalWindow(addBackdropEl);
+  getFavoritesList(URL, keyPart, options);
+});
+
 // Вызов функции закрытия модалки по кнопке
 closeButtonEl.addEventListener('click', () => {
   closeModalWindow();
