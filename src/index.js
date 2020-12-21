@@ -6,8 +6,8 @@ import './js/login-and-registration';
 import './js/add-modal-show';
 import './js/add-modal-categories';
 import './js/add-modal-valid';
+import './js/add-modal-post';
 import './js/add-modal-preview';
-// import './js/add-modal-post';
 // import './js/add-async-post';
 // import './js/post';
 import './js/postFetch';
@@ -21,3 +21,4 @@ import './js/search-modal';
 import './js/add-my-ads-into-page';
 import './js/delete-my-ads';
 import './js/my-office-or-auth';
+
