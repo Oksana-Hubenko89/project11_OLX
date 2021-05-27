@@ -34,22 +34,26 @@ refs.logoEL.addEventListener('click', onLogoCLick);
 refs.btnClearEL.addEventListener('click', onClearBtnClick);
 refs.paginatorPagesEL.addEventListener('click', changePage);
 
-function homePageCreator() {
+function homePageCreator(evt) {
+evt.preventDefault()
   page += 1;
   getCard(page);
 }
 
-function onLogoCLick() {
+function onLogoCLick(evt) {
+  evt.preventDefault()
   page += 1;
   getCard(page);
 }
 
-function onClearBtnClick() {
+function onClearBtnClick(evt) {
+  evt.preventDefault()
   page += 1;
   getCard(page);
 }
 
 async function createCategoryMenu(e) {
+  e.preventDefault()
   refs.paginatorPagesEL.classList.add('visually-hidden');
   clearArticlesContainer();
   const keyCategory = e.target.dataset.id;
@@ -62,6 +66,7 @@ async function createCategoryMenu(e) {
 }
 
 async function postData(apiKey, arg) {
+  
   const response = await fetch(API + apiKey + arg, {
     method: 'GET',
     headers: {
@@ -74,7 +79,7 @@ async function postData(apiKey, arg) {
 }
 
 async function getCard(page) {
-  history.replaceState({ page }, `page: ${page}`, `/page=${page}`);
+  //history.replaceState({ page }, `page: ${page}`, `/page=${page}`);
   refs.paginatorPagesEL.classList.remove('visually-hidden');
   clearArticlesContainer();
 
@@ -86,7 +91,7 @@ async function getCard(page) {
 
 function changePage(e) {
   page = e.target.dataset.id;
-  history.replaceState({ page }, `page: ${page}`, `/page=${page}`);
+  //history.replaceState({ page }, `page: ${page}`, `/page=${page}`);
   const oldEl = document.querySelector(`.is-active`);
   oldEl.classList.remove('.is-active');
   e.target.classList.add('is-active');
