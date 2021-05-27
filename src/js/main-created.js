@@ -6,7 +6,7 @@ import categoryTpl from '../templates/main-page.hbs';
 const API = 'https://callboard-backend.herokuapp.com/call';
 const KEYMEIN = '?page=';
 const KAYCATEGORY = '/specific/';
-let page = 1;
+let page = null;
 
 const templateNames = {
   businessAndServices: 'Бізнес та послуги',
@@ -35,17 +35,17 @@ refs.btnClearEL.addEventListener('click', onClearBtnClick);
 refs.paginatorPagesEL.addEventListener('click', changePage);
 
 function homePageCreator() {
-  page = 1;
+  page += 1;
   getCard(page);
 }
 
 function onLogoCLick() {
-  page = 1;
+  page += 1;
   getCard(page);
 }
 
 function onClearBtnClick() {
-  page = 1;
+  page += 1;
   getCard(page);
 }
 
