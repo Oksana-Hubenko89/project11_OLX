@@ -6,7 +6,7 @@ import categoryTpl from '../templates/main-page.hbs';
 const API = 'https://callboard-backend.herokuapp.com/call';
 const KEYMEIN = '?page=';
 const KAYCATEGORY = '/specific/';
-let page = null;
+let page = 1;
 
 const templateNames = {
   businessAndServices: 'Бізнес та послуги',
@@ -28,29 +28,29 @@ const refs = {
   paginatorPagesEL: document.querySelector('.pagination-conteiner'),
 };
 
-document.addEventListener('DOMContentLoaded', homePageCreator);
-refs.headerMenuEL.addEventListener('click', createCategoryMenu);
-refs.logoEL.addEventListener('click', onLogoCLick);
-refs.btnClearEL.addEventListener('click', onClearBtnClick);
-refs.paginatorPagesEL.addEventListener('click', changePage);
+// document.addEventListener('DOMContentLoaded', homePageCreator);
+ refs.headerMenuEL.addEventListener('click', createCategoryMenu);
+// refs.logoEL.addEventListener('click', onLogoCLick);
+// refs.btnClearEL.addEventListener('click', onClearBtnClick);
+// refs.paginatorPagesEL.addEventListener('click', changePage);
 
-function homePageCreator(evt) {
-evt.preventDefault()
-  page += 1;
-  getCard(page);
-}
+// function homePageCreator(evt) {
+// evt.preventDefault()
+//   page = 1;
+//   getCard(page);
+// }
 
-function onLogoCLick(evt) {
-  evt.preventDefault()
-  page += 1;
-  getCard(page);
-}
+// function onLogoCLick(evt) {
+//   evt.preventDefault()
+//   page = 1;
+//   getCard(page);
+// }
 
-function onClearBtnClick(evt) {
-  evt.preventDefault()
-  page += 1;
-  getCard(page);
-}
+// function onClearBtnClick(evt) {
+//   evt.preventDefault()
+//   page = 1;
+//   getCard(page);
+// }
 
 async function createCategoryMenu(e) {
   e.preventDefault()
