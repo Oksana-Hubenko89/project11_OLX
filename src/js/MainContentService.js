@@ -1,7 +1,9 @@
 const LOAD_CONTENT_URL = 'https://callboard-backend.herokuapp.com/call?page=';
 
 export default class Service {
-  async loadMainContent(page = 1) {
+
+  async loadMainContent( ) {
+    let page= '= 1'
     const response = await fetch(LOAD_CONTENT_URL + page, {
       method: 'GET',
       headers: {
